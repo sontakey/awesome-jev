@@ -1,6 +1,6 @@
 # Research method
 
-Sweep date: **2026-09-17** (America/Chicago). Social window: 2026-01-01 through 2026-09-18 UTC. Almost all on-topic public discussion is launch week **2026-09-15–18**.
+Sweep date: **2026-09-17** (America/Chicago). Social window: 2026-01-01 through 2026-09-18 UTC. Almost all on-topic public discussion is launch week **2026-09-15–18**. Native X rerun window: **2026-09-01 through 2026-09-17**.
 
 This catalog is comprehensive **within the observed public sources**, not a claim of internet completeness.
 
@@ -8,7 +8,8 @@ This catalog is comprehensive **within the observed public sources**, not a clai
 
 | Lane | Who | Model | Method | Output |
 | --- | --- | --- | --- | --- |
-| X | native child | grok-4.6 | Native `x_search` **unavailable**. `web_search` + `web_extract` of x.com | `scratch/x/` |
+| X (first pass) | native child | grok-4.6 | Native `x_search` **unavailable** (`-t hermes-cli` excluded the opt-in tool). `web_search` + `web_extract` of x.com | `scratch/x/` |
+| X (native rerun) | owner | grok-4.6 calling `x_search` (model `grok-4.20-reasoning`) | Four targeted native queries, 2026-09-01–2026-09-17. Credential route label from the tool: `xai-oauth`. Grok OAuth chat is **not** treated as proof of native X access. | `scratch/x/X_RECOVERY.json` |
 | Reddit | native child | grok-4.6 | reddit-reading anonymous Atom + site:reddit.com + pullpush | `scratch/reddit/` |
 | GitHub | native child | grok-4.6 | `gh api` pagination + README/example inspection | `scratch/github/` |
 | Web | owner | grok-4.6 | **Not Google.** Hermes browser Google SERP failed (`Invalid URL '/tabs'`). Used `web_search` / `web_extract` + live docs | `scratch/web/` |
@@ -44,7 +45,8 @@ Overwatch references private `typesafe-ai/Flow`, which is **not** in the public 
 
 ## Access failures and gaps
 
-- No native X search; t.co expand blocked for one community roundup thread.
+- First X lane: no native X search; t.co expand blocked for one community roundup thread.
+- Native X rerun (2026-09-17): `x_search` available and not degraded. Query 4 returned empty top-level `citations` with mixed inline user/status URLs; a GitHub URL in the prose was independently verified. Live `val.run` demos named on X could not be scraped (web_extract failed; Hermes browser Google `/tabs` error persisted).
 - Google SERP unavailable in this agent browser.
 - Reddit `web_extract` on reddit.com unsupported; anonymous feed ~1 req/min; some threads remain SERP-only.
 - `gh search` caps (50–100) undercount the long tail that hellogumbo/rhc98 claim.

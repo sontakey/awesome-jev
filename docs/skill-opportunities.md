@@ -16,6 +16,8 @@ Verified public install paths (frontmatter or docs read in this sweep):
 | jkudish/jev-mcp | community | `npx -y @jkudish/jev-mcp` (README) | MCP verify/screen/rank. PoC. |
 | SkillRanker | community | Build from `Dicklesworthstone/skillranker` | Offline `sr demo`; live needs a key. |
 | Official skill-suggestion cookbook | official | Not a skill; a cookbook | Ranks the Hermes roster with Jev. |
+| Jev Agent Skill Router | community | Build from `GodsBoy/jev-agent-skill-router` | Routes over a catalogue; does **not** load Hermes skills. Synthetic 72-case bench. CLI name collides with gargpratyush/jev-router. |
+| y0usaf/typesafe-mcp | community | `npx -y @y0usaf/typesafe-mcp` (README) | One `evaluate` MCP tool. Distinct from itsmostafa and jkudish. |
 
 Also: geilt/typesafe-cli, jtsang4/jev-cli, reachjalil/jevlogs (offline `npx jevlogs`), Stumble/jev-go, docxology/daf-jev. See GitHub lane `skills.json` for frontmatter flags.
 

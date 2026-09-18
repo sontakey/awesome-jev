@@ -508,6 +508,39 @@
       "last_checked": "2026-09-17"
     },
     {
+      "id": "jev-agent-skill-router",
+      "title": "Jev Agent Skill Router",
+      "category": "model-routing",
+      "short_description": "Python CLI/library: batched Jev Choice plus Noul gates route, no-skill, or review over a skill catalogue.",
+      "actual_actions_or_outcome": "Returns a routing decision with call evidence. Does not load or execute skills. Author-recorded synthetic 72-case run versus a lexical baseline.",
+      "jev_role": "Parallel Choice over catalogue batches; final Choice plus need, review, and per-candidate fit Nouls; Python applies thresholds",
+      "other_components": [
+        "stdlib HTTP",
+        "synthetic catalogue fixtures"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/GodsBoy/jev-agent-skill-router",
+          "type": "repo",
+          "what_verified": "README plus router.py, transport.py, policy.py; 3 stars; no skill execution",
+          "author": "GodsBoy",
+          "date": "2026-09-16"
+        }
+      ],
+      "repo_url": "https://github.com/GodsBoy/jev-agent-skill-router",
+      "install_url": "https://github.com/GodsBoy/jev-agent-skill-router#install-and-verify",
+      "caveats": "Native x_search named this repo without a status citation; GitHub independently inspected. Benchmark is 24 synthetic skills / 72 requests, not a live Hermes catalogue. CLI name jev-router collides with gargpratyush/jev-router. 3 stars. Accuracy numbers are author-recorded, not re-run here.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [
+        "hermes"
+      ],
+      "demo_url": null,
+      "last_checked": "2026-09-17",
+      "highlight": false
+    },
+    {
       "id": "email-jev-langgraph",
       "title": "Jev email intent workflow",
       "category": "email-routing",
@@ -595,8 +628,48 @@
       ],
       "repo_url": "https://github.com/itsmostafa/typesafe-mcp",
       "install_url": "https://github.com/itsmostafa/typesafe-mcp",
-      "caveats": "Not the official skill. Distinct from jkudish/jev-mcp.",
+      "caveats": "Not the official skill. Distinct from jkudish/jev-mcp and y0usaf/typesafe-mcp.",
       "readiness": "runnable-from-readme",
+      "skill_frameworks": [
+        "mcp"
+      ],
+      "demo_url": null,
+      "last_checked": "2026-09-17",
+      "highlight": false
+    },
+    {
+      "id": "y0usaf-typesafe-mcp",
+      "title": "y0usaf/typesafe-mcp",
+      "category": "mcp",
+      "short_description": "Thin MCP: one evaluate(state, questions) tool plus a typesafe://guide resource.",
+      "actual_actions_or_outcome": "Host POSTs to api.typesafe.ai/v1/systemone; the agent still executes side effects.",
+      "jev_role": "Native System One API behind a single MCP tool",
+      "other_components": [
+        "MCP host",
+        "npx @y0usaf/typesafe-mcp"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/y0usaf/typesafe-mcp",
+          "type": "repo",
+          "what_verified": "README plus index.js evaluate tool and HTTP client; 3 stars",
+          "author": "y0usaf",
+          "date": "2026-09-16"
+        },
+        {
+          "url": "https://x.com/realy0usaf/status/2100106949874335851",
+          "type": "tweet",
+          "what_verified": "Author announced the repo",
+          "author": "realy0usaf",
+          "date": "2026-09-16"
+        }
+      ],
+      "repo_url": "https://github.com/y0usaf/typesafe-mcp",
+      "install_url": "https://github.com/y0usaf/typesafe-mcp#install",
+      "caveats": "Launch-week MCP. Distinct from itsmostafa/typesafe-mcp and jkudish/jev-mcp. 3 stars. Not official.",
+      "readiness": "installable-per-readme",
       "skill_frameworks": [
         "mcp"
       ],

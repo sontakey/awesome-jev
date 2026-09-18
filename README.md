@@ -3,12 +3,12 @@
 <img src="assets/mark.svg" alt="" width="48" height="48" align="left" />
 
 **A researched list of useful things built with [Jev](https://typesafe.ai/), TypeSafe AI's System One model.**
-Typed judgments in, software actions out. Unofficial. Not affiliated with TypeSafe AI.
+Text/state in, typed decisions out. Unofficial. Not affiliated with TypeSafe AI.
 
 <br clear="all" />
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-45_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-47_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.17-0a0.svg)](docs/research-method.md)
 
 Jev does not chat, write code, or see images. It returns Choice / Score / Noul answers with probabilities. **Your code** decides and acts. This list prefers projects that actually route, click, review, query, or gate something — then includes the rest of the useful ecosystem.
@@ -18,9 +18,9 @@ Jev does not chat, write code, or see images. It returns Choice / Score / Noul a
 | Section | Count |
 | --- | ---: |
 | [Action-taking projects](#action-taking-projects) | 12 |
-| [Model and skill routing](#model-and-skill-routing) | 4 |
+| [Model and skill routing](#model-and-skill-routing) | 5 |
 | [Email and inbox routing](#email-and-inbox-routing) | 1 |
-| [MCP and agent bridges](#mcp-and-agent-bridges) | 2 |
+| [MCP and agent bridges](#mcp-and-agent-bridges) | 3 |
 | [Official cookbooks and patterns](#official-cookbooks-and-patterns) | 4 |
 | [Official SDKs and adapter](#official-sdks-and-adapter) | 3 |
 | [Official docs, skill, and launch demos](#official-docs-skill-and-launch-demos) | 4 |
@@ -244,6 +244,17 @@ Two Jev requests rank 182 Hermes skills and may suggest none.
 - Demo: https://docs.typesafe.ai/cookbooks/skill_suggestion
 - Caveat: Numbers are TypeSafe's published eval, not reproduced here. Not a drop-in Hermes skill.
 
+### [Jev Agent Skill Router](https://github.com/GodsBoy/jev-agent-skill-router)
+<!-- catalog:jev-agent-skill-router -->
+
+Python CLI/library: batched Jev Choice plus Noul gates route, no-skill, or review over a skill catalogue.
+
+- Action / outcome: Returns a routing decision with call evidence. Does not load or execute skills. Author-recorded synthetic 72-case run versus a lexical baseline.
+- Jev's role: Parallel Choice over catalogue batches; final Choice plus need, review, and per-candidate fit Nouls; Python applies thresholds
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/GodsBoy/jev-agent-skill-router#install-and-verify
+- Caveat: Native x_search named this repo without a status citation; GitHub independently inspected. Benchmark is 24 synthetic skills / 72 requests, not a live Hermes catalogue. CLI name jev-router collides with gargpratyush/jev-router. 3 stars. Accuracy numbers are author-recorded, not re-run here.
+
 ## Email and inbox routing
 ### [Jev email intent workflow](https://github.com/GiesN/typesafe-jev-workflow)
 <!-- catalog:email-jev-langgraph -->
@@ -277,7 +288,18 @@ Community MCP exposing TypeSafe System One to Claude / Codex.
 - Jev's role: Native API behind MCP tools
 - Origin: community · Evidence: `demo-inspected` · Readiness: runnable-from-readme
 - Install / start: https://github.com/itsmostafa/typesafe-mcp
-- Caveat: Not the official skill. Distinct from jkudish/jev-mcp.
+- Caveat: Not the official skill. Distinct from jkudish/jev-mcp and y0usaf/typesafe-mcp.
+
+### [y0usaf/typesafe-mcp](https://github.com/y0usaf/typesafe-mcp)
+<!-- catalog:y0usaf-typesafe-mcp -->
+
+Thin MCP: one evaluate(state, questions) tool plus a typesafe://guide resource.
+
+- Action / outcome: Host POSTs to api.typesafe.ai/v1/systemone; the agent still executes side effects.
+- Jev's role: Native System One API behind a single MCP tool
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/y0usaf/typesafe-mcp#install
+- Caveat: Launch-week MCP. Distinct from itsmostafa/typesafe-mcp and jkudish/jev-mcp. 3 stars. Not official.
 
 ## Official cookbooks and patterns
 ### [Official function-calling cookbook](https://docs.typesafe.ai/cookbooks/function_calling)
@@ -584,7 +606,7 @@ Launch week produced several [awesome-jev](#other-awesome-jev-lists) directories
 - Exhaustive public `typesafe-ai` org inventory (10 repos, 4 product, 3 supporting, 3 unrelated forks)
 - Evidence badges and a machine-readable catalog generated into this README
 - Action-taking projects near the top, not SDK clones
-- Honest gaps: no native X search, no Google SERP, no TypeSafe inference in this sweep
+- Honest gaps: first X lane was web-indexed (`web_search`/`web_extract` of x.com; native `x_search` unavailable). A 2026-09-17 native `x_search` rerun recovered two catalog entries. Google SERP still unavailable. No TypeSafe inference in this sweep
 - Explicit [skill opportunities](docs/skill-opportunities.md) for email triage and model routing (no fake drop-in skills)
 
 ## Contributing

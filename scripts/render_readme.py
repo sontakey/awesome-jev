@@ -106,7 +106,7 @@ def main() -> None:
 <img src="assets/mark.svg" alt="" width="48" height="48" align="left" />
 
 **A researched list of useful things built with [Jev](https://typesafe.ai/), TypeSafe AI's System One model.**
-Typed judgments in, software actions out. Unofficial. Not affiliated with TypeSafe AI.
+Text/state in, typed decisions out. Unofficial. Not affiliated with TypeSafe AI.
 
 <br clear="all" />
 
@@ -153,7 +153,7 @@ Launch week produced several [awesome-jev](#other-awesome-jev-lists) directories
 - Exhaustive public `typesafe-ai` org inventory (10 repos, 4 product, 3 supporting, 3 unrelated forks)
 - Evidence badges and a machine-readable catalog generated into this README
 - Action-taking projects near the top, not SDK clones
-- Honest gaps: no native X search, no Google SERP, no TypeSafe inference in this sweep
+- Honest gaps: first X lane was web-indexed (`web_search`/`web_extract` of x.com; native `x_search` unavailable). A 2026-09-17 native `x_search` rerun recovered two catalog entries. Google SERP still unavailable. No TypeSafe inference in this sweep
 - Explicit [skill opportunities](docs/skill-opportunities.md) for email triage and model routing (no fake drop-in skills)
 
 ## Contributing
