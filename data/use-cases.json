@@ -176,6 +176,41 @@
       "credit_kind": "by"
     },
     {
+      "id": "jevql",
+      "title": "jevql",
+      "category": "action-taking",
+      "short_description": "psql-shaped CLI and Go/TS/Python SDKs that add jev(), jev_prob, jev_choice, and jev_score to plain SQL on a vanilla Postgres with no extension.",
+      "actual_actions_or_outcome": "Runs the plain SQL on the server, sends the surviving rows to Jev in batches, caches answers in local SQLite, and applies the filter, sort, or group in the client.",
+      "jev_role": "Batched Noul/Choice/Score per surviving row",
+      "other_components": [
+        "PostgreSQL",
+        "libpg_query",
+        "SQLite cache"
+      ],
+      "origin": "community",
+      "evidence_level": "author-claim",
+      "sources": [
+        {
+          "url": "https://github.com/kylemclaren/jevql",
+          "type": "repo",
+          "what_verified": "README SQL API, install and usage; API client in internal/typesafe/client.go",
+          "author": "kylemclaren",
+          "date": "2026-09-18"
+        }
+      ],
+      "repo_url": "https://github.com/kylemclaren/jevql",
+      "demo_url": "https://jevql.fly.dev",
+      "install_url": "https://github.com/kylemclaren/jevql#install",
+      "caveats": "Every row that survives the SQL filters is sent to TypeSafe and judged, so put cheap predicates in SQL first. Author-submitted; no independent code inspection yet.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-17",
+      "highlight": false,
+      "creator_display": "Kyle McLaren",
+      "creator_url": "https://github.com/kylemclaren",
+      "credit_kind": "by"
+    },
+    {
       "id": "pi-warden",
       "title": "pi-warden",
       "category": "action-taking",

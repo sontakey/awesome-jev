@@ -74,6 +74,20 @@ PostgreSQL helpers that filter, sort, or classify rows with Jev.
 - Install / start: https://github.com/realZachi/pg-jev#install
 - Caveat: Needs untrusted plpython3u / superuser. Row text is sent to TypeSafe. Latency numbers in the README were not re-run.
 
+### [jevql](https://github.com/kylemclaren/jevql)
+<!-- catalog:jevql -->
+
+By [Kyle McLaren](https://github.com/kylemclaren).
+
+psql-shaped CLI and Go/TS/Python SDKs that add jev(), jev_prob, jev_choice, and jev_score to plain SQL on a vanilla Postgres with no extension.
+
+- Action / outcome: Runs the plain SQL on the server, sends the surviving rows to Jev in batches, caches answers in local SQLite, and applies the filter, sort, or group in the client.
+- Jev's role: Batched Noul/Choice/Score per surviving row
+- Origin: community · Evidence: `author-claim` · Readiness: runnable-from-readme
+- Install / start: https://github.com/kylemclaren/jevql#install
+- Demo: https://jevql.fly.dev
+- Caveat: Every row that survives the SQL filters is sent to TypeSafe and judged, so put cheap predicates in SQL first. Author-submitted; no independent code inspection yet.
+
 ### [pi-warden](https://github.com/DevMortimer/pi-warden)
 <!-- catalog:pi-warden -->
 
