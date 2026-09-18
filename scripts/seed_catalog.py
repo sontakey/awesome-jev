@@ -891,9 +891,399 @@ ENTRIES = [
 ]
 
 
+def by(login: str, display: str, **extra) -> dict:
+    item = {
+        "creator_display": display,
+        "creator_url": f"https://github.com/{login}",
+        "credit_kind": "by",
+    }
+    item.update(extra)
+    return item
+
+
+def maintained(login: str, display: str, **extra) -> dict:
+    item = {
+        "creator_display": display,
+        "creator_url": extra.pop("creator_url", f"https://github.com/{login}"),
+        "credit_kind": "maintained-by",
+    }
+    item.update(extra)
+    return item
+
+
+# Public GitHub profile names when they are a full name; otherwise @login.
+# Orgs use maintained-by. First-name-only GitHub names stay as @login.
+CREDITS = {
+    "jev-ultrafast": maintained("browser-use", "Browser Use"),
+    "typesafe-mario": by("fhshaik", "@fhshaik"),
+    "typesafe-computer-use": by("awlevin", "Aaron Levin"),
+    "jev-review": by("devagrawal09", "Dev Agrawal"),
+    "pg-jev": by("realZachi", "@realZachi"),
+    "pi-warden": by("DevMortimer", "Ryan Joshua"),
+    "foreman": maintained("thruwire", "ThruWire"),
+    "beadsort": by("harrymunro", "Harry Munro"),
+    "jevmeter": by("ChetasLua", "Chetas Lua"),
+    "blink-code-search": maintained("ellipsis-dev", "ellipsis.dev"),
+    "neo4jev": by("jexp", "Michael Hunger"),
+    "semdecide": by("sharziki", "Sharvil Saxena"),
+    "jev-router": by("gargpratyush", "Pratyush Garg"),
+    "jev-codex-router": by("0xNatoshi", "@0xNatoshi"),
+    "skillranker": by("Dicklesworthstone", "Jeff Emanuel"),
+    "cookbook-skill-suggestion": maintained("typesafe-ai", "TypeSafe AI"),
+    "jev-agent-skill-router": by("GodsBoy", "Dewaldt Huysamen"),
+    "email-jev-langgraph": by("GiesN", "@GiesN"),
+    "jev-mcp": by("jkudish", "Joey Kudish"),
+    "typesafe-mcp": by("itsmostafa", "@itsmostafa"),
+    "y0usaf-typesafe-mcp": by(
+        "y0usaf",
+        "Sami Ansari",
+        also_credits=[
+            {
+                "label": "Announced by",
+                "display": "@realy0usaf",
+                "url": "https://x.com/realy0usaf",
+            }
+        ],
+    ),
+    "cookbook-function-calling": maintained("typesafe-ai", "TypeSafe AI"),
+    "cookbook-guardrails": maintained("typesafe-ai", "TypeSafe AI"),
+    "cookbook-citation-check": maintained("typesafe-ai", "TypeSafe AI"),
+    "pattern-intent-routing": maintained("typesafe-ai", "TypeSafe AI"),
+    "official-sdk-python": maintained("typesafe-ai", "TypeSafe AI"),
+    "official-sdk-js": maintained("typesafe-ai", "TypeSafe AI"),
+    "official-system-one-adapter": maintained("typesafe-ai", "TypeSafe AI"),
+    "official-docs": maintained("typesafe-ai", "TypeSafe AI"),
+    "official-skills": maintained("typesafe-ai", "TypeSafe AI"),
+    "official-launch-blog": maintained(
+        "typesafe-ai",
+        "TypeSafe AI",
+        named_creator="Diogo Almeida",
+        creator_url="https://github.com/typesafe-ai",
+    ),
+    "demo-smart-home": maintained("typesafe-ai", "TypeSafe AI"),
+    "vercel-ai-gateway-jev": maintained("vercel", "Vercel"),
+    "ruby-llm-typesafe": by("kieranklaassen", "Kieran Klaassen"),
+    "typesafeai-net": by("Hawxy", "@Hawxy"),
+    "building-with-jev-skill": by("dbreunig", "Drew Breunig"),
+    "jev-axi": by("shiftynick", "Nicholas Underwood"),
+    "advocaat": maintained("pithings", "PiThings"),
+    "list-anil-matcha": by("Anil-matcha", "Anil Chandra Naidu Matcha"),
+    "list-abdelstark": by("AbdelStark", "@AbdelStark"),
+    "list-yibie": by("yibie", "@yibie"),
+    "list-anotia": by("AnotiaWang", "Andy Wang"),
+    "list-hellogumbo": maintained("hellogumbo", "GUMBO"),
+    "list-rhc98": by("rhc98", "@rhc98"),
+    "openjev": by("TheoLeeCJ", "Theodore Lee"),
+    "jevlike": by("vinnylarouge", "@vinnylarouge"),
+    "jevmlx": by("bnsd55", "@bnsd55"),
+}
+
+PROSE = {
+    "jev-ultrafast": {
+        "short_description": "Uses Jev to pick the next browser operation and target from an indexed DOM; a small LLM only types text.",
+        "actual_actions_or_outcome": "Drives Chrome through a local inspector. The README documents a Google Flights search example. It does not book flights.",
+        "jev_role": "Choice of operation plus speculative target questions in one request",
+        "caveats": "Timing and cost claims in the README were not remeasured. Jev is text-only; the page is serialized to text/DOM, not pixels.",
+    },
+    "typesafe-mario": {
+        "short_description": "Uses Jev to choose NES controller macros from emulator RAM JSON, not screenshots.",
+        "actual_actions_or_outcome": "Local play loop writes run JSONL. A dashboard shows action distribution.",
+        "jev_role": "Choice over legal controller actions",
+        "caveats": "The ROM is not in the repo. Interactive demo, not a shipped product. No native vision.",
+    },
+    "typesafe-computer-use": {
+        "short_description": "OCRs a Mac screen, then Jev chooses the next UI action and the code clicks.",
+        "actual_actions_or_outcome": "Local screenshot → OCR → Choice/Noul → OS action loop.",
+        "jev_role": "Action selection on OCR text state",
+        "caveats": "Not native vision. Per-step cost in the GitHub description is an author claim.",
+    },
+    "jev-review": {
+        "short_description": "Runs staged Jev judgments over git diffs or a local codebase and shows them on a dashboard.",
+        "actual_actions_or_outcome": "JSON reports plus a dashboard on 127.0.0.1:4317. Does not publish reviews remotely.",
+        "jev_role": "Noul risk matrix, Choice/Score file profiles, evidence selection, severity routing",
+        "caveats": "Developer tool, not a hosted CI product. Thresholds are code policy.",
+    },
+    "pg-jev": {
+        "short_description": "PostgreSQL helpers that filter, sort, or classify rows with Jev.",
+        "actual_actions_or_outcome": "SQL helpers call TypeSafe. Rows that match a Noul, Choice, or Score filter are returned by the database.",
+        "jev_role": "Batched parallel Noul/Choice/Score per row",
+        "caveats": "Needs untrusted plpython3u / superuser. Row text is sent to TypeSafe. Latency numbers in the README were not re-run.",
+    },
+    "pi-warden": {
+        "short_description": "Asks Jev whether a Pi agent tool call is irreversible or off-task before it runs.",
+        "actual_actions_or_outcome": "Steers or blocks Pi tool calls. Published as a pi.dev package.",
+        "jev_role": "Judgments on proposed tool calls, stuck loops, unverified done claims",
+        "caveats": "Did not re-run against a live Pi session.",
+    },
+    "foreman": {
+        "short_description": "Uses the official Python SDK so a software-factory supervisor can judge worker steps.",
+        "actual_actions_or_outcome": "Semantic supervision of coding workers (per README/description).",
+        "jev_role": "Noul/judgments via AsyncTypeSafeClient",
+        "caveats": "Full README walkthrough was partial; grounded on import evidence and description.",
+    },
+    "beadsort": {
+        "short_description": "Uses Jev to label beads issues from their text.",
+        "actual_actions_or_outcome": "Writes labels onto beads items from issue text.",
+        "jev_role": "Classification / labeling Choice or Noul over issue state",
+        "caveats": "0 stars at check time; launch-week. Source tree not fully walked in this sweep.",
+    },
+    "jevmeter": {
+        "short_description": "Scores transcript sentences with Jev, then renders an edited video.",
+        "actual_actions_or_outcome": "CLI wizard writes a .jevmeter.mp4.",
+        "jev_role": "Per-sentence scoring after transcription",
+        "caveats": "Audio is transcribed then scored as text. Jev is not a native audio model. Accuracy badges are author claims.",
+    },
+    "blink-code-search": {
+        "short_description": "Walks the filesystem and uses Jev to score which files match a natural-language query.",
+        "actual_actions_or_outcome": "CLI table of paths with percentages.",
+        "jev_role": "Relevance scoring of candidate files",
+        "caveats": "Prototype search, not an index. May issue many parallel Jev calls.",
+    },
+    "neo4jev": {
+        "short_description": "Walks a Neo4j graph by asking Jev which neighboring relationship to follow.",
+        "actual_actions_or_outcome": "Graph navigation demo: classifier over edge types / neighbors.",
+        "jev_role": "Choice over neighboring relationships",
+        "caveats": "Small demo (6 stars). README not fully re-read in the owner pass.",
+    },
+    "semdecide": {
+        "short_description": "Turns Jev judgments into Unix pipeline exit codes or JSON.",
+        "actual_actions_or_outcome": "CLI exit codes / JSON from Jev judgments on stdin or files.",
+        "jev_role": "Native judgments on user-supplied text",
+        "caveats": "Small project. Do not treat as a standard library.",
+    },
+    "jev-router": {
+        "short_description": "Uses Jev to pick a model for each Claude Code or Codex request.",
+        "actual_actions_or_outcome": "jev-claude / jev-codex launch real upstream CLIs with a routed model.",
+        "jev_role": "Per-turn difficulty / model Choice",
+        "caveats": "README uses JEV_API_KEY, not TYPESAFE_API_KEY. npm registry page was not separately opened.",
+    },
+    "jev-codex-router": {
+        "short_description": "Classifies each Codex Router turn with Jev, then code picks model, effort, and tier.",
+        "actual_actions_or_outcome": "Local jev_server.py with fail-open and a JSONL decision log.",
+        "jev_role": "Turn classification plus routing policy in code",
+        "caveats": "Backtest savings are author-measured. Fail-open means a Jev outage does not block coding.",
+    },
+    "skillranker": {
+        "short_description": "Ranks which agent skill fits the next step from live session context.",
+        "actual_actions_or_outcome": "sr demo (offline fixtures) or sr rank --allow-network; optional Claude Code hook.",
+        "jev_role": "Skill ranking with abstention",
+        "caveats": "Offline demo is fixtures. Live ranking needs a TypeSafe key.",
+    },
+    "cookbook-skill-suggestion": {
+        "short_description": "Two Jev requests rank 182 Hermes skills and may suggest none.",
+        "actual_actions_or_outcome": "suggest() returns at most one skill name for the agent system prompt. Published table: wrong-skill loads 16.8% → 7.3% on a pinned Haiku run (author numbers).",
+        "jev_role": "Choice over the roster plus Nouls for whether a skill is needed",
+        "caveats": "Numbers are TypeSafe's published eval, not reproduced here. Not a drop-in Hermes skill.",
+    },
+    "jev-agent-skill-router": {
+        "short_description": "Routes over a skill catalogue with Jev Choice and Noul gates; it does not load the skills.",
+        "actual_actions_or_outcome": "Returns a routing decision with call evidence. Does not load or execute skills. Author-recorded synthetic 72-case run versus a lexical baseline.",
+        "jev_role": "Parallel Choice over catalogue batches; final Choice plus need, review, and per-candidate fit Nouls; Python applies thresholds",
+        "caveats": "Native x_search named this repo without a status citation; GitHub independently inspected. Benchmark is 24 synthetic skills / 72 requests, not a live Hermes catalogue. CLI name jev-router collides with gargpratyush/jev-router. 3 stars. Accuracy numbers are author-recorded, not re-run here.",
+    },
+    "email-jev-langgraph": {
+        "short_description": "LangGraph demo that classifies mocked emails as invoice or general with Jev.",
+        "actual_actions_or_outcome": "Prints intent, probabilities, and destination vs expected label. Does not send mail or pay invoices.",
+        "jev_role": "Choice over two intents",
+        "caveats": "Smoke demo on 10 emails. Closest public analog to inbox triage; not a Hermes skill.",
+    },
+    "jev-mcp": {
+        "short_description": "MCP tools that verify claims, screen content, and rank candidates with Jev.",
+        "actual_actions_or_outcome": "An MCP host receives typed verdicts from Jev.",
+        "jev_role": "Native judgments via TypeSafe API",
+        "caveats": "Proof of concept. Several launch-week MCP clones exist; this is the one with inspected README. Author-claim catch examples.",
+    },
+    "typesafe-mcp": {
+        "short_description": "Community MCP that exposes TypeSafe System One to Claude or Codex.",
+        "actual_actions_or_outcome": "Agent tools call Jev; the host still executes side effects.",
+        "jev_role": "Native API behind MCP tools",
+        "caveats": "Not the official skill. Distinct from jkudish/jev-mcp and y0usaf/typesafe-mcp.",
+    },
+    "y0usaf-typesafe-mcp": {
+        "short_description": "One MCP evaluate(state, questions) tool that POSTs to the TypeSafe API.",
+        "actual_actions_or_outcome": "Host POSTs to api.typesafe.ai/v1/systemone; the agent still executes side effects.",
+        "jev_role": "Native System One API behind a single MCP tool",
+        "caveats": "Launch-week MCP. Distinct from itsmostafa/typesafe-mcp and jkudish/jev-mcp. 3 stars. Not official.",
+    },
+    "cookbook-function-calling": {
+        "short_description": "Maps a natural-language trading request onto typed functions and closed-set arguments.",
+        "actual_actions_or_outcome": "Dispatcher returns a function name plus Literal arguments with confidence; ordinary Python functions run.",
+        "jev_role": "Choice over tools and closed-set args; Nouls for whether an arg was stated",
+        "caveats": "Uses cached cookbook results unless you delete json_cache.json. Example domain is market data plots, not live brokerage.",
+    },
+    "cookbook-guardrails": {
+        "short_description": "Screens an LLM input or output for hazards, then code chooses pass, review, block, or support.",
+        "actual_actions_or_outcome": "guard() returns a policy action. Does not send the user message itself.",
+        "jev_role": "Nouls per hazard plus a harm Score",
+        "caveats": "Thresholds are yours. Cached published run unless you go live.",
+    },
+    "cookbook-citation-check": {
+        "short_description": "Checks whether a quote's context supports a claim.",
+        "actual_actions_or_outcome": "Choice plus confidence can flag a citation for human review.",
+        "jev_role": "Choice: supports / does not support / uncertain",
+        "caveats": "Cookbook page listed in the official index; not fully re-read beyond the index blurb in this owner pass.",
+    },
+    "pattern-intent-routing": {
+        "short_description": "Classifies a request, then code routes to deterministic logic, a specialist LLM, or a human.",
+        "actual_actions_or_outcome": "Example ticket router uses intent Choice and complexity Score with confidence gates.",
+        "jev_role": "Intent Choice and complexity Score",
+        "caveats": "Pattern, not a packaged product.",
+    },
+    "official-sdk-python": {
+        "short_description": "Official Python client for POST /v1/systemone.",
+        "actual_actions_or_outcome": "TypeSafeClient.system_one returns typed Choice/Noul/Score answers for your code to branch on.",
+        "jev_role": "Native System One model behind the SDK",
+        "caveats": "Needs TYPESAFE_API_KEY. Text-only API.",
+    },
+    "official-sdk-js": {
+        "short_description": "Official TypeScript/JavaScript client with inferred answer types.",
+        "actual_actions_or_outcome": "examples/demo.ts classifies a billing ticket with noul/choice/score.",
+        "jev_role": "Native",
+        "caveats": "Live demo needs TYPESAFE_API_KEY.",
+    },
+    "official-system-one-adapter": {
+        "short_description": "Drop-in TypeSafeClient.system_one backed by OpenAI or Anthropic instead of Jev.",
+        "actual_actions_or_outcome": "Same typed questions; LLM structured output for A/B comparison.",
+        "jev_role": "None (LLM stand-in)",
+        "caveats": "Explicitly not Jev. Cassette tests block network by default.",
+    },
+    "official-docs": {
+        "short_description": "Live docs for the System One model, primitives, API, cookbooks, and demos.",
+        "actual_actions_or_outcome": "Source of truth for contracts. llms.txt indexes every page.",
+        "jev_role": "Documents Jev as jev-latest / text-only",
+        "caveats": "Mintlify .md paths. cookbooks.md URL served a specific cookbook, not an index, in this sweep.",
+    },
+    "official-skills": {
+        "short_description": "SKILL.md that teaches agents to design System One workflows from the live docs.",
+        "actual_actions_or_outcome": "Agent writes SDK code; the skill itself does not call Jev.",
+        "jev_role": "Design-time guidance",
+        "caveats": "Not an inference wrapper. Keep live docs as source of truth.",
+    },
+    "official-launch-blog": {
+        "short_description": "Launch post (2026-09-15) covering RLCD, pricing, workflow evals, and Doom and Wikipedia-race videos.",
+        "actual_actions_or_outcome": "Documents launch demos where game/page state is text/JSON and code issues actions.",
+        "jev_role": "Judgments inside a harness; code owns the controller / browser",
+        "caveats": "Doom/Wiki harnesses are not in the public typesafe-ai GitHub org. Speed/cost/eval charts are vendor-published, not remeasured. HN discussion: https://news.ycombinator.com/item?id=49717558",
+    },
+    "demo-smart-home": {
+        "short_description": "Official demo that evaluates smart-home requests with speculative questions and an LLM fallback.",
+        "actual_actions_or_outcome": "Demo code decides device intents; Loom walkthrough. Not a physical home integration in the public org.",
+        "jev_role": "Speculative questions over a user request",
+        "caveats": "Did not download the Loom. Distinguish from production home automation.",
+    },
+    "vercel-ai-gateway-jev": {
+        "short_description": "Jev as typesafe-ai/jev on AI Gateway, plus AI SDK 7 experimental_evaluate.",
+        "actual_actions_or_outcome": "evaluate() returns typed answers; example routes a support case. ZDR/no-training flags documented.",
+        "jev_role": "Native evaluation model via Gateway",
+        "caveats": "API is experimental. TypeSafe workflow-eval multipliers in the changelog are vendor-attributed.",
+    },
+    "ruby-llm-typesafe": {
+        "short_description": "TypeSafe structured-output provider for RubyLLM 2.",
+        "actual_actions_or_outcome": "Ruby apps can ask System One questions through RubyLLM.",
+        "jev_role": "Native via TypeSafe API",
+        "caveats": "Unofficial. Small star count.",
+    },
+    "typesafeai-net": {
+        "short_description": "Unofficial .NET SDK for TypeSafe AI.",
+        "actual_actions_or_outcome": ".NET clients call System One.",
+        "jev_role": "Native via TypeSafe API",
+        "caveats": "Unofficial. Older TypeSafe.Sdk URL is dead.",
+    },
+    "building-with-jev-skill": {
+        "short_description": "Community skill for writing Jev programs (Claude plugin and skills.sh).",
+        "actual_actions_or_outcome": "Guides question design; does not execute Jev unless the agent writes code.",
+        "jev_role": "Design-time",
+        "caveats": "Overlaps the official typesafe-ai skill.",
+    },
+    "jev-axi": {
+        "short_description": "CLI and skill for log triage, diff review, untrusted-text screening, and ranking.",
+        "actual_actions_or_outcome": "Shell commands return probabilities; hooks can block commands.",
+        "jev_role": "Narrow judgments on user-supplied text",
+        "caveats": "Latency/cost sentences in the skill body are author claims. Fails closed if the key is missing.",
+    },
+    "advocaat": {
+        "short_description": "Small TypeScript ask() client plus an agent skill over Jev.",
+        "actual_actions_or_outcome": "Typed answers under question keys in one request.",
+        "jev_role": "Native",
+        "caveats": "Wrapper, not a new model.",
+    },
+    "list-anil-matcha": {
+        "short_description": "Independent Jev list with examples and prompts (highest star count among lists in this sweep).",
+        "actual_actions_or_outcome": "Curation plus examples/python and examples/typescript.",
+        "jev_role": "n/a (list)",
+        "caveats": "Vendor latency/price cited from TypeSafe docs. Neighboring sibling lists by the same author are not Jev-only.",
+    },
+    "list-abdelstark": {
+        "short_description": "Official plus community directory with an independent disclaimer.",
+        "actual_actions_or_outcome": "List plus GitHub Pages site.",
+        "jev_role": "n/a (list)",
+        "caveats": "Name collides with unrelated TypeScript 'typesafe' lists.",
+    },
+    "list-yibie": {
+        "short_description": "Category field guide that requires actual Jev use.",
+        "actual_actions_or_outcome": "Per-category markdown files.",
+        "jev_role": "n/a (list)",
+        "caveats": "Smaller than auto-generated directories; inclusion criteria are stricter.",
+    },
+    "list-anotia": {
+        "short_description": "Bilingual EN/ZH awesome list (CC0).",
+        "actual_actions_or_outcome": "Curation across SDKs, apps, cookbooks.",
+        "jev_role": "n/a (list)",
+        "caveats": "Launch-week overlap with other lists.",
+    },
+    "list-hellogumbo": {
+        "short_description": "Directory claiming hundreds of entries, plus awesomejev.com.",
+        "actual_actions_or_outcome": "Broad directory. Treat claimed counts as catalog size, not unique production apps.",
+        "jev_role": "n/a (list)",
+        "caveats": "Largest claimed entry count in this sweep. Many items are thin wrappers. Not treated as verified unique apps.",
+    },
+    "list-rhc98": {
+        "short_description": "Auto-judged catalog: README says Jev curated the list.",
+        "actual_actions_or_outcome": "Listed repos according to a Jev policy, not a human review.",
+        "jev_role": "Inclusion classifier (meta)",
+        "caveats": "Do not copy wholesale. Inclusion is a model output.",
+    },
+    "openjev": {
+        "short_description": "Community open-weight attempt at the System One shape. Not api.typesafe.ai.",
+        "actual_actions_or_outcome": "Local model / site. Not official Jev.",
+        "jev_role": "none (reproduction)",
+        "caveats": "Not TypeSafe Jev. Do not list as an official integration.",
+    },
+    "jevlike": {
+        "short_description": "Another community reproduction of the System One interface.",
+        "actual_actions_or_outcome": "Local analog, not the TypeSafe API.",
+        "jev_role": "none (reproduction)",
+        "caveats": "Not official Jev. Listed only so people do not confuse it with TypeSafe.",
+    },
+    "jevmlx": {
+        "short_description": "Jev-style parallel constrained decisions for MLX models on Apple Silicon.",
+        "actual_actions_or_outcome": "Local MLX forward pass, not TypeSafe weights.",
+        "jev_role": "none (local analog)",
+        "caveats": "Not Jev weights. Useful as an offline comparison, not a TypeSafe client.",
+    },
+}
+
+
+def apply_overlays(entries: list[dict]) -> None:
+    ids = [e["id"] for e in entries]
+    missing_c = [i for i in ids if i not in CREDITS]
+    missing_p = [i for i in ids if i not in PROSE]
+    extra_c = sorted(set(CREDITS) - set(ids))
+    extra_p = sorted(set(PROSE) - set(ids))
+    if missing_c or missing_p or extra_c or extra_p:
+        raise SystemExit(
+            f"overlay mismatch credits_missing={missing_c} prose_missing={missing_p} "
+            f"credits_extra={extra_c} prose_extra={extra_p}"
+        )
+    for entry in entries:
+        entry.update(CREDITS[entry["id"]])
+        entry.update(PROSE[entry["id"]])
+
+
 def main() -> None:
     ids = [e["id"] for e in ENTRIES]
     assert len(ids) == len(set(ids)), sorted(x for x in ids if ids.count(x) > 1)
+    apply_overlays(ENTRIES)
     payload = {
         "schema_version": 1,
         "updated": CHECKED,

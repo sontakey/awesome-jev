@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render README.md from data/use-cases.json so catalog sections cannot drift."""
+"""Render README.md and docs/catalog.md from data/use-cases.json."""
 
 from __future__ import annotations
 
@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "data" / "use-cases.json"
 README = ROOT / "README.md"
+DETAILS = ROOT / "docs" / "catalog.md"
 UPDATED = "2026-09-17"
 
 CATEGORY_ORDER = [
@@ -42,11 +43,71 @@ def link_line(entry: dict) -> str:
     return f"[{title}]({url})" if url else title
 
 
+def credit_sentence(entry: dict) -> str:
+    parts: list[str] = []
+    named = entry.get("named_creator")
+    kind = entry["credit_kind"]
+    link = f"[{entry['creator_display']}]({entry['creator_url']})"
+    if named:
+        parts.append(f"By {named}.")
+        if kind == "maintained-by":
+            parts.append(f"Maintained by {link}.")
+        elif entry["creator_display"] != named:
+            parts.append(f"By {link}.")
+    elif kind == "maintained-by":
+        parts.append(f"Maintained by {link}.")
+    else:
+        parts.append(f"By {link}.")
+    for extra in entry.get("also_credits") or []:
+        label = extra.get("label", "Also")
+        parts.append(f"{label} [{extra['display']}]({extra['url']}).")
+    return " ".join(parts)
+
+
 def render_entry(entry: dict) -> str:
+    eid = entry["id"]
+    badge = EVIDENCE_BADGE[entry["evidence_level"]]
+    return (
+        f"- {link_line(entry)} — {entry['short_description']} "
+        f"{credit_sentence(entry)} {badge} <!-- catalog:{eid} -->\n"
+    )
+
+
+def toc(entries: list[dict]) -> str:
+    counts = Counter(e["category"] for e in entries)
+    lines = []
+    for cat, title in CATEGORY_ORDER:
+        n = counts.get(cat, 0)
+        if n:
+            lines.append(f"- [{title}](#{slug(title)}) ({n})")
+    lines.append("- [Quick start](#quick-start)")
+    lines.append("- [Evidence](#evidence)")
+    lines.append("- [Details](#details)")
+    lines.append("- [Contributing](#contributing)")
+    lines.append("- [Credits](#credits)")
+    return "\n".join(lines)
+
+
+def slug(title: str) -> str:
+    out = []
+    for ch in title.lower():
+        if ch.isalnum():
+            out.append(ch)
+        elif ch in " -_":
+            out.append("-")
+    collapsed = "".join(out).strip("-")
+    while "--" in collapsed:
+        collapsed = collapsed.replace("--", "-")
+    return collapsed
+
+
+def render_detail(entry: dict) -> str:
     eid = entry["id"]
     lines = [
         f"### {link_line(entry)}",
         f"<!-- catalog:{eid} -->",
+        "",
+        credit_sentence(entry),
         "",
         entry["short_description"],
         "",
@@ -64,69 +125,52 @@ def render_entry(entry: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
-def toc(entries: list[dict]) -> str:
-    counts = Counter(e["category"] for e in entries)
-    rows = ["| Section | Count |", "| --- | ---: |"]
-    for cat, title in CATEGORY_ORDER:
-        n = counts.get(cat, 0)
-        if n:
-            rows.append(f"| [{title}](#{slug(title)}) | {n} |")
-    return "\n".join(rows)
-
-
-def slug(title: str) -> str:
-    out = []
-    for ch in title.lower():
-        if ch.isalnum():
-            out.append(ch)
-        elif ch in " -_":
-            out.append("-")
-    return "".join(out).strip("-").replace("--", "-")
-
-
 def main() -> None:
     data = json.loads(CATALOG.read_text())
     entries = data["entries"]
-    highlights = [e for e in entries if e.get("highlight")]
-    highlight_block = "\n".join(
-        f"1. {link_line(e)} — {e['short_description']} ({EVIDENCE_BADGE[e['evidence_level']]})"
-        for e in highlights
-    )
 
     sections = []
     for cat, title in CATEGORY_ORDER:
         group = [e for e in entries if e["category"] == cat]
         if not group:
             continue
-        sections.append(f"## {title}\n")
+        sections.append(f"## {title}\n\n")
         sections.extend(render_entry(e) for e in group)
+        sections.append("\n")
+
+    detail_sections = []
+    for cat, title in CATEGORY_ORDER:
+        group = [e for e in entries if e["category"] == cat]
+        if not group:
+            continue
+        detail_sections.append(f"## {title}\n\n")
+        detail_sections.extend(render_detail(e) for e in group)
 
     body = f"""# Awesome Jev
 
-<img src="assets/mark.svg" alt="" width="48" height="48" align="left" />
+**Public projects that use [Jev](https://typesafe.ai/), TypeSafe AI's System One model.** Unofficial. Not affiliated with TypeSafe AI.
 
-**A researched list of useful things built with [Jev](https://typesafe.ai/), TypeSafe AI's System One model.**
-Text/state in, typed decisions out. Unofficial. Not affiliated with TypeSafe AI.
-
-<br clear="all" />
+Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
 [![catalog](https://img.shields.io/badge/catalog-{len(entries)}_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.17-0a0.svg)](docs/research-method.md)
 
-Jev does not chat, write code, or see images. It returns Choice / Score / Noul answers with probabilities. **Your code** decides and acts. This list prefers projects that actually route, click, review, query, or gate something — then includes the rest of the useful ecosystem.
-
 ## Contents
 
 {toc(entries)}
 
-## Highlights (inspected action)
+Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-typesafe-jev). They are not Jev use cases. Unbuilt ideas are in [docs/ideas.md](docs/ideas.md), not in the catalog count.
 
-{highlight_block}
+{"".join(sections)}
+## Quick start
 
-Vendor speed/cost charts are **not** remeasured here. Treat launch-week latency and “N users” claims as marketing unless a source is marked inspected.
+1. Docs index: [docs.typesafe.ai/llms.txt](https://docs.typesafe.ai/llms.txt)
+2. Python: `uv add typesafe-sdk` · JS: `npm install @typesafe-ai/sdk` (need `TYPESAFE_API_KEY`)
+3. Agent skill: `npx skills add typesafe-ai/skills --skill typesafe-ai` or Claude Code plugin `typesafe@typesafe-ai`
+4. HTTP: `POST https://api.typesafe.ai/v1/systemone`
 
-## Evidence legend
+## Evidence
 
 | Badge | Meaning |
 | --- | --- |
@@ -136,38 +180,50 @@ Vendor speed/cost charts are **not** remeasured here. Treat launch-week latency 
 | `author-claim` | Author or press described it; implementation not fully inspected |
 | `proposed` | Not built; see [skill opportunities](docs/skill-opportunities.md) |
 
-## Quick start (official)
+Vendor speed and cost charts are not remeasured here. Treat launch-week latency and “N users” claims as marketing unless a source is marked inspected.
 
-1. Docs index: [docs.typesafe.ai/llms.txt](https://docs.typesafe.ai/llms.txt)
-2. Python: `uv add typesafe-sdk` · JS: `npm install @typesafe-ai/sdk` (need `TYPESAFE_API_KEY`)
-3. Agent skill: `npx skills add typesafe-ai/skills --skill typesafe-ai` or Claude Code plugin `typesafe@typesafe-ai`
-4. HTTP: `POST https://api.typesafe.ai/v1/systemone`
+## Details
 
-Also: [research method](docs/research-method.md) · [skill opportunities](docs/skill-opportunities.md) · [unbuilt ideas](docs/ideas.md)
+Actions, caveats, and sources for every entry: [docs/catalog.md](docs/catalog.md) (generated from [data/use-cases.json](data/use-cases.json)).
 
-{"".join(sections)}
-## What this list adds
+How the sweep was done: [research method](docs/research-method.md). Skill-shaped gaps: [skill opportunities](docs/skill-opportunities.md).
 
-Launch week produced several [awesome-jev](#other-awesome-jev-lists) directories, including auto-judged catalogs that claim hundreds of repos. This one is smaller on purpose:
+This list is smaller than auto-generated directories on purpose. It includes a full public `typesafe-ai` org inventory (10 repos: 4 product, 3 supporting, 3 unrelated forks), evidence badges, and action-taking projects first.
 
-- Exhaustive public `typesafe-ai` org inventory (10 repos, 4 product, 3 supporting, 3 unrelated forks)
-- Evidence badges and a machine-readable catalog generated into this README
-- Action-taking projects near the top, not SDK clones
-- Honest gaps: first X lane was web-indexed (`web_search`/`web_extract` of x.com; native `x_search` unavailable). A 2026-09-17 native `x_search` rerun recovered two catalog entries. Google SERP still unavailable. No TypeSafe inference in this sweep
-- Explicit [skill opportunities](docs/skill-opportunities.md) for email triage and model routing (no fake drop-in skills)
+Gaps: the first X lane used indexed web pages (`web_search`/`web_extract` of x.com; native `x_search` was unavailable). A 2026-09-17 native `x_search` rerun added two catalog entries. Google SERP was unavailable. No TypeSafe inference in this sweep.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). PRs need a public source and an evidence level. Run `python3 scripts/validate.py`.
+See [CONTRIBUTING.md](CONTRIBUTING.md). PRs need a public source, an evidence level, and creator credit. Run `python3 scripts/validate.py`.
+
+## Credits
+
+README format inspired by [Awesome Claude Skills](https://github.com/ComposioHQ/awesome-claude-skills) from [ComposioHQ](https://github.com/ComposioHQ). That list's prose, branding, logos, and affiliate links are not copied here.
+
+Each project credits its author or maintainer from public README, package, or repository metadata. Other [awesome-Jev lists](#other-awesome-jev-lists) are listed as lists; their curators are credited there. This catalog does not claim those projects were all found independently of those lists.
+
+TypeSafe, Jev, and System One are marks of TypeSafe AI.
 
 ## License
 
-Original curation is [CC BY 4.0](LICENSE). Upstream code and docs keep their own licenses. TypeSafe, Jev, and System One are marks of TypeSafe AI.
+Original curation is [CC BY 4.0](LICENSE). Upstream code and docs keep their own licenses.
 
 Updated {UPDATED}.
 """
     README.write_text(body)
-    print(f"wrote {README} ({len(entries)} entries)")
+
+    details = f"""# Catalog details
+
+Generated from [data/use-cases.json](../data/use-cases.json). The [README](../README.md) is the browseable list; this page keeps actions, caveats, and sources.
+
+Evidence badges match the README legend. Readiness values are catalog labels, not product grades.
+
+Updated {UPDATED}.
+
+{"".join(detail_sections)}"""
+    DETAILS.parent.mkdir(parents=True, exist_ok=True)
+    DETAILS.write_text(details)
+    print(f"wrote {README} and {DETAILS} ({len(entries)} entries)")
 
 
 if __name__ == "__main__":

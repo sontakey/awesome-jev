@@ -2,7 +2,7 @@
 
 Sweep date: **2026-09-17** (America/Chicago). Social window: 2026-01-01 through 2026-09-18 UTC. Almost all on-topic public discussion is launch week **2026-09-15–18**. Native X rerun window: **2026-09-01 through 2026-09-17**.
 
-This catalog is comprehensive **within the observed public sources**, not a claim of internet completeness.
+This catalog covers the public sources that were checked. It is not a claim that every Jev project on the internet was found.
 
 ## Lanes
 
@@ -60,4 +60,6 @@ Overwatch references private `typesafe-ai/Flow`, which is **not** in the public 
 
 Recorded: Anil-matcha/awesome-jev-by-typesafe (407★), AbdelStark/awesome-typesafe (66★), yibie/awesome-jev, AnotiaWang/awesome-jev, hellogumbo/awesome-jev (claims 410 entries), rhc98/awesome-jev (auto-judged 369 listed), OmniJev/awesome-jev, oxwen11, cagbal, yangzhou-chaofan/awesome-jev-prompt (stale star table), aliaihub (README 404).
 
-This list adds: exhaustive official-org dispositions, evidence badges, generated README from JSON, action-taking ranking, skill-opportunity split, and an honest “related not Jev” shelf. It does **not** try to beat 410-entry directories on count.
+Those lists keep their own curator credit in the catalog. Projects they also contain still credit the original author or maintainer.
+
+This list adds: exhaustive official-org dispositions, evidence badges, generated README from JSON, action-taking ranking, skill-opportunity split, and a “related not Jev” shelf. It does **not** try to beat 410-entry directories on count.
