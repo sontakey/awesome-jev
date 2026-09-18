@@ -132,9 +132,9 @@ ENTRIES = [
         title="jevql",
         category="action-taking",
         short_description="psql-shaped CLI and Go/TS/Python SDKs: jev(), jev_prob, jev_choice, jev_score on vanilla Postgres with no extension.",
-        actual_actions_or_outcome="Runs the plain SQL on the server, sends surviving rows to Jev in batches, caches answers in local SQLite, and applies the filter, sort, or group in the client.",
+        actual_actions_or_outcome="Runs the plain SQL on the server, sends surviving rows to Jev in batches, caches answers, and applies the filter, sort, or group in the client.",
         jev_role="Batched Noul/Choice/Score per surviving row",
-        other_components=["PostgreSQL", "libpg_query", "SQLite cache"],
+        other_components=["PostgreSQL", "libpg_query"],
         origin="community",
         evidence_level="author-claim",
         sources=[
@@ -1031,7 +1031,7 @@ PROSE = {
     },
     "jevql": {
         "short_description": "psql-shaped CLI and Go/TS/Python SDKs that add jev(), jev_prob, jev_choice, and jev_score to plain SQL on a vanilla Postgres with no extension.",
-        "actual_actions_or_outcome": "Runs the plain SQL on the server, sends the surviving rows to Jev in batches, caches answers in local SQLite, and applies the filter, sort, or group in the client.",
+        "actual_actions_or_outcome": "Runs the plain SQL on the server, sends the surviving rows to Jev in batches, caches answers, and applies the filter, sort, or group in the client.",
         "jev_role": "Batched Noul/Choice/Score per surviving row",
         "caveats": "Every row that survives the SQL filters is sent to TypeSafe and judged, so put cheap predicates in SQL first. Author-submitted; no independent code inspection yet.",
     },

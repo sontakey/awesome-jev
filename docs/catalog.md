@@ -81,7 +81,7 @@ By [Kyle McLaren](https://github.com/kylemclaren).
 
 psql-shaped CLI and Go/TS/Python SDKs that add jev(), jev_prob, jev_choice, and jev_score to plain SQL on a vanilla Postgres with no extension.
 
-- Action / outcome: Runs the plain SQL on the server, sends the surviving rows to Jev in batches, caches answers in local SQLite, and applies the filter, sort, or group in the client.
+- Action / outcome: Runs the plain SQL on the server, sends the surviving rows to Jev in batches, caches answers, and applies the filter, sort, or group in the client.
 - Jev's role: Batched Noul/Choice/Score per surviving row
 - Origin: community · Evidence: `author-claim` · Readiness: runnable-from-readme
 - Install / start: https://github.com/kylemclaren/jevql#install
