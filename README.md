@@ -5,12 +5,12 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-47_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-48_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.17-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (12)
+- [Action-taking projects](#action-taking-projects) (13)
 - [Model and skill routing](#model-and-skill-routing) (5)
 - [Email and inbox routing](#email-and-inbox-routing) (1)
 - [MCP and agent bridges](#mcp-and-agent-bridges) (3)
@@ -37,6 +37,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [TypeSafe Computer Use](https://github.com/awlevin/typesafe-computer-use) — OCRs a Mac screen, then Jev chooses the next UI action and the code clicks. By [Aaron Levin](https://github.com/awlevin). `code-inspected` <!-- catalog:typesafe-computer-use -->
 - [Jev Review](https://github.com/devagrawal09/jev-review) — Runs staged Jev judgments over git diffs or a local codebase and shows them on a dashboard. By [Dev Agrawal](https://github.com/devagrawal09). `code-inspected` <!-- catalog:jev-review -->
 - [pg-jev](https://github.com/realZachi/pg-jev) — PostgreSQL helpers that filter, sort, or classify rows with Jev. By [@realZachi](https://github.com/realZachi). `code-inspected` <!-- catalog:pg-jev -->
+- [jevql](https://github.com/kylemclaren/jevql) — psql-shaped CLI and Go/TS/Python SDKs that add jev(), jev_prob, jev_choice, and jev_score to plain SQL on a vanilla Postgres with no extension. By [Kyle McLaren](https://github.com/kylemclaren). `author-claim` <!-- catalog:jevql -->
 - [pi-warden](https://github.com/DevMortimer/pi-warden) — Asks Jev whether a Pi agent tool call is irreversible or off-task before it runs. By [Ryan Joshua](https://github.com/DevMortimer). `demo-inspected` <!-- catalog:pi-warden -->
 - [Foreman](https://github.com/thruwire/foreman) — Uses the official Python SDK so a software-factory supervisor can judge worker steps. Maintained by [ThruWire](https://github.com/thruwire). `code-inspected` <!-- catalog:foreman -->
 - [beadsort](https://github.com/harrymunro/beadsort) — Uses Jev to label beads issues from their text. By [Harry Munro](https://github.com/harrymunro). `demo-inspected` <!-- catalog:beadsort -->
