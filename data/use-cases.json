@@ -415,6 +415,175 @@
       "credit_kind": "by"
     },
     {
+      "id": "jev-belay",
+      "title": "jev-belay",
+      "category": "action-taking",
+      "short_description": "Claude Code Stop hook that blocks an unverified 'done' by checking the transcript for evidence and, when needed, asking Jev one four-question check.",
+      "actual_actions_or_outcome": "Blocks a Claude Code session's Stop event when files changed since the last passing check and no verification evidence is in the transcript, using one 4-question Jev call; fails open on any error.",
+      "jev_role": "One 4-question judgment on whether transcript evidence supports a passing check since the last file change",
+      "other_components": [
+        "Claude Code Stop hook",
+        "transcript parsing"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/valentynkit/jev-belay",
+          "type": "repo",
+          "what_verified": "Author-inspected: hook logic, transcript evidence check, fail-open error handling",
+          "author": "valentynkit",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/valentynkit/jev-belay",
+      "caveats": "Fails open on every error path -- a verification bug means it stays silent, not that it blocks incorrectly.",
+      "readiness": "installable-from-source",
+      "skill_frameworks": [],
+      "demo_url": null,
+      "install_url": null,
+      "last_checked": "2026-09-17",
+      "highlight": false,
+      "creator_display": "valentynkit",
+      "creator_url": "https://github.com/valentynkit",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-commit",
+      "title": "jev-commit",
+      "category": "action-taking",
+      "short_description": "Pre-commit hook that asks Jev whether the commit message matches the staged diff and screens for secrets and leftovers.",
+      "actual_actions_or_outcome": "Runs at git pre-commit: warns when the commit message does not match the staged diff, flags debug leftovers and unmentioned work, and blocks the commit only when a credential or secret is detected.",
+      "jev_role": "Single Jev call judging commit-message-to-diff match, plus checks for debug leftovers, unmentioned work, and a credential belt",
+      "other_components": [
+        "git pre-commit hook"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/valentynkit/jev-commit",
+          "type": "repo",
+          "what_verified": "Author-inspected: hook logic, warn/block branches, secret-detection belt",
+          "author": "valentynkit",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/valentynkit/jev-commit",
+      "caveats": "Warns on most issues, only blocks on a detected secret.",
+      "readiness": "installable-from-source",
+      "skill_frameworks": [],
+      "demo_url": null,
+      "install_url": null,
+      "last_checked": "2026-09-17",
+      "highlight": false,
+      "creator_display": "valentynkit",
+      "creator_url": "https://github.com/valentynkit",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-nvim",
+      "title": "jev.nvim",
+      "category": "action-taking",
+      "short_description": "Neovim plugin that asks a plain-language question over the current buffer and ranks matching functions with Jev.",
+      "actual_actions_or_outcome": "Splits the current buffer into functions with Treesitter, scores each against a plain-language question, and lists results ranked by probability in the quickfix window.",
+      "jev_role": "Per-function relevance scoring of Treesitter-split buffer functions against a plain-language question",
+      "other_components": [
+        "Neovim",
+        "Treesitter"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/valentynkit/jev.nvim",
+          "type": "repo",
+          "what_verified": "Author-inspected: Treesitter split, per-function scoring, quickfix ranking",
+          "author": "valentynkit",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/valentynkit/jev.nvim",
+      "caveats": "Scoped to the current buffer, not the whole project; Treesitter language support limits which files it can split.",
+      "readiness": "installable-from-source",
+      "skill_frameworks": [],
+      "demo_url": null,
+      "install_url": null,
+      "last_checked": "2026-09-17",
+      "highlight": false,
+      "creator_display": "valentynkit",
+      "creator_url": "https://github.com/valentynkit",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-skip",
+      "title": "jev-skip",
+      "category": "action-taking",
+      "short_description": "Browser extension that scores YouTube sponsor segments from captions with Jev and paints them on the seek bar.",
+      "actual_actions_or_outcome": "Paints a per-segment sponsor-probability overlay on the YouTube seek bar before the intro ends, reading only the caption track -- no crowd database.",
+      "jev_role": "Per-segment sponsor probability scored from the caption track",
+      "other_components": [
+        "browser extension",
+        "YouTube caption track"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/valentynkit/jev-skip",
+          "type": "repo",
+          "what_verified": "Author-inspected: caption parsing, per-segment scoring, seek-bar overlay",
+          "author": "valentynkit",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/valentynkit/jev-skip",
+      "caveats": "No crowd database -- the 77 percent figure is the author's own measurement against SponsorBlock over 23 videos, not an independent benchmark.",
+      "readiness": "installable-from-source",
+      "skill_frameworks": [],
+      "demo_url": null,
+      "install_url": null,
+      "last_checked": "2026-09-17",
+      "highlight": false,
+      "creator_display": "valentynkit",
+      "creator_url": "https://github.com/valentynkit",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-plays-pokemon-red",
+      "title": "jev-plays-pokemon-red",
+      "category": "action-taking",
+      "short_description": "Pokemon Red bot on PyBoy where Jev picks the action only at route branch points.",
+      "actual_actions_or_outcome": "Plays Pokemon Red on PyBoy: code handles routing and arithmetic, Jev decides only at branch points, and each battle turn's faint prediction is logged and scored against RAM state with the Brier score.",
+      "jev_role": "Action choice at route branch points, plus a Brier-scored faint prediction each battle turn",
+      "other_components": [
+        "PyBoy",
+        "Game Boy ROM (Pokemon Red, user-supplied)"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/valentynkit/jev-plays-pokemon-red",
+          "type": "repo",
+          "what_verified": "Author-inspected: branch-point routing, RAM state reads, Brier scoring",
+          "author": "valentynkit",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/valentynkit/jev-plays-pokemon-red",
+      "caveats": "Jev only decides at branch points, not every frame; reads structured RAM state as text, not raw pixels -- code owns routing and arithmetic.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "demo_url": null,
+      "install_url": null,
+      "last_checked": "2026-09-17",
+      "highlight": false,
+      "creator_display": "valentynkit",
+      "creator_url": "https://github.com/valentynkit",
+      "credit_kind": "by"
+    },
+    {
       "id": "jev-router",
       "title": "jev-router",
       "category": "model-routing",

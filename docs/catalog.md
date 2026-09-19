@@ -165,6 +165,66 @@ Turns Jev judgments into Unix pipeline exit codes or JSON.
 - Install / start: https://github.com/sharziki/semdecide
 - Caveat: Small project. Do not treat as a standard library.
 
+### [jev-belay](https://github.com/valentynkit/jev-belay)
+<!-- catalog:jev-belay -->
+
+By [valentynkit](https://github.com/valentynkit).
+
+Claude Code Stop hook that blocks an unverified 'done' by checking the transcript for evidence and, when needed, asking Jev one four-question check.
+
+- Action / outcome: Blocks a Claude Code session's Stop event when files changed since the last passing check and no verification evidence is in the transcript, using one 4-question Jev call; fails open on any error.
+- Jev's role: One 4-question judgment on whether transcript evidence supports a passing check since the last file change
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
+- Caveat: Fails open on every error path -- a verification bug means it stays silent, not that it blocks incorrectly.
+
+### [jev-commit](https://github.com/valentynkit/jev-commit)
+<!-- catalog:jev-commit -->
+
+By [valentynkit](https://github.com/valentynkit).
+
+Pre-commit hook that asks Jev whether the commit message matches the staged diff and screens for secrets and leftovers.
+
+- Action / outcome: Runs at git pre-commit: warns when the commit message does not match the staged diff, flags debug leftovers and unmentioned work, and blocks the commit only when a credential or secret is detected.
+- Jev's role: Single Jev call judging commit-message-to-diff match, plus checks for debug leftovers, unmentioned work, and a credential belt
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
+- Caveat: Warns on most issues, only blocks on a detected secret.
+
+### [jev.nvim](https://github.com/valentynkit/jev.nvim)
+<!-- catalog:jev-nvim -->
+
+By [valentynkit](https://github.com/valentynkit).
+
+Neovim plugin that asks a plain-language question over the current buffer and ranks matching functions with Jev.
+
+- Action / outcome: Splits the current buffer into functions with Treesitter, scores each against a plain-language question, and lists results ranked by probability in the quickfix window.
+- Jev's role: Per-function relevance scoring of Treesitter-split buffer functions against a plain-language question
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
+- Caveat: Scoped to the current buffer, not the whole project; Treesitter language support limits which files it can split.
+
+### [jev-skip](https://github.com/valentynkit/jev-skip)
+<!-- catalog:jev-skip -->
+
+By [valentynkit](https://github.com/valentynkit).
+
+Browser extension that scores YouTube sponsor segments from captions with Jev and paints them on the seek bar.
+
+- Action / outcome: Paints a per-segment sponsor-probability overlay on the YouTube seek bar before the intro ends, reading only the caption track -- no crowd database.
+- Jev's role: Per-segment sponsor probability scored from the caption track
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
+- Caveat: No crowd database -- the 77 percent figure is the author's own measurement against SponsorBlock over 23 videos, not an independent benchmark.
+
+### [jev-plays-pokemon-red](https://github.com/valentynkit/jev-plays-pokemon-red)
+<!-- catalog:jev-plays-pokemon-red -->
+
+By [valentynkit](https://github.com/valentynkit).
+
+Pokemon Red bot on PyBoy where Jev picks the action only at route branch points.
+
+- Action / outcome: Plays Pokemon Red on PyBoy: code handles routing and arithmetic, Jev decides only at branch points, and each battle turn's faint prediction is logged and scored against RAM state with the Brier score.
+- Jev's role: Action choice at route branch points, plus a Brier-scored faint prediction each battle turn
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Caveat: Jev only decides at branch points, not every frame; reads structured RAM state as text, not raw pixels -- code owns routing and arithmetic.
+
 ## Model and skill routing
 
 ### [jev-router](https://github.com/gargpratyush/jev-router)

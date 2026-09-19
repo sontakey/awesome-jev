@@ -5,12 +5,12 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-47_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-52_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.17-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (12)
+- [Action-taking projects](#action-taking-projects) (17)
 - [Model and skill routing](#model-and-skill-routing) (5)
 - [Email and inbox routing](#email-and-inbox-routing) (1)
 - [MCP and agent bridges](#mcp-and-agent-bridges) (3)
@@ -44,6 +44,11 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [blink](https://github.com/ellipsis-dev/blink) — Walks the filesystem and uses Jev to score which files match a natural-language query. Maintained by [ellipsis.dev](https://github.com/ellipsis-dev). `code-inspected` <!-- catalog:blink-code-search -->
 - [neo4jev](https://github.com/jexp/neo4jev) — Walks a Neo4j graph by asking Jev which neighboring relationship to follow. By [Michael Hunger](https://github.com/jexp). `demo-inspected` <!-- catalog:neo4jev -->
 - [semdecide](https://github.com/sharziki/semdecide) — Turns Jev judgments into Unix pipeline exit codes or JSON. By [Sharvil Saxena](https://github.com/sharziki). `demo-inspected` <!-- catalog:semdecide -->
+- [jev-belay](https://github.com/valentynkit/jev-belay) — Claude Code Stop hook that blocks an unverified 'done' by checking the transcript for evidence and, when needed, asking Jev one four-question check. By [valentynkit](https://github.com/valentynkit). `code-inspected` <!-- catalog:jev-belay -->
+- [jev-commit](https://github.com/valentynkit/jev-commit) — Pre-commit hook that asks Jev whether the commit message matches the staged diff and screens for secrets and leftovers. By [valentynkit](https://github.com/valentynkit). `code-inspected` <!-- catalog:jev-commit -->
+- [jev.nvim](https://github.com/valentynkit/jev.nvim) — Neovim plugin that asks a plain-language question over the current buffer and ranks matching functions with Jev. By [valentynkit](https://github.com/valentynkit). `code-inspected` <!-- catalog:jev-nvim -->
+- [jev-skip](https://github.com/valentynkit/jev-skip) — Browser extension that scores YouTube sponsor segments from captions with Jev and paints them on the seek bar. By [valentynkit](https://github.com/valentynkit). `code-inspected` <!-- catalog:jev-skip -->
+- [jev-plays-pokemon-red](https://github.com/valentynkit/jev-plays-pokemon-red) — Pokemon Red bot on PyBoy where Jev picks the action only at route branch points. By [valentynkit](https://github.com/valentynkit). `code-inspected` <!-- catalog:jev-plays-pokemon-red -->
 
 ## Model and skill routing
 
