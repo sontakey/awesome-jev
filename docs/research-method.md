@@ -63,3 +63,9 @@ Recorded: Anil-matcha/awesome-jev-by-typesafe (407★), AbdelStark/awesome-types
 Those lists keep their own curator credit in the catalog. Projects they also contain still credit the original author or maintainer.
 
 This list adds: exhaustive official-org dispositions, evidence badges, generated README from JSON, action-taking ranking, skill-opportunity split, and a “related not Jev” shelf. It does **not** try to beat 410-entry directories on count.
+
+## Daily sweep log
+
+GitHub-only sweeps that add entries are logged here, one line per day.
+
+- 2026-09-19: 6 queries, 8 entries added.

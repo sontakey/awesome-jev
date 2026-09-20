@@ -5,12 +5,12 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-47_entries-111.svg)](data/use-cases.json)
-[![updated](https://img.shields.io/badge/updated-2026.09.17-0a0.svg)](docs/research-method.md)
+[![catalog](https://img.shields.io/badge/catalog-55_entries-111.svg)](data/use-cases.json)
+[![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (12)
+- [Action-taking projects](#action-taking-projects) (14)
 - [Model and skill routing](#model-and-skill-routing) (5)
 - [Email and inbox routing](#email-and-inbox-routing) (1)
 - [MCP and agent bridges](#mcp-and-agent-bridges) (3)
@@ -18,9 +18,9 @@ Jev does not chat, write code, or see images. It returns Choice, Score, or Noul 
 - [Official SDKs and adapter](#official-sdks-and-adapter) (3)
 - [Official docs, skill, and launch demos](#official-docs-skill-and-launch-demos) (4)
 - [Platform integrations](#platform-integrations) (1)
-- [Community clients](#community-clients) (2)
+- [Community clients](#community-clients) (5)
 - [Installable agent skills](#installable-agent-skills) (3)
-- [Other awesome-Jev lists](#other-awesome-jev-lists) (6)
+- [Other awesome-Jev lists](#other-awesome-jev-lists) (9)
 - [Related, not TypeSafe Jev](#related-not-typesafe-jev) (3)
 - [Quick start](#quick-start)
 - [Evidence](#evidence)
@@ -44,6 +44,8 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [blink](https://github.com/ellipsis-dev/blink) — Walks the filesystem and uses Jev to score which files match a natural-language query. Maintained by [ellipsis.dev](https://github.com/ellipsis-dev). `code-inspected` <!-- catalog:blink-code-search -->
 - [neo4jev](https://github.com/jexp/neo4jev) — Walks a Neo4j graph by asking Jev which neighboring relationship to follow. By [Michael Hunger](https://github.com/jexp). `demo-inspected` <!-- catalog:neo4jev -->
 - [semdecide](https://github.com/sharziki/semdecide) — Turns Jev judgments into Unix pipeline exit codes or JSON. By [Sharvil Saxena](https://github.com/sharziki). `demo-inspected` <!-- catalog:semdecide -->
+- [Jev Search](https://github.com/superagents-lab/jev-search) — Uses Jev to choose search sources and time ranges from a plain-language request, then rank the returned results. Maintained by [SuperAgents Lab](https://github.com/superagents-lab). `code-inspected` <!-- catalog:jev-search -->
+- [Jev for social media](https://github.com/socai-io/jev-social) — Uses Jev to choose the next read-only social media operation from a changing list of concrete targets. Maintained by [socai-io](https://github.com/socai-io). `code-inspected` <!-- catalog:jev-social -->
 
 ## Model and skill routing
 
@@ -91,6 +93,9 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 
 - [ruby_llm-typesafe](https://github.com/kieranklaassen/ruby_llm-typesafe) — TypeSafe structured-output provider for RubyLLM 2. By [Kieran Klaassen](https://github.com/kieranklaassen). `demo-inspected` <!-- catalog:ruby-llm-typesafe -->
 - [TypeSafeAI.Net](https://github.com/Hawxy/TypeSafeAI.Net) — Unofficial .NET SDK for TypeSafe AI. By [@Hawxy](https://github.com/Hawxy). `demo-inspected` <!-- catalog:typesafeai-net -->
+- [typesafe-sdk-go](https://github.com/Tangerg/typesafe-sdk-go) — Dependency-free Go client for the TypeSafe System One API. By [@Tangerg](https://github.com/Tangerg). `code-inspected` <!-- catalog:typesafe-sdk-go-tangerg -->
+- [JevSwiftSDK](https://github.com/NSStudent/JevSwiftSDK) — Dependency-free Swift package for the System One HTTP API. By [@NSStudent](https://github.com/NSStudent). `code-inspected` <!-- catalog:jev-swift-sdk -->
+- [typesafe-sdk (Ruby)](https://github.com/joshmn/typesafe-sdk) — Ruby gem client for the TypeSafe System One API. By [@joshmn](https://github.com/joshmn). `code-inspected` <!-- catalog:typesafe-sdk-ruby -->
 
 ## Installable agent skills
 
@@ -106,6 +111,9 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [awesome-jev (AnotiaWang)](https://github.com/AnotiaWang/awesome-jev) — Bilingual EN/ZH awesome list (CC0). By [Andy Wang](https://github.com/AnotiaWang). `demo-inspected` <!-- catalog:list-anotia -->
 - [awesome-jev (hellogumbo)](https://github.com/hellogumbo/awesome-jev) — Directory claiming hundreds of entries, plus awesomejev.com. Maintained by [GUMBO](https://github.com/hellogumbo). `author-claim` <!-- catalog:list-hellogumbo -->
 - [awesome-jev (rhc98)](https://github.com/rhc98/awesome-jev) — Auto-judged catalog: README says Jev curated the list. By [@rhc98](https://github.com/rhc98). `author-claim` <!-- catalog:list-rhc98 -->
+- [awesome-jev (cobanov)](https://github.com/cobanov/awesome-jev) — Source-backed list that publishes dated research notes alongside each review. By [Mert Cobanov](https://github.com/cobanov). `demo-inspected` <!-- catalog:list-cobanov -->
+- [awesome-jev-projects (logicrw)](https://github.com/logicrw/awesome-jev-projects) — Bilingual ecosystem radar with a published site and automatic GitHub sync. By [@logicrw](https://github.com/logicrw). `demo-inspected` <!-- catalog:list-logicrw -->
+- [awesome-jev (AppitStudio)](https://github.com/AppitStudio/awesome-jev) — Directory split into Jev-powered apps, developer resources, and small inspectable workflows. Maintained by [AppitStudio](https://github.com/AppitStudio). `demo-inspected` <!-- catalog:list-appitstudio -->
 
 ## Related, not TypeSafe Jev
 
@@ -159,4 +167,4 @@ TypeSafe, Jev, and System One are marks of TypeSafe AI.
 
 Original curation is [CC BY 4.0](LICENSE). Upstream code and docs keep their own licenses.
 
-Updated 2026-09-17.
+Updated 2026-09-19.

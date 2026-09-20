@@ -4,7 +4,7 @@ Generated from [data/use-cases.json](../data/use-cases.json). The [README](../RE
 
 Evidence badges match the README legend. Readiness values are catalog labels, not product grades.
 
-Updated 2026-09-17.
+Updated 2026-09-19.
 
 ## Action-taking projects
 
@@ -164,6 +164,33 @@ Turns Jev judgments into Unix pipeline exit codes or JSON.
 - Origin: community · Evidence: `demo-inspected` · Readiness: runnable-from-readme
 - Install / start: https://github.com/sharziki/semdecide
 - Caveat: Small project. Do not treat as a standard library.
+
+### [Jev Search](https://github.com/superagents-lab/jev-search)
+<!-- catalog:jev-search -->
+
+Maintained by [SuperAgents Lab](https://github.com/superagents-lab).
+
+Uses Jev to choose search sources and time ranges from a plain-language request, then rank the returned results.
+
+- Action / outcome: Streams ranked links and snippets with visible relevance scores and editable source filters. It returns no generated answer text.
+- Jev's role: Typed request-understanding judgments plus per-result relevance scoring
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/superagents-lab/jev-search#local-development
+- Caveat: Independent project, not an official TypeSafe product. Needs both a Jev provider key and a Search1API key. Engine coverage and provider fallbacks vary per request.
+
+### [Jev for social media](https://github.com/socai-io/jev-social)
+<!-- catalog:jev-social -->
+
+Maintained by [socai-io](https://github.com/socai-io).
+
+Uses Jev to choose the next read-only social media operation from a changing list of concrete targets.
+
+- Action / outcome: Runs socai CLI commands in a real Chrome session and returns cards, a table, and an evidence report. Read-only; it does not post.
+- Jev's role: Choice of platform and of the next operation, re-asked after each observed result
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/socai-io/jev-social
+- Demo: https://socai-io.github.io/jev-social/
+- Caveat: Drives your own logged-in browser session against third-party sites; check each platform's terms before running. The README GIF shows an earlier routing-only prototype.
 
 ## Model and skill routing
 
@@ -489,6 +516,45 @@ Unofficial .NET SDK for TypeSafe AI.
 - Install / start: https://github.com/Hawxy/TypeSafeAI.Net
 - Caveat: Unofficial. Older TypeSafe.Sdk URL is dead.
 
+### [typesafe-sdk-go](https://github.com/Tangerg/typesafe-sdk-go)
+<!-- catalog:typesafe-sdk-go-tangerg -->
+
+By [@Tangerg](https://github.com/Tangerg).
+
+Dependency-free Go client for the TypeSafe System One API.
+
+- Action / outcome: Go programs send typed questions and read Choice, Score, and Noul answers with confidence.
+- Jev's role: Native via TypeSafe API
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/Tangerg/typesafe-sdk-go#readme
+- Caveat: Unofficial. One of many competing community Go clients; small star count.
+
+### [JevSwiftSDK](https://github.com/NSStudent/JevSwiftSDK)
+<!-- catalog:jev-swift-sdk -->
+
+By [@NSStudent](https://github.com/NSStudent).
+
+Dependency-free Swift package for the System One HTTP API.
+
+- Action / outcome: Swift apps on iOS, macOS, or Linux send typed questions with async/await, batching, and retries.
+- Jev's role: Native via TypeSafe API
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/NSStudent/JevSwiftSDK#installation
+- Caveat: Unofficial and very new. No release tag yet, so the README recommends pinning a branch. Keep the key server-side; the quickstart is written for a server or CLI, not a shipped mobile app.
+
+### [typesafe-sdk (Ruby)](https://github.com/joshmn/typesafe-sdk)
+<!-- catalog:typesafe-sdk-ruby -->
+
+By [@joshmn](https://github.com/joshmn).
+
+Ruby gem client for the TypeSafe System One API.
+
+- Action / outcome: Ruby code calls system_one with Choice, Score, and Noul questions and reads typed answers.
+- Jev's role: Native via TypeSafe API
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/joshmn/typesafe-sdk#installation
+- Caveat: Unofficial. Distinct from ruby_llm-typesafe, which is a RubyLLM provider rather than a direct client.
+
 ## Installable agent skills
 
 ### [building-with-jev skill](https://github.com/dbreunig/building-with-jev-skill)
@@ -606,6 +672,43 @@ Auto-judged catalog: README says Jev curated the list.
 - Origin: community · Evidence: `author-claim` · Readiness: list
 - Demo: https://awesome-jev.xyz
 - Caveat: Do not copy wholesale. Inclusion is a model output.
+
+### [awesome-jev (cobanov)](https://github.com/cobanov/awesome-jev)
+<!-- catalog:list-cobanov -->
+
+By [Mert Cobanov](https://github.com/cobanov).
+
+Source-backed list that publishes dated research notes alongside each review.
+
+- Action / outcome: README sections plus per-review research notes with pinned source evidence.
+- Jev's role: n/a (list)
+- Origin: community · Evidence: `demo-inspected` · Readiness: list
+- Caveat: Entry counts move quickly. Review boundaries are documented per review rather than per entry.
+
+### [awesome-jev-projects (logicrw)](https://github.com/logicrw/awesome-jev-projects)
+<!-- catalog:list-logicrw -->
+
+By [@logicrw](https://github.com/logicrw).
+
+Bilingual ecosystem radar with a published site and automatic GitHub sync.
+
+- Action / outcome: README plus a GitHub Pages radar covering 300+ tracked projects.
+- Jev's role: n/a (list)
+- Origin: community · Evidence: `demo-inspected` · Readiness: list
+- Demo: https://logicrw.github.io/awesome-jev-projects/en/
+- Caveat: Automatic sync means breadth over verification; the project count is self-reported.
+
+### [awesome-jev (AppitStudio)](https://github.com/AppitStudio/awesome-jev)
+<!-- catalog:list-appitstudio -->
+
+Maintained by [AppitStudio](https://github.com/AppitStudio).
+
+Directory split into Jev-powered apps, developer resources, and small inspectable workflows.
+
+- Action / outcome: Per-section markdown directories plus a separate beta web UI.
+- Jev's role: n/a (list)
+- Origin: community · Evidence: `demo-inspected` · Readiness: list
+- Caveat: Promotes an associated hosted product (JevList), so it is a vendor-adjacent directory rather than a neutral one.
 
 ## Related, not TypeSafe Jev
 

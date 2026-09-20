@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-09-17",
+  "updated": "2026-09-19",
   "disclaimer": "Unofficial curated catalog. Not affiliated with TypeSafe AI. Benchmarks are attributed, not endorsed.",
   "entries": [
     {
@@ -1638,6 +1638,269 @@
       "creator_display": "@bnsd55",
       "creator_url": "https://github.com/bnsd55",
       "credit_kind": "by"
+    },
+    {
+      "id": "jev-search",
+      "title": "Jev Search",
+      "category": "action-taking",
+      "short_description": "Uses Jev to choose search sources and time ranges from a plain-language request, then rank the returned results.",
+      "actual_actions_or_outcome": "Streams ranked links and snippets with visible relevance scores and editable source filters. It returns no generated answer text.",
+      "jev_role": "Typed request-understanding judgments plus per-result relevance scoring",
+      "other_components": [
+        "Search1API",
+        "Vercel AI Gateway",
+        "Cloudflare Workers AI"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/superagents-lab/jev-search",
+          "type": "repo",
+          "what_verified": "README pipeline plus src/lib/typesafe.ts provider chain (TypeSafe System One, Vercel AI Gateway, Cloudflare binding)",
+          "author": "superagents-lab",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/superagents-lab/jev-search",
+      "demo_url": null,
+      "install_url": "https://github.com/superagents-lab/jev-search#local-development",
+      "caveats": "Independent project, not an official TypeSafe product. Needs both a Jev provider key and a Search1API key. Engine coverage and provider fallbacks vary per request.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-19",
+      "highlight": false,
+      "creator_display": "SuperAgents Lab",
+      "creator_url": "https://github.com/superagents-lab",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "jev-social",
+      "title": "Jev for social media",
+      "category": "action-taking",
+      "short_description": "Uses Jev to choose the next read-only social media operation from a changing list of concrete targets.",
+      "actual_actions_or_outcome": "Runs socai CLI commands in a real Chrome session and returns cards, a table, and an evidence report. Read-only; it does not post.",
+      "jev_role": "Choice of platform and of the next operation, re-asked after each observed result",
+      "other_components": [
+        "socai CLI",
+        "Chrome",
+        "OpenRouter"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/socai-io/jev-social",
+          "type": "repo",
+          "what_verified": "README decision loop plus src/classifier.js choice question over supported read-only workflows",
+          "author": "socai-io",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/socai-io/jev-social",
+      "demo_url": "https://socai-io.github.io/jev-social/",
+      "install_url": "https://github.com/socai-io/jev-social",
+      "caveats": "Drives your own logged-in browser session against third-party sites; check each platform's terms before running. The README GIF shows an earlier routing-only prototype.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-19",
+      "highlight": false,
+      "creator_display": "socai-io",
+      "creator_url": "https://github.com/socai-io",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "typesafe-sdk-go-tangerg",
+      "title": "typesafe-sdk-go",
+      "category": "community-sdk",
+      "short_description": "Dependency-free Go client for the TypeSafe System One API.",
+      "actual_actions_or_outcome": "Go programs send typed questions and read Choice, Score, and Noul answers with confidence.",
+      "jev_role": "Native via TypeSafe API",
+      "other_components": [
+        "Go 1.25+"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/Tangerg/typesafe-sdk-go",
+          "type": "repo",
+          "what_verified": "README quickstart plus client.go DefaultBaseURL https://api.typesafe.ai and TYPESAFE_API_KEY env read",
+          "author": "Tangerg",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/Tangerg/typesafe-sdk-go",
+      "demo_url": null,
+      "install_url": "https://github.com/Tangerg/typesafe-sdk-go#readme",
+      "caveats": "Unofficial. One of many competing community Go clients; small star count.",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-19",
+      "highlight": false,
+      "creator_display": "@Tangerg",
+      "creator_url": "https://github.com/Tangerg",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-swift-sdk",
+      "title": "JevSwiftSDK",
+      "category": "community-sdk",
+      "short_description": "Dependency-free Swift package for the System One HTTP API.",
+      "actual_actions_or_outcome": "Swift apps on iOS, macOS, or Linux send typed questions with async/await, batching, and retries.",
+      "jev_role": "Native via TypeSafe API",
+      "other_components": [
+        "Swift 6",
+        "Swift Package Manager"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/NSStudent/JevSwiftSDK",
+          "type": "repo",
+          "what_verified": "README quickstart plus Sources/JevSwiftSDK/Configuration.swift baseURL https://api.typesafe.ai",
+          "author": "NSStudent",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/NSStudent/JevSwiftSDK",
+      "demo_url": null,
+      "install_url": "https://github.com/NSStudent/JevSwiftSDK#installation",
+      "caveats": "Unofficial and very new. No release tag yet, so the README recommends pinning a branch. Keep the key server-side; the quickstart is written for a server or CLI, not a shipped mobile app.",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-19",
+      "highlight": false,
+      "creator_display": "@NSStudent",
+      "creator_url": "https://github.com/NSStudent",
+      "credit_kind": "by"
+    },
+    {
+      "id": "typesafe-sdk-ruby",
+      "title": "typesafe-sdk (Ruby)",
+      "category": "community-sdk",
+      "short_description": "Ruby gem client for the TypeSafe System One API.",
+      "actual_actions_or_outcome": "Ruby code calls system_one with Choice, Score, and Noul questions and reads typed answers.",
+      "jev_role": "Native via TypeSafe API",
+      "other_components": [
+        "Ruby 3.1+"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/joshmn/typesafe-sdk",
+          "type": "repo",
+          "what_verified": "README quickstart plus lib/typesafe/sdk.rb DEFAULT_BASE_URL https://api.typesafe.ai and DEFAULT_MODEL jev-latest",
+          "author": "joshmn",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/joshmn/typesafe-sdk",
+      "demo_url": null,
+      "install_url": "https://github.com/joshmn/typesafe-sdk#installation",
+      "caveats": "Unofficial. Distinct from ruby_llm-typesafe, which is a RubyLLM provider rather than a direct client.",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-19",
+      "highlight": false,
+      "creator_display": "@joshmn",
+      "creator_url": "https://github.com/joshmn",
+      "credit_kind": "by"
+    },
+    {
+      "id": "list-cobanov",
+      "title": "awesome-jev (cobanov)",
+      "category": "awesome-list",
+      "short_description": "Source-backed list that publishes dated research notes alongside each review.",
+      "actual_actions_or_outcome": "README sections plus per-review research notes with pinned source evidence.",
+      "jev_role": "n/a (list)",
+      "origin": "community",
+      "evidence_level": "demo-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/cobanov/awesome-jev",
+          "type": "repo",
+          "what_verified": "README inclusion criteria and 102 community entries after the 2026-09-19 review",
+          "author": "cobanov",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/cobanov/awesome-jev",
+      "demo_url": null,
+      "install_url": null,
+      "caveats": "Entry counts move quickly. Review boundaries are documented per review rather than per entry.",
+      "readiness": "list",
+      "other_components": [],
+      "skill_frameworks": [],
+      "last_checked": "2026-09-19",
+      "highlight": false,
+      "creator_display": "Mert Cobanov",
+      "creator_url": "https://github.com/cobanov",
+      "credit_kind": "by"
+    },
+    {
+      "id": "list-logicrw",
+      "title": "awesome-jev-projects (logicrw)",
+      "category": "awesome-list",
+      "short_description": "Bilingual ecosystem radar with a published site and automatic GitHub sync.",
+      "actual_actions_or_outcome": "README plus a GitHub Pages radar covering 300+ tracked projects.",
+      "jev_role": "n/a (list)",
+      "origin": "community",
+      "evidence_level": "demo-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/logicrw/awesome-jev-projects",
+          "type": "repo",
+          "what_verified": "README badges and live radar link on 2026-09-19",
+          "author": "logicrw",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/logicrw/awesome-jev-projects",
+      "demo_url": "https://logicrw.github.io/awesome-jev-projects/en/",
+      "install_url": null,
+      "caveats": "Automatic sync means breadth over verification; the project count is self-reported.",
+      "readiness": "list",
+      "other_components": [],
+      "skill_frameworks": [],
+      "last_checked": "2026-09-19",
+      "highlight": false,
+      "creator_display": "@logicrw",
+      "creator_url": "https://github.com/logicrw",
+      "credit_kind": "by"
+    },
+    {
+      "id": "list-appitstudio",
+      "title": "awesome-jev (AppitStudio)",
+      "category": "awesome-list",
+      "short_description": "Directory split into Jev-powered apps, developer resources, and small inspectable workflows.",
+      "actual_actions_or_outcome": "Per-section markdown directories plus a separate beta web UI.",
+      "jev_role": "n/a (list)",
+      "origin": "community",
+      "evidence_level": "demo-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/AppitStudio/awesome-jev",
+          "type": "repo",
+          "what_verified": "README structure and app/resource/workflow split on 2026-09-19",
+          "author": "AppitStudio",
+          "date": "2026-09-19"
+        }
+      ],
+      "repo_url": "https://github.com/AppitStudio/awesome-jev",
+      "demo_url": null,
+      "install_url": null,
+      "caveats": "Promotes an associated hosted product (JevList), so it is a vendor-adjacent directory rather than a neutral one.",
+      "readiness": "list",
+      "other_components": [],
+      "skill_frameworks": [],
+      "last_checked": "2026-09-19",
+      "highlight": false,
+      "creator_display": "AppitStudio",
+      "creator_url": "https://github.com/AppitStudio",
+      "credit_kind": "maintained-by"
     }
   ]
 }

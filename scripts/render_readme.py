@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "data" / "use-cases.json"
 README = ROOT / "README.md"
 DETAILS = ROOT / "docs" / "catalog.md"
-UPDATED = "2026-09-17"
+UPDATED = "2026-09-19"
 
 CATEGORY_ORDER = [
     ("action-taking", "Action-taking projects"),
@@ -154,7 +154,7 @@ Jev does not chat, write code, or see images. It returns Choice, Score, or Noul 
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
 [![catalog](https://img.shields.io/badge/catalog-{len(entries)}_entries-111.svg)](data/use-cases.json)
-[![updated](https://img.shields.io/badge/updated-2026.09.17-0a0.svg)](docs/research-method.md)
+[![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
