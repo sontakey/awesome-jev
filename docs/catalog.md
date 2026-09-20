@@ -192,6 +192,73 @@ Uses Jev to choose the next read-only social media operation from a changing lis
 - Demo: https://socai-io.github.io/jev-social/
 - Caveat: Drives your own logged-in browser session against third-party sites; check each platform's terms before running. The README GIF shows an earlier routing-only prototype.
 
+### [jev-trader](https://github.com/jarrodwatts/jev-trader)
+<!-- catalog:jev-trader -->
+
+By [Jarrod Watts](https://github.com/jarrodwatts).
+
+Uses Jev to answer buy or sell on every Monad block and posts a matching post-only limit order.
+
+- Action / outcome: Watches the Kuru MON-USDC order book, asks Jev for a direction roughly every 300 ms, and replaces a post-only limit order one tick inside the touch. Runs dry (real book, simulated fills) with no private key set.
+- Jev's role: Per-block choice of buy or sell with probabilities over a short horizon
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/jarrodwatts/jev-trader#run
+- Demo: https://jev-trader-production.up.railway.app
+- Caveat: A demo, not trading advice. The default model is a mock heuristic; Jev requires MODEL=jev and a key. Published PnL and latency numbers were not reproduced here, and live mode posts real on-chain orders.
+
+### [Jev-cu](https://github.com/Sac-Y/Jev-cu)
+<!-- catalog:jev-cu -->
+
+By [@Sac-Y](https://github.com/Sac-Y).
+
+Uses Jev to pick the next computer-use element and action from text candidates while a local policy gate blocks sensitive operations.
+
+- Action / outcome: Ships a Codex-installable skill plus scripts that run the decision loop over accessibility snapshots. Codex reads and executes the screen; only text is sent, never screenshots.
+- Jev's role: Choice of target element and action, plus completion and risk judgments
+- Origin: community · Evidence: `code-inspected` · Readiness: installable
+- Install / start: https://github.com/Sac-Y/Jev-cu#%E5%AE%89%E8%A3%85-skill
+- Caveat: README and skill docs are mostly Chinese. No license file at the time of check. Text-only element candidates mean anything not exposed in the accessibility tree is invisible to the model.
+
+### [Jev experiments](https://github.com/dabit3/jev-experiments)
+<!-- catalog:jev-experiments -->
+
+By [Nader Dabit](https://github.com/dabit3).
+
+A collection of latency-focused demo apps that use Jev through the official JavaScript SDK.
+
+- Action / outcome: Each app lives in its own directory with a README, testing notes and screenshots. Server code creates a TypeSafeClient with retries and timeouts and asks Jev per request.
+- Jev's role: Per-demo judgments served from a small backend, varying by app
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/dabit3/jev-experiments#jev-experiments
+- Caveat: Demo code, written with an autonomous coding agent per the README badge. Latency claims were not remeasured. No repo-level license at the time of check.
+
+### [Mobile Jev](https://github.com/droidrun/mobile-jev)
+<!-- catalog:mobile-jev -->
+
+Maintained by [Droidrun](https://github.com/droidrun).
+
+Uses Jev to choose the next action on a real Android phone driven through the Mobilerun API.
+
+- Action / outcome: A CLI and a React studio run a goal-directed loop against a cloud phone, with execution traces and per-request latency. The README demo reaches Uber's payment selection step and does not complete a booking.
+- Jev's role: Next-action choice per step, with input verification handled separately
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/droidrun/mobile-jev#mobile-jev
+- Demo: https://github.com/droidrun/mobile-jev/blob/main/docs/media/uber-demo.mp4
+- Caveat: Requires a Mobilerun account and API key in addition to a TypeSafe key. The recorded timing (about 21 seconds for 9 actions) was not reproduced here.
+
+### [jev-align](https://github.com/sutro-sh/jev-align)
+<!-- catalog:jev-align -->
+
+Maintained by [Sutro](https://github.com/sutro-sh).
+
+Uses Jev to build AI functions, surfacing uncertain examples for labeling and optimizing the function with GEPA.
+
+- Action / outcome: A Python CLI that captures production inputs, picks uncertain cases by acquisition score, asks for labels, and runs GEPA to improve the function's questions. Supports TypeSafe, Cloudflare and Vercel Jev gateways.
+- Jev's role: The evaluated function under optimization; answers and confidence drive acquisition
+- Origin: community · Evidence: `code-inspected` · Readiness: installable
+- Install / start: https://github.com/sutro-sh/jev-align#quick-start
+- Caveat: Self-described as experimental. Requires Python 3.11 or newer. Optimization quality depends on your labeled examples and was not evaluated here.
+
 ## Model and skill routing
 
 ### [jev-router](https://github.com/gargpratyush/jev-router)
@@ -596,6 +663,32 @@ Small TypeScript ask() client plus an agent skill over Jev.
 - Install / start: https://github.com/pithings/advocaat
 - Caveat: Wrapper, not a new model.
 
+### [fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction)
+<!-- catalog:fast-jev-compaction -->
+
+By [tamara tran](https://github.com/tamaratran).
+
+Uses Jev to decide which tool calls and results to drop during context compaction, keeping everything else verbatim.
+
+- Action / outcome: Replaces Claude Code's compaction summary. Every non-pinned tool call gets two noul questions; only calls and results Jev says are no longer needed are deleted or truncated. User and assistant text is never rewritten.
+- Jev's role: Two noul questions per non-pinned tool call, asked over the whole conversation in one request
+- Origin: community · Evidence: `code-inspected` · Readiness: installable
+- Install / start: https://github.com/tamaratran/fast-jev-compaction#what-and-why
+- Caveat: Token counts are estimated without a tokenizer, so compaction can throw when state does not fit. Retention quality was not remeasured here.
+
+### [Jev Browser Use](https://github.com/wy-coliney/jev-browser-use)
+<!-- catalog:jev-browser-use -->
+
+By [@wy-coliney](https://github.com/wy-coliney).
+
+Uses Jev to choose browser navigation, clicks and scrolling while the coding agent keeps text input and final verification.
+
+- Action / outcome: Installs as a Codex skill with one npx command and drives an existing browser connection through a small bridge, with no extra driver or npm dependency.
+- Jev's role: Choice of the next browser action from candidate elements, with confidence recorded per step
+- Origin: community · Evidence: `code-inspected` · Readiness: installable
+- Install / start: https://github.com/wy-coliney/jev-browser-use#install
+- Caveat: The 5-10x speedup claim comes from the author's own workflows and was not reproduced here. Decisions run on text candidates, not pixels.
+
 ## Other awesome-Jev lists
 
 ### [awesome-jev-by-typesafe (Anil-matcha)](https://github.com/Anil-matcha/awesome-jev-by-typesafe)
@@ -710,6 +803,30 @@ Directory split into Jev-powered apps, developer resources, and small inspectabl
 - Origin: community · Evidence: `demo-inspected` · Readiness: list
 - Caveat: Promotes an associated hosted product (JevList), so it is a vendor-adjacent directory rather than a neutral one.
 
+### [awesome-jev-tools (v-modal)](https://github.com/v-modal/awesome-jev-tools)
+<!-- catalog:list-v-modal -->
+
+Maintained by [v-modal](https://github.com/v-modal).
+
+Curated Jev list whose README is generated as an aggregate of per-category files.
+
+- Action / outcome: Publishes accepted entries on the homepage without drilling into subpages, splitting the catalog across category files.
+- Jev's role: none (directory)
+- Origin: community · Evidence: `demo-inspected` · Readiness: list
+- Caveat: Entries were not independently verified by this catalog.
+
+### [Awesome Jev (valentynkit)](https://github.com/valentynkit/awesome-jev-typesafe)
+<!-- catalog:list-valentynkit -->
+
+By [@valentynkit](https://github.com/valentynkit).
+
+Curated Jev list following the awesome.re conventions with a CI lint on every change.
+
+- Action / outcome: Carries the awesome badge and a GitHub Actions lint workflow that checks list formatting.
+- Jev's role: none (directory)
+- Origin: community · Evidence: `demo-inspected` · Readiness: list
+- Caveat: Entries were not independently verified by this catalog.
+
 ## Related, not TypeSafe Jev
 
 ### [OpenJev](https://github.com/TheoLeeCJ/openjev)
@@ -748,4 +865,44 @@ Jev-style parallel constrained decisions for MLX models on Apple Silicon.
 - Jev's role: none (local analog)
 - Origin: related · Evidence: `demo-inspected` · Readiness: related-not-jev-api
 - Caveat: Not Jev weights. Useful as an offline comparison, not a TypeSafe client.
+
+### [NanoJev](https://github.com/TianyuCodings/NanoJev)
+<!-- catalog:nanojev -->
+
+By [@TianyuCodings](https://github.com/TianyuCodings).
+
+A 0.6B open replica of the System One shape, trained to answer decision questions with probability distributions.
+
+- Action / outcome: Publishes a checkpoint and dataset on Hugging Face and reports ViZDoom, maze and Snake results against a matched Jev run. Not api.typesafe.ai.
+- Jev's role: none (open-weight replica, compared against Jev)
+- Origin: related · Evidence: `demo-inspected` · Readiness: related-not-jev-api
+- Demo: https://huggingface.co/C-Tianyu/NanoJev
+- Caveat: Not TypeSafe weights. Reported win rates against Jev are the author's own numbers on the author's tasks and were not reproduced here. The interactive development site requires access.
+
+### [Simple Jev](https://github.com/featherless-ai/simple-jev)
+<!-- catalog:simple-jev -->
+
+Maintained by [Featherless AI](https://github.com/featherless-ai).
+
+Builds System One style typed answers from open Hugging Face models by reading next-token logits instead of generating JSON.
+
+- Action / outcome: A local Transformers and PyTorch server plus a public keyless demo API, with shared validation and scoring rules in a plain Python package. Not api.typesafe.ai.
+- Jev's role: none (open-model reimplementation of the interface)
+- Origin: related · Evidence: `demo-inspected` · Readiness: related-not-jev-api
+- Install / start: https://github.com/featherless-ai/simple-jev#simple-jev-project
+- Demo: https://simple-jev.featherless.ai/
+- Caveat: Not TypeSafe weights and makes no equivalence claim. The demo API is limited to 2k tokens and 2 requests per second. Only models whose answer labels tokenize to one distinct token are supported.
+
+### [openjev-sglang](https://github.com/ekzhang/openjev-sglang)
+<!-- catalog:openjev-sglang -->
+
+By [Eric Zhang](https://github.com/ekzhang).
+
+Serves the TypeSafe HTTP API shape from an open Qwen model running on SGLang.
+
+- Action / outcome: Deploys to Modal as a B200 SGLang container plus a FastAPI process, with MMLU-Pro and BoolQ eval scripts. Not api.typesafe.ai.
+- Jev's role: none (API-compatible server backed by an open model)
+- Origin: related · Evidence: `demo-inspected` · Readiness: related-not-jev-api
+- Install / start: https://github.com/ekzhang/openjev-sglang#run-on-modal
+- Caveat: Not TypeSafe weights, only the API shape. Running it needs a Modal account and B200 GPU time, so cost is on you. Eval numbers were not reproduced here.
 

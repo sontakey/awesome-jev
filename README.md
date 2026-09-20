@@ -5,12 +5,12 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-55_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-67_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (14)
+- [Action-taking projects](#action-taking-projects) (19)
 - [Model and skill routing](#model-and-skill-routing) (5)
 - [Email and inbox routing](#email-and-inbox-routing) (1)
 - [MCP and agent bridges](#mcp-and-agent-bridges) (3)
@@ -19,9 +19,9 @@ Jev does not chat, write code, or see images. It returns Choice, Score, or Noul 
 - [Official docs, skill, and launch demos](#official-docs-skill-and-launch-demos) (4)
 - [Platform integrations](#platform-integrations) (1)
 - [Community clients](#community-clients) (5)
-- [Installable agent skills](#installable-agent-skills) (3)
-- [Other awesome-Jev lists](#other-awesome-jev-lists) (9)
-- [Related, not TypeSafe Jev](#related-not-typesafe-jev) (3)
+- [Installable agent skills](#installable-agent-skills) (5)
+- [Other awesome-Jev lists](#other-awesome-jev-lists) (11)
+- [Related, not TypeSafe Jev](#related-not-typesafe-jev) (6)
 - [Quick start](#quick-start)
 - [Evidence](#evidence)
 - [Details](#details)
@@ -46,6 +46,11 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [semdecide](https://github.com/sharziki/semdecide) — Turns Jev judgments into Unix pipeline exit codes or JSON. By [Sharvil Saxena](https://github.com/sharziki). `demo-inspected` <!-- catalog:semdecide -->
 - [Jev Search](https://github.com/superagents-lab/jev-search) — Uses Jev to choose search sources and time ranges from a plain-language request, then rank the returned results. Maintained by [SuperAgents Lab](https://github.com/superagents-lab). `code-inspected` <!-- catalog:jev-search -->
 - [Jev for social media](https://github.com/socai-io/jev-social) — Uses Jev to choose the next read-only social media operation from a changing list of concrete targets. Maintained by [socai-io](https://github.com/socai-io). `code-inspected` <!-- catalog:jev-social -->
+- [jev-trader](https://github.com/jarrodwatts/jev-trader) — Uses Jev to answer buy or sell on every Monad block and posts a matching post-only limit order. By [Jarrod Watts](https://github.com/jarrodwatts). `code-inspected` <!-- catalog:jev-trader -->
+- [Jev-cu](https://github.com/Sac-Y/Jev-cu) — Uses Jev to pick the next computer-use element and action from text candidates while a local policy gate blocks sensitive operations. By [@Sac-Y](https://github.com/Sac-Y). `code-inspected` <!-- catalog:jev-cu -->
+- [Jev experiments](https://github.com/dabit3/jev-experiments) — A collection of latency-focused demo apps that use Jev through the official JavaScript SDK. By [Nader Dabit](https://github.com/dabit3). `code-inspected` <!-- catalog:jev-experiments -->
+- [Mobile Jev](https://github.com/droidrun/mobile-jev) — Uses Jev to choose the next action on a real Android phone driven through the Mobilerun API. Maintained by [Droidrun](https://github.com/droidrun). `code-inspected` <!-- catalog:mobile-jev -->
+- [jev-align](https://github.com/sutro-sh/jev-align) — Uses Jev to build AI functions, surfacing uncertain examples for labeling and optimizing the function with GEPA. Maintained by [Sutro](https://github.com/sutro-sh). `code-inspected` <!-- catalog:jev-align -->
 
 ## Model and skill routing
 
@@ -102,6 +107,8 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [building-with-jev skill](https://github.com/dbreunig/building-with-jev-skill) — Community skill for writing Jev programs (Claude plugin and skills.sh). By [Drew Breunig](https://github.com/dbreunig). `code-inspected` <!-- catalog:building-with-jev-skill -->
 - [jev-axi](https://github.com/shiftynick/jev-axi) — CLI and skill for log triage, diff review, untrusted-text screening, and ranking. By [Nicholas Underwood](https://github.com/shiftynick). `code-inspected` <!-- catalog:jev-axi -->
 - [advocaat](https://github.com/pithings/advocaat) — Small TypeScript ask() client plus an agent skill over Jev. Maintained by [PiThings](https://github.com/pithings). `code-inspected` <!-- catalog:advocaat -->
+- [fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) — Uses Jev to decide which tool calls and results to drop during context compaction, keeping everything else verbatim. By [tamara tran](https://github.com/tamaratran). `code-inspected` <!-- catalog:fast-jev-compaction -->
+- [Jev Browser Use](https://github.com/wy-coliney/jev-browser-use) — Uses Jev to choose browser navigation, clicks and scrolling while the coding agent keeps text input and final verification. By [@wy-coliney](https://github.com/wy-coliney). `code-inspected` <!-- catalog:jev-browser-use -->
 
 ## Other awesome-Jev lists
 
@@ -114,12 +121,17 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [awesome-jev (cobanov)](https://github.com/cobanov/awesome-jev) — Source-backed list that publishes dated research notes alongside each review. By [Mert Cobanov](https://github.com/cobanov). `demo-inspected` <!-- catalog:list-cobanov -->
 - [awesome-jev-projects (logicrw)](https://github.com/logicrw/awesome-jev-projects) — Bilingual ecosystem radar with a published site and automatic GitHub sync. By [@logicrw](https://github.com/logicrw). `demo-inspected` <!-- catalog:list-logicrw -->
 - [awesome-jev (AppitStudio)](https://github.com/AppitStudio/awesome-jev) — Directory split into Jev-powered apps, developer resources, and small inspectable workflows. Maintained by [AppitStudio](https://github.com/AppitStudio). `demo-inspected` <!-- catalog:list-appitstudio -->
+- [awesome-jev-tools (v-modal)](https://github.com/v-modal/awesome-jev-tools) — Curated Jev list whose README is generated as an aggregate of per-category files. Maintained by [v-modal](https://github.com/v-modal). `demo-inspected` <!-- catalog:list-v-modal -->
+- [Awesome Jev (valentynkit)](https://github.com/valentynkit/awesome-jev-typesafe) — Curated Jev list following the awesome.re conventions with a CI lint on every change. By [@valentynkit](https://github.com/valentynkit). `demo-inspected` <!-- catalog:list-valentynkit -->
 
 ## Related, not TypeSafe Jev
 
 - [OpenJev](https://github.com/TheoLeeCJ/openjev) — Community open-weight attempt at the System One shape. Not api.typesafe.ai. By [Theodore Lee](https://github.com/TheoLeeCJ). `author-claim` <!-- catalog:openjev -->
 - [jevlike](https://github.com/vinnylarouge/jevlike) — Another community reproduction of the System One interface. By [@vinnylarouge](https://github.com/vinnylarouge). `author-claim` <!-- catalog:jevlike -->
 - [jevmlx](https://github.com/bnsd55/jevmlx) — Jev-style parallel constrained decisions for MLX models on Apple Silicon. By [@bnsd55](https://github.com/bnsd55). `demo-inspected` <!-- catalog:jevmlx -->
+- [NanoJev](https://github.com/TianyuCodings/NanoJev) — A 0.6B open replica of the System One shape, trained to answer decision questions with probability distributions. By [@TianyuCodings](https://github.com/TianyuCodings). `demo-inspected` <!-- catalog:nanojev -->
+- [Simple Jev](https://github.com/featherless-ai/simple-jev) — Builds System One style typed answers from open Hugging Face models by reading next-token logits instead of generating JSON. Maintained by [Featherless AI](https://github.com/featherless-ai). `demo-inspected` <!-- catalog:simple-jev -->
+- [openjev-sglang](https://github.com/ekzhang/openjev-sglang) — Serves the TypeSafe HTTP API shape from an open Qwen model running on SGLang. By [Eric Zhang](https://github.com/ekzhang). `demo-inspected` <!-- catalog:openjev-sglang -->
 
 
 ## Quick start

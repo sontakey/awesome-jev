@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-09-19",
+  "updated": "2026-09-20",
   "disclaimer": "Unofficial curated catalog. Not affiliated with TypeSafe AI. Benchmarks are attributed, not endorsed.",
   "entries": [
     {
@@ -78,7 +78,7 @@
       "category": "action-taking",
       "highlight": true,
       "short_description": "OCRs a Mac screen, then Jev chooses the next UI action and the code clicks.",
-      "actual_actions_or_outcome": "Local screenshot \u2192 OCR \u2192 Choice/Noul \u2192 OS action loop.",
+      "actual_actions_or_outcome": "Local screenshot → OCR → Choice/Noul → OS action loop.",
       "jev_role": "Action selection on OCR text state",
       "other_components": [
         "OCR",
@@ -150,7 +150,7 @@
       "actual_actions_or_outcome": "SQL helpers call TypeSafe. Rows that match a Noul, Choice, or Score filter are returned by the database.",
       "jev_role": "Batched parallel Noul/Choice/Score per row",
       "other_components": [
-        "PostgreSQL 14\u201317",
+        "PostgreSQL 14–17",
         "plpython3u"
       ],
       "origin": "community",
@@ -525,7 +525,7 @@
       "category": "model-routing",
       "highlight": true,
       "short_description": "Two Jev requests rank 182 Hermes skills and may suggest none.",
-      "actual_actions_or_outcome": "suggest() returns at most one skill name for the agent system prompt. Published table: wrong-skill loads 16.8% \u2192 7.3% on a pinned Haiku run (author numbers).",
+      "actual_actions_or_outcome": "suggest() returns at most one skill name for the agent system prompt. Published table: wrong-skill loads 16.8% → 7.3% on a pinned Haiku run (author numbers).",
       "jev_role": "Choice over the roster plus Nouls for whether a skill is needed",
       "other_components": [
         "Hermes skill roster",
@@ -1901,6 +1901,431 @@
       "creator_display": "AppitStudio",
       "creator_url": "https://github.com/AppitStudio",
       "credit_kind": "maintained-by"
+    },
+    {
+      "id": "fast-jev-compaction",
+      "title": "fast-jev-compaction",
+      "category": "agent-skill",
+      "highlight": false,
+      "short_description": "Uses Jev to decide which tool calls and results to drop during context compaction, keeping everything else verbatim.",
+      "actual_actions_or_outcome": "Replaces Claude Code's compaction summary. Every non-pinned tool call gets two noul questions; only calls and results Jev says are no longer needed are deleted or truncated. User and assistant text is never rewritten.",
+      "jev_role": "Two noul questions per non-pinned tool call, asked over the whole conversation in one request",
+      "other_components": [
+        "Claude Code plugin hooks",
+        "npm package",
+        "token budgeting without a tokenizer"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/tamaratran/fast-jev-compaction",
+          "type": "repo",
+          "what_verified": "README compaction algorithm; src/client.ts reads TYPESAFE_API_KEY and posts to the System One endpoint; hooks/fast-jev.ts and tests present; 4590 stars on 2026-09-20",
+          "author": "tamaratran",
+          "date": "2026-09-20"
+        }
+      ],
+      "repo_url": "https://github.com/tamaratran/fast-jev-compaction",
+      "demo_url": null,
+      "install_url": "https://github.com/tamaratran/fast-jev-compaction#what-and-why",
+      "caveats": "Token counts are estimated without a tokenizer, so compaction can throw when state does not fit. Retention quality was not remeasured here.",
+      "readiness": "installable",
+      "skill_frameworks": [
+        "claude-code"
+      ],
+      "last_checked": "2026-09-20",
+      "creator_display": "tamara tran",
+      "creator_url": "https://github.com/tamaratran",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-trader",
+      "title": "jev-trader",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to answer buy or sell on every Monad block and posts a matching post-only limit order.",
+      "actual_actions_or_outcome": "Watches the Kuru MON-USDC order book, asks Jev for a direction roughly every 300 ms, and replaces a post-only limit order one tick inside the touch. Runs dry (real book, simulated fills) with no private key set.",
+      "jev_role": "Per-block choice of buy or sell with probabilities over a short horizon",
+      "other_components": [
+        "Bun server",
+        "Kuru order book",
+        "Monad RPC",
+        "SSE dashboard",
+        "mock momentum model"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/jarrodwatts/jev-trader",
+          "type": "repo",
+          "what_verified": "README run and event schema; src/model.ts imports @ai-sdk/typesafe-ai and calls typeSafeAi.evaluationModel; 1412 stars on 2026-09-20",
+          "author": "jarrodwatts",
+          "date": "2026-09-20"
+        }
+      ],
+      "repo_url": "https://github.com/jarrodwatts/jev-trader",
+      "demo_url": "https://jev-trader-production.up.railway.app",
+      "install_url": "https://github.com/jarrodwatts/jev-trader#run",
+      "caveats": "A demo, not trading advice. The default model is a mock heuristic; Jev requires MODEL=jev and a key. Published PnL and latency numbers were not reproduced here, and live mode posts real on-chain orders.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-20",
+      "creator_display": "Jarrod Watts",
+      "creator_url": "https://github.com/jarrodwatts",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-cu",
+      "title": "Jev-cu",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to pick the next computer-use element and action from text candidates while a local policy gate blocks sensitive operations.",
+      "actual_actions_or_outcome": "Ships a Codex-installable skill plus scripts that run the decision loop over accessibility snapshots. Codex reads and executes the screen; only text is sent, never screenshots.",
+      "jev_role": "Choice of target element and action, plus completion and risk judgments",
+      "other_components": [
+        "Codex Computer Use",
+        "AX snapshots",
+        "local policy gate",
+        "offline eval fixtures"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/Sac-Y/Jev-cu",
+          "type": "repo",
+          "what_verified": "scripts/jev-decide.mjs posts to https://api.typesafe.ai/v1/systemone using TYPESAFE_API_KEY; skill/jev-use/SKILL.md, fixtures and tests present; 408 stars on 2026-09-20",
+          "author": "Sac-Y",
+          "date": "2026-09-20"
+        }
+      ],
+      "repo_url": "https://github.com/Sac-Y/Jev-cu",
+      "demo_url": null,
+      "install_url": "https://github.com/Sac-Y/Jev-cu#%E5%AE%89%E8%A3%85-skill",
+      "caveats": "README and skill docs are mostly Chinese. No license file at the time of check. Text-only element candidates mean anything not exposed in the accessibility tree is invisible to the model.",
+      "readiness": "installable",
+      "skill_frameworks": [
+        "codex"
+      ],
+      "last_checked": "2026-09-20",
+      "creator_display": "@Sac-Y",
+      "creator_url": "https://github.com/Sac-Y",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-experiments",
+      "title": "Jev experiments",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "A collection of latency-focused demo apps that use Jev through the official JavaScript SDK.",
+      "actual_actions_or_outcome": "Each app lives in its own directory with a README, testing notes and screenshots. Server code creates a TypeSafeClient with retries and timeouts and asks Jev per request.",
+      "jev_role": "Per-demo judgments served from a small backend, varying by app",
+      "other_components": [
+        "@typesafe-ai/sdk",
+        "per-demo Node servers",
+        "static frontends"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/dabit3/jev-experiments",
+          "type": "repo",
+          "what_verified": "agent-assist/server/jev.ts imports TypeSafeClient from @typesafe-ai/sdk and reads TYPESAFE_API_KEY; multi-app layout with per-app READMEs; 321 stars on 2026-09-20",
+          "author": "dabit3",
+          "date": "2026-09-20"
+        }
+      ],
+      "repo_url": "https://github.com/dabit3/jev-experiments",
+      "demo_url": null,
+      "install_url": "https://github.com/dabit3/jev-experiments#jev-experiments",
+      "caveats": "Demo code, written with an autonomous coding agent per the README badge. Latency claims were not remeasured. No repo-level license at the time of check.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-20",
+      "creator_display": "Nader Dabit",
+      "creator_url": "https://github.com/dabit3",
+      "credit_kind": "by"
+    },
+    {
+      "id": "mobile-jev",
+      "title": "Mobile Jev",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to choose the next action on a real Android phone driven through the Mobilerun API.",
+      "actual_actions_or_outcome": "A CLI and a React studio run a goal-directed loop against a cloud phone, with execution traces and per-request latency. The README demo reaches Uber's payment selection step and does not complete a booking.",
+      "jev_role": "Next-action choice per step, with input verification handled separately",
+      "other_components": [
+        "Mobilerun API",
+        "Next.js studio",
+        "Node agent scripts",
+        "policy and verification modules"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/droidrun/mobile-jev",
+          "type": "repo",
+          "what_verified": "scripts/mobile-agent/policy.mjs posts to https://api.typesafe.ai/v1/systemone with TYPESAFE_API_KEY and a jev-latest default model; CI workflow and unit tests present; 255 stars on 2026-09-20",
+          "author": "droidrun",
+          "date": "2026-09-20"
+        }
+      ],
+      "repo_url": "https://github.com/droidrun/mobile-jev",
+      "demo_url": "https://github.com/droidrun/mobile-jev/blob/main/docs/media/uber-demo.mp4",
+      "install_url": "https://github.com/droidrun/mobile-jev#mobile-jev",
+      "caveats": "Requires a Mobilerun account and API key in addition to a TypeSafe key. The recorded timing (about 21 seconds for 9 actions) was not reproduced here.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-20",
+      "creator_display": "Droidrun",
+      "creator_url": "https://github.com/droidrun",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "jev-align",
+      "title": "jev-align",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to build AI functions, surfacing uncertain examples for labeling and optimizing the function with GEPA.",
+      "actual_actions_or_outcome": "A Python CLI that captures production inputs, picks uncertain cases by acquisition score, asks for labels, and runs GEPA to improve the function's questions. Supports TypeSafe, Cloudflare and Vercel Jev gateways.",
+      "jev_role": "The evaluated function under optimization; answers and confidence drive acquisition",
+      "other_components": [
+        "GEPA optimizer",
+        "Python CLI",
+        "multiple Jev gateway backends"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/sutro-sh/jev-align",
+          "type": "repo",
+          "what_verified": "src/jev_align/backends.py maps the typesafe provider to jev-1.13.0 and requires TYPESAFE_API_KEY; jev.py, optimizer.py, acquisition.py and metrics.py present; 191 stars on 2026-09-20",
+          "author": "sutro-sh",
+          "date": "2026-09-20"
+        }
+      ],
+      "repo_url": "https://github.com/sutro-sh/jev-align",
+      "demo_url": null,
+      "install_url": "https://github.com/sutro-sh/jev-align#quick-start",
+      "caveats": "Self-described as experimental. Requires Python 3.11 or newer. Optimization quality depends on your labeled examples and was not evaluated here.",
+      "readiness": "installable",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-20",
+      "creator_display": "Sutro",
+      "creator_url": "https://github.com/sutro-sh",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "jev-browser-use",
+      "title": "Jev Browser Use",
+      "category": "agent-skill",
+      "highlight": false,
+      "short_description": "Uses Jev to choose browser navigation, clicks and scrolling while the coding agent keeps text input and final verification.",
+      "actual_actions_or_outcome": "Installs as a Codex skill with one npx command and drives an existing browser connection through a small bridge, with no extra driver or npm dependency.",
+      "jev_role": "Choice of the next browser action from candidate elements, with confidence recorded per step",
+      "other_components": [
+        "Codex skill packaging",
+        "existing browser connection",
+        "OpenRouter fallback route"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/wy-coliney/jev-browser-use",
+          "type": "repo",
+          "what_verified": "skills/jev-browser-use/bridge.mjs targets https://api.typesafe.ai/v1/systemone with TYPESAFE_API_KEY and jev-latest, plus an OpenRouter decisions route; SKILL.md and installer present; 224 stars on 2026-09-20",
+          "author": "wy-coliney",
+          "date": "2026-09-20"
+        }
+      ],
+      "repo_url": "https://github.com/wy-coliney/jev-browser-use",
+      "demo_url": null,
+      "install_url": "https://github.com/wy-coliney/jev-browser-use#install",
+      "caveats": "The 5-10x speedup claim comes from the author's own workflows and was not reproduced here. Decisions run on text candidates, not pixels.",
+      "readiness": "installable",
+      "skill_frameworks": [
+        "codex"
+      ],
+      "last_checked": "2026-09-20",
+      "creator_display": "@wy-coliney",
+      "creator_url": "https://github.com/wy-coliney",
+      "credit_kind": "by"
+    },
+    {
+      "id": "nanojev",
+      "title": "NanoJev",
+      "category": "related-not-jev",
+      "highlight": false,
+      "short_description": "A 0.6B open replica of the System One shape, trained to answer decision questions with probability distributions.",
+      "actual_actions_or_outcome": "Publishes a checkpoint and dataset on Hugging Face and reports ViZDoom, maze and Snake results against a matched Jev run. Not api.typesafe.ai.",
+      "jev_role": "none (open-weight replica, compared against Jev)",
+      "other_components": [
+        "Hugging Face model and dataset",
+        "ViZDoom, maze and Snake harnesses",
+        "browser replay demos"
+      ],
+      "origin": "related",
+      "evidence_level": "demo-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/TianyuCodings/NanoJev",
+          "type": "repo",
+          "what_verified": "README benchmark tables and demo links, docs/TYPESAFE_CONTRACT.md, scripts/jev_probe.mjs, bilingual READMEs; 1201 stars on 2026-09-20",
+          "author": "TianyuCodings",
+          "date": "2026-09-20"
+        }
+      ],
+      "repo_url": "https://github.com/TianyuCodings/NanoJev",
+      "demo_url": "https://huggingface.co/C-Tianyu/NanoJev",
+      "install_url": null,
+      "caveats": "Not TypeSafe weights. Reported win rates against Jev are the author's own numbers on the author's tasks and were not reproduced here. The interactive development site requires access.",
+      "readiness": "related-not-jev-api",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-20",
+      "creator_display": "@TianyuCodings",
+      "creator_url": "https://github.com/TianyuCodings",
+      "credit_kind": "by"
+    },
+    {
+      "id": "simple-jev",
+      "title": "Simple Jev",
+      "category": "related-not-jev",
+      "highlight": false,
+      "short_description": "Builds System One style typed answers from open Hugging Face models by reading next-token logits instead of generating JSON.",
+      "actual_actions_or_outcome": "A local Transformers and PyTorch server plus a public keyless demo API, with shared validation and scoring rules in a plain Python package. Not api.typesafe.ai.",
+      "jev_role": "none (open-model reimplementation of the interface)",
+      "other_components": [
+        "Hugging Face Transformers",
+        "PyTorch",
+        "public demo API",
+        "playground website"
+      ],
+      "origin": "related",
+      "evidence_level": "demo-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/featherless-ai/simple-jev",
+          "type": "repo",
+          "what_verified": "README logit-scoring design and explicit statement that it does not reproduce TypeSafe architecture, training, accuracy or speed; common/ and RFDT/ trees with tests; 342 stars on 2026-09-20",
+          "author": "featherless-ai",
+          "date": "2026-09-20"
+        }
+      ],
+      "repo_url": "https://github.com/featherless-ai/simple-jev",
+      "demo_url": "https://simple-jev.featherless.ai/",
+      "install_url": "https://github.com/featherless-ai/simple-jev#simple-jev-project",
+      "caveats": "Not TypeSafe weights and makes no equivalence claim. The demo API is limited to 2k tokens and 2 requests per second. Only models whose answer labels tokenize to one distinct token are supported.",
+      "readiness": "related-not-jev-api",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-20",
+      "creator_display": "Featherless AI",
+      "creator_url": "https://github.com/featherless-ai",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "openjev-sglang",
+      "title": "openjev-sglang",
+      "category": "related-not-jev",
+      "highlight": false,
+      "short_description": "Serves the TypeSafe HTTP API shape from an open Qwen model running on SGLang.",
+      "actual_actions_or_outcome": "Deploys to Modal as a B200 SGLang container plus a FastAPI process, with MMLU-Pro and BoolQ eval scripts. Not api.typesafe.ai.",
+      "jev_role": "none (API-compatible server backed by an open model)",
+      "other_components": [
+        "SGLang",
+        "Modal",
+        "FastAPI",
+        "Qwen3.6-35B-A3B",
+        "eval harness"
+      ],
+      "origin": "related",
+      "evidence_level": "demo-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/ekzhang/openjev-sglang",
+          "type": "repo",
+          "what_verified": "README states it implements the TypeSafe/Jev HTTP API with Qwen on SGLang; modal_app.py deploy flow and evals/ directory present; 207 stars on 2026-09-20",
+          "author": "ekzhang",
+          "date": "2026-09-20"
+        }
+      ],
+      "repo_url": "https://github.com/ekzhang/openjev-sglang",
+      "demo_url": null,
+      "install_url": "https://github.com/ekzhang/openjev-sglang#run-on-modal",
+      "caveats": "Not TypeSafe weights, only the API shape. Running it needs a Modal account and B200 GPU time, so cost is on you. Eval numbers were not reproduced here.",
+      "readiness": "related-not-jev-api",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-20",
+      "creator_display": "Eric Zhang",
+      "creator_url": "https://github.com/ekzhang",
+      "credit_kind": "by"
+    },
+    {
+      "id": "list-v-modal",
+      "title": "awesome-jev-tools (v-modal)",
+      "category": "awesome-list",
+      "highlight": false,
+      "short_description": "Curated Jev list whose README is generated as an aggregate of per-category files.",
+      "actual_actions_or_outcome": "Publishes accepted entries on the homepage without drilling into subpages, splitting the catalog across category files.",
+      "jev_role": "none (directory)",
+      "other_components": [],
+      "origin": "community",
+      "evidence_level": "demo-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/v-modal/awesome-jev-tools",
+          "type": "repo",
+          "what_verified": "README states it is a homepage aggregate of category files; 435 stars on 2026-09-20",
+          "author": "v-modal",
+          "date": "2026-09-20"
+        }
+      ],
+      "repo_url": "https://github.com/v-modal/awesome-jev-tools",
+      "demo_url": null,
+      "install_url": null,
+      "caveats": "Entries were not independently verified by this catalog.",
+      "readiness": "list",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-20",
+      "creator_display": "v-modal",
+      "creator_url": "https://github.com/v-modal",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "list-valentynkit",
+      "title": "Awesome Jev (valentynkit)",
+      "category": "awesome-list",
+      "highlight": false,
+      "short_description": "Curated Jev list following the awesome.re conventions with a CI lint on every change.",
+      "actual_actions_or_outcome": "Carries the awesome badge and a GitHub Actions lint workflow that checks list formatting.",
+      "jev_role": "none (directory)",
+      "other_components": [],
+      "origin": "community",
+      "evidence_level": "demo-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/valentynkit/awesome-jev-typesafe",
+          "type": "repo",
+          "what_verified": "README awesome.re badge and lint workflow badge; 82 stars on 2026-09-20",
+          "author": "valentynkit",
+          "date": "2026-09-20"
+        }
+      ],
+      "repo_url": "https://github.com/valentynkit/awesome-jev-typesafe",
+      "demo_url": null,
+      "install_url": null,
+      "caveats": "Entries were not independently verified by this catalog.",
+      "readiness": "list",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-20",
+      "creator_display": "@valentynkit",
+      "creator_url": "https://github.com/valentynkit",
+      "credit_kind": "by"
     }
   ]
 }
