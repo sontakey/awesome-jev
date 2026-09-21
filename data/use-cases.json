@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-09-20",
+  "updated": "2026-09-21",
   "disclaimer": "Unofficial curated catalog. Not affiliated with TypeSafe AI. Benchmarks are attributed, not endorsed.",
   "entries": [
     {
@@ -2325,6 +2325,445 @@
       "last_checked": "2026-09-20",
       "creator_display": "@valentynkit",
       "creator_url": "https://github.com/valentynkit",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-browser-jkudish",
+      "title": "Jev Browser",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to pick one browser action per step from a page's clickable, typeable and selectable elements, exposed as an MCP server, CLI and library.",
+      "actual_actions_or_outcome": "Drives headless Playwright Chromium toward a task and URL. Returns the final page, a step trace with per-step confidences, console errors and a screenshot. Code owns the loop: budgets, recovery and stop gates.",
+      "jev_role": "Per-step choice of the next action and target element, plus goal-met and stuck probabilities",
+      "other_components": [
+        "Playwright Chromium",
+        "MCP stdio server",
+        "npm package",
+        "optional typing model"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/jkudish/jev-browser",
+          "type": "repo",
+          "what_verified": "src/provider.ts imports TypeSafeClient from @typesafe-ai/sdk and src/questions.ts imports choice and noul; package.json pins @typesafe-ai/sdk ^0.6.0; CI runs live navigation only when TYPESAFE_API_KEY is set; 211 stars on 2026-09-21",
+          "author": "jkudish",
+          "date": "2026-09-21"
+        }
+      ],
+      "repo_url": "https://github.com/jkudish/jev-browser",
+      "demo_url": null,
+      "install_url": "https://github.com/jkudish/jev-browser#install",
+      "caveats": "Early software; the README warns about rough edges on harder sites. The published latency and cost figures were not reproduced here.",
+      "readiness": "installable",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-21",
+      "creator_display": "Joey Kudish",
+      "creator_url": "https://github.com/jkudish",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-lint",
+      "title": "jev-lint",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to lint the things a parser cannot check, such as whether a function does what its name says or whether a comment is still true.",
+      "actual_actions_or_outcome": "Matches code with ast-grep, then sends one file as state with many independent questions per run and prints flagged lines with probabilities and per-rule cutoffs. Ships rules for TypeScript, JavaScript, Rust, Python, Go, Markdown, package.json and git commits.",
+      "jev_role": "Many independent per-match judgments over one file of state, batched into a single request",
+      "other_components": [
+        "ast-grep matchers",
+        "calibration and replay cache",
+        "Claude plugin and skill",
+        "dry-run cost estimator"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/mizchi/jev-lint",
+          "type": "repo",
+          "what_verified": "src/jev.ts is a zero-dependency client with DEFAULT_BASE_URL https://api.typesafe.ai and DEFAULT_MODEL jev-latest, splitting question batches on max_tokens_exceeded; README documents TYPESAFE_API_KEY as env-only; 56 stars on 2026-09-21",
+          "author": "mizchi",
+          "date": "2026-09-21"
+        }
+      ],
+      "repo_url": "https://github.com/mizchi/jev-lint",
+      "demo_url": null,
+      "install_url": null,
+      "caveats": "Rule cutoffs in RULES.md come from the author's own committed baselines and were not re-derived here. Checks that call the model need a key and cost money per run.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [
+        "claude-code"
+      ],
+      "last_checked": "2026-09-21",
+      "creator_display": "Kotaro Chikuba",
+      "creator_url": "https://github.com/mizchi",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-review-mcp",
+      "title": "Jev Review (MCP)",
+      "category": "mcp",
+      "highlight": false,
+      "short_description": "Local MCP server that gives a coding agent structured Jev quality scores across correctness, complexity, tests and security while it works.",
+      "actual_actions_or_outcome": "Exposes a single jev_review tool over MCP stdio to Claude Code, Codex, Cursor and OpenCode. The coding agent still diagnoses and edits; Jev supplies scalar scores per quality dimension. No hosted backend, the only remote call goes to the configured Jev API.",
+      "jev_role": "Independent per-dimension quality scores over a code diff or file",
+      "other_components": [
+        "MCP stdio server",
+        "Claude and Codex plugin manifests",
+        "Node 20+ runtime",
+        "test suite"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/NiazMorshed2007/jev-review",
+          "type": "repo",
+          "what_verified": "src/jev/client.ts posts to api.typesafe.ai; .claude-plugin, .codex-plugin, skills and test directories present; README documents the single jev_review tool; 191 stars on 2026-09-21",
+          "author": "NiazMorshed2007",
+          "date": "2026-09-21"
+        }
+      ],
+      "repo_url": "https://github.com/NiazMorshed2007/jev-review",
+      "demo_url": null,
+      "install_url": "https://github.com/NiazMorshed2007/jev-review#quick-start",
+      "caveats": "A different project from the similarly named jev-review by devagrawal09 already in this catalog. Distributed from GitHub only, not npm. Score quality was not benchmarked here.",
+      "readiness": "installable-from-source",
+      "skill_frameworks": [
+        "claude-code",
+        "codex"
+      ],
+      "last_checked": "2026-09-21",
+      "creator_display": "Niaz Morshed",
+      "creator_url": "https://github.com/NiazMorshed2007",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-voice-browser",
+      "title": "voice-browser",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to decide whether a partial voice transcript is a complete, addressed, non-destructive command, then acts on a real browser before the sentence ends.",
+      "actual_actions_or_outcome": "Streams partial transcripts from the Web Speech API to a Node server that snapshots the page, asks Jev around a dozen typed questions in one request, and decides whether to act, wait, ask or ignore on a headed Chromium window driven by Playwright.",
+      "jev_role": "One request with about a dozen typed questions: intent, target element, site, command completeness, addressed-to-me, destructiveness",
+      "other_components": [
+        "Playwright headed Chromium",
+        "Web Speech API",
+        "WebSocket server",
+        "threshold policy in constants.js"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/moritzkremb/jev-voice-browser",
+          "type": "repo",
+          "what_verified": "src/jev.js, src/server.js, scripts/demo.js and test/integration/jev-decisions.test.js all read TYPESAFE_API_KEY; README documents the one-request question set and the server-side key; 187 stars on 2026-09-21",
+          "author": "moritzkremb",
+          "date": "2026-09-21"
+        }
+      ],
+      "repo_url": "https://github.com/moritzkremb/jev-voice-browser",
+      "demo_url": null,
+      "install_url": null,
+      "caveats": "Acts on a live browser from speech, so a misread command can navigate or type. The README's 250 to 350 ms latency claim was not reproduced here.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-21",
+      "creator_display": "Moritz Kremb",
+      "creator_url": "https://github.com/moritzkremb",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-shell-history",
+      "title": "jev-shell-history",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to rank which of your recent shell history entries you are completing, shown as a fish-style zsh autosuggestion.",
+      "actual_actions_or_outcome": "A zsh plugin that sends the last 100 distinct history entries plus the current input to Jev and renders the best match in grey after the cursor with its score. Right arrow or Ctrl-E accepts it. Prefix mode completes literally, fuzzy mode can replace the line.",
+      "jev_role": "Ranks candidate history entries against the partially typed command and returns per-candidate probabilities",
+      "other_components": [
+        "zsh zle widgets",
+        "Node 22 running TypeScript directly",
+        "threshold environment variables",
+        "e2e zsh test"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/mrnugget/jev-shell-history",
+          "type": "repo",
+          "what_verified": "src/cli.ts and zsh/jev-shell-history.plugin.zsh read TYPESAFE_API_KEY; test/e2e.zsh present; README documents thresholds and key setup; 82 stars on 2026-09-21",
+          "author": "mrnugget",
+          "date": "2026-09-21"
+        }
+      ],
+      "repo_url": "https://github.com/mrnugget/jev-shell-history",
+      "demo_url": null,
+      "install_url": "https://github.com/mrnugget/jev-shell-history#install",
+      "caveats": "Every keystroke past the minimum length can trigger a request, so cost scales with typing. Your shell history is sent to the API. No license file at the time of review.",
+      "readiness": "installable-from-source",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-21",
+      "creator_display": "Thorsten Ball",
+      "creator_url": "https://github.com/mrnugget",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-recruiter",
+      "title": "Jev Recruiter",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to choose where to browse on LinkedIn, screen professional titles, and judge visible profile excerpts against a written brief.",
+      "actual_actions_or_outcome": "A local workspace built on Browser Use's Jev Ultrafast and Browser Harness. It starts from a people search, follows selected sidebar recommendations, saves discovered profile URLs with their source and screening result, and exports JSON. The live browser is visible and runs can be paused and stepped.",
+      "jev_role": "Navigation choices, title screening, and per-criterion evidence selection with no secondary text model",
+      "other_components": [
+        "Browser Use Jev Ultrafast",
+        "Browser Harness",
+        "local Chrome with a signed-in session",
+        "optional Morph provider"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/skeptrunedev/jev-recruiter",
+          "type": "repo",
+          "what_verified": "jev_ultrafast/decision_provider.py posts to https://api.typesafe.ai/v1/systemone with model jev-latest; tests set TYPESAFE_API_KEY; README documents the .env provider switch; 43 stars on 2026-09-21",
+          "author": "skeptrunedev",
+          "date": "2026-09-21"
+        }
+      ],
+      "repo_url": "https://github.com/skeptrunedev/jev-recruiter",
+      "demo_url": null,
+      "install_url": "https://github.com/skeptrunedev/jev-recruiter#quick-start",
+      "caveats": "Automates a signed-in LinkedIn session, which can conflict with that site's terms and risks the account. Screening people is a consequential use; the model's judgments were not evaluated for fairness here.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-21",
+      "creator_display": "@skeptrunedev",
+      "creator_url": "https://github.com/skeptrunedev",
+      "credit_kind": "by"
+    },
+    {
+      "id": "ha-jev",
+      "title": "Jev for Home Assistant",
+      "category": "platform-integration",
+      "highlight": false,
+      "short_description": "Uses Jev to answer typed questions about a live Home Assistant house and exposes the answers as sensors and binary sensors.",
+      "actual_actions_or_outcome": "A HACS custom integration with a config flow for the API address and key. It builds state snapshots from tracked entities, asks Jev, and publishes the typed results as entities plus a conversation agent, with usage accounting and diagnostics.",
+      "jev_role": "Typed judgments over a snapshot of selected Home Assistant entity states",
+      "other_components": [
+        "Home Assistant custom component",
+        "HACS distribution",
+        "config flow and subentries",
+        "hassfest and test workflows"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/AboveColin/HA-Jev",
+          "type": "repo",
+          "what_verified": "custom_components/jev/config_flow.py documents the client appending /v1/systemone; coordinator.py, statebuilder.py, snapshot.py and conversation.py present; README defaults the API address to https://api.typesafe.ai; 40 stars on 2026-09-21",
+          "author": "AboveColin",
+          "date": "2026-09-21"
+        }
+      ],
+      "repo_url": "https://github.com/AboveColin/HA-Jev",
+      "demo_url": null,
+      "install_url": null,
+      "caveats": "A custom HACS integration, not an official Home Assistant one. Polling a house full of entities bills per request; the built-in usage accounting was not verified against a real bill.",
+      "readiness": "installable",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-21",
+      "creator_display": "Colin de Vries",
+      "creator_url": "https://github.com/AboveColin",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-eval-agent",
+      "title": "jev-eval-agent",
+      "category": "model-routing",
+      "highlight": false,
+      "short_description": "Uses Jev to pick the tool before each agent step, then measures how many steps that takes versus letting the LLM choose from all 100 tools.",
+      "actual_actions_or_outcome": "A personal-assistant agent with 100 mocked tools, served through OpenRouter, that runs in two modes selected by one environment variable. In jev-classifier mode Jev picks the tool from conversation state and only that tool is exposed to the LLM, which fills the arguments. Evals and a results UI are included.",
+      "jev_role": "Choice of one tool out of 100 before every model step, from the conversation state",
+      "other_components": [
+        "eve agent framework",
+        "OpenRouter",
+        "eval harness",
+        "results UI",
+        "English and Portuguese docs"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/vinilana/jev-eval-agent",
+          "type": "repo",
+          "what_verified": "agent/lib/jev-router.ts imports TypeSafeClient, choice and noul from @typesafe-ai/sdk; .env.example and README require TYPESAFE_API_KEY alongside OPENROUTER_API_KEY; eval-results and eval-ui directories present; 100 stars on 2026-09-21",
+          "author": "vinilana",
+          "date": "2026-09-21"
+        }
+      ],
+      "repo_url": "https://github.com/vinilana/jev-eval-agent",
+      "demo_url": null,
+      "install_url": null,
+      "caveats": "All 100 tools are mocked, so the comparison measures step counts on synthetic tasks rather than real outcomes. The committed eval results were not reproduced here.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-21",
+      "creator_display": "Vinicius Lana",
+      "creator_url": "https://github.com/vinilana",
+      "credit_kind": "by"
+    },
+    {
+      "id": "skillbox",
+      "title": "Skillbox",
+      "category": "agent-skill",
+      "highlight": false,
+      "short_description": "Self-hosted agent skill library that uses Jev to recommend which stored skills fit the current request.",
+      "actual_actions_or_outcome": "Runs as a self-hostable service with a CLI and MCP surface for managing a personal skill collection, and calls the System One endpoint to rank recommendations. Ships Docker Compose, Coolify and Umbrel deployment paths plus a recommendation benchmark script.",
+      "jev_role": "Ranks stored skills against the current request to produce recommendations",
+      "other_components": [
+        "Docker Compose and Umbrel packaging",
+        "CLI",
+        "MCP skills surface",
+        "recommendation benchmark and tests"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/kitze/skillbox",
+          "type": "repo",
+          "what_verified": "src/server/recommendations.ts and its tests reference api.typesafe.ai; README documents POST https://api.typesafe.ai/v1/systemone with model jev-latest; scripts/benchmark-recommendations.ts reads TYPESAFE_API_KEY; 220 stars on 2026-09-21",
+          "author": "kitze",
+          "date": "2026-09-21"
+        }
+      ],
+      "repo_url": "https://github.com/kitze/skillbox",
+      "demo_url": null,
+      "install_url": null,
+      "caveats": "Jev powers one feature, the recommendations; the rest of the product is a skill manager that works without a key. Self-hosting requires running the Compose stack.",
+      "readiness": "installable-from-source",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-21",
+      "creator_display": "@kitze",
+      "creator_url": "https://github.com/kitze",
+      "credit_kind": "by"
+    },
+    {
+      "id": "is-malicious",
+      "title": "is-malicious?",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to judge whether a dependency diff or package looks malicious, as a CLI, an agent skill and a GitHub Actions check.",
+      "actual_actions_or_outcome": "Discovers and chunks changed files, runs deterministic built-in checks first, then asks Jev about the remaining chunks and prints a verdict. Ships benign, telemetry and dropper fixtures plus ready-made PR scanning workflows.",
+      "jev_role": "Per-chunk judgments of suspicious behavior in source and package metadata",
+      "other_components": [
+        "deterministic built-in checks",
+        "GitHub Actions examples",
+        "agent skill",
+        "test fixtures"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/luantak/is-malicious",
+          "type": "repo",
+          "what_verified": "package.json pins @typesafe-ai/sdk ^0.6.0; src/cli.ts errors without TYPESAFE_API_KEY; skills/is-malicious/scripts/run.sh guards on the key; fixtures and two Actions examples present; 18 stars on 2026-09-21",
+          "author": "luantak",
+          "date": "2026-09-21"
+        }
+      ],
+      "repo_url": "https://github.com/luantak/is-malicious",
+      "demo_url": null,
+      "install_url": null,
+      "caveats": "A screening aid, not a security guarantee: it can miss real attacks and flag benign code. Detection rates were not measured here beyond the shipped fixtures.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [
+        "claude-code"
+      ],
+      "last_checked": "2026-09-21",
+      "creator_display": "@luantak",
+      "creator_url": "https://github.com/luantak",
+      "credit_kind": "by"
+    },
+    {
+      "id": "fastbrowse",
+      "title": "fastbrowse",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to choose browser actions, reaching the API directly or through the Vercel AI Gateway depending on which key is set.",
+      "actual_actions_or_outcome": "A Python browser agent that captures page state, asks Jev for the next operation, and runs live evals comparing the direct TypeSafe path against the gateway path. Ships adapters for local Chrome and Browser Use Cloud plus an autoconsent bundle.",
+      "jev_role": "Chooses the next browser operation and target from captured page state",
+      "other_components": [
+        "local Chrome and Browser Use Cloud adapters",
+        "Vercel AI Gateway fallback",
+        "live eval harness",
+        "autoconsent"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/agent-labs-dev/fastbrowse",
+          "type": "repo",
+          "what_verified": "src/fastbrowse/clients/typesafe.py sets TYPESAFE_URL to https://api.typesafe.ai; clients/environment.py documents TYPESAFE_API_KEY taking precedence over AI_GATEWAY_API_KEY; docs/jev.md and evals/live.py present; 66 stars on 2026-09-21",
+          "author": "agent-labs-dev",
+          "date": "2026-09-21"
+        }
+      ],
+      "repo_url": "https://github.com/agent-labs-dev/fastbrowse",
+      "demo_url": null,
+      "install_url": null,
+      "caveats": "Jev is one of two routes; with only a gateway key set the same questions go to the Vercel AI Gateway instead. The repository's own eval numbers were not reproduced here.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-21",
+      "creator_display": "Agent Labs",
+      "creator_url": "https://github.com/agent-labs-dev",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "jev-dsh-decision",
+      "title": "Jev DSH Decision Engine",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "A DSH desktop plugin that uses Jev to judge a selected task context against written criteria, with the key resolved from the host credential store.",
+      "actual_actions_or_outcome": "Registers Jev-backed actions inside DSH, resolves TYPESAFE_API_KEY through the host's credentials service rather than plugin source, sends the selected task context and criteria to the System One endpoint, and returns the decision to the host's tools and skills services.",
+      "jev_role": "Typed decision over a selected task context and user-written criteria",
+      "other_components": [
+        "DSH plugin manifest and permissions",
+        "host credentials service",
+        "Node test suite"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/Devin-AXIS/jev-dsh-decision",
+          "type": "repo",
+          "what_verified": "service/jev.mjs sets ENDPOINT to https://api.typesafe.ai/v1/systemone; service/dsh.mjs resolves TYPESAFE_API_KEY via ctx.credentials; tests/jev.test.mjs and tests/dsh.test.mjs assert both; plugin manifest declares the network permission; 54 stars on 2026-09-21",
+          "author": "Devin-AXIS",
+          "date": "2026-09-21"
+        }
+      ],
+      "repo_url": "https://github.com/Devin-AXIS/jev-dsh-decision",
+      "demo_url": null,
+      "install_url": null,
+      "caveats": "Documentation is in Chinese and the plugin only runs inside a DSH install that provides the credentials, tools and skills services. Young repository with a small commit history.",
+      "readiness": "installable-from-source",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-21",
+      "creator_display": "@Devin-AXIS",
+      "creator_url": "https://github.com/Devin-AXIS",
       "credit_kind": "by"
     }
   ]

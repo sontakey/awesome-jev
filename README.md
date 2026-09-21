@@ -5,21 +5,21 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-67_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-79_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (19)
-- [Model and skill routing](#model-and-skill-routing) (5)
+- [Action-taking projects](#action-taking-projects) (27)
+- [Model and skill routing](#model-and-skill-routing) (6)
 - [Email and inbox routing](#email-and-inbox-routing) (1)
-- [MCP and agent bridges](#mcp-and-agent-bridges) (3)
+- [MCP and agent bridges](#mcp-and-agent-bridges) (4)
 - [Official cookbooks and patterns](#official-cookbooks-and-patterns) (4)
 - [Official SDKs and adapter](#official-sdks-and-adapter) (3)
 - [Official docs, skill, and launch demos](#official-docs-skill-and-launch-demos) (4)
-- [Platform integrations](#platform-integrations) (1)
+- [Platform integrations](#platform-integrations) (2)
 - [Community clients](#community-clients) (5)
-- [Installable agent skills](#installable-agent-skills) (5)
+- [Installable agent skills](#installable-agent-skills) (6)
 - [Other awesome-Jev lists](#other-awesome-jev-lists) (11)
 - [Related, not TypeSafe Jev](#related-not-typesafe-jev) (6)
 - [Quick start](#quick-start)
@@ -51,6 +51,14 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [Jev experiments](https://github.com/dabit3/jev-experiments) — A collection of latency-focused demo apps that use Jev through the official JavaScript SDK. By [Nader Dabit](https://github.com/dabit3). `code-inspected` <!-- catalog:jev-experiments -->
 - [Mobile Jev](https://github.com/droidrun/mobile-jev) — Uses Jev to choose the next action on a real Android phone driven through the Mobilerun API. Maintained by [Droidrun](https://github.com/droidrun). `code-inspected` <!-- catalog:mobile-jev -->
 - [jev-align](https://github.com/sutro-sh/jev-align) — Uses Jev to build AI functions, surfacing uncertain examples for labeling and optimizing the function with GEPA. Maintained by [Sutro](https://github.com/sutro-sh). `code-inspected` <!-- catalog:jev-align -->
+- [Jev Browser](https://github.com/jkudish/jev-browser) — Uses Jev to pick one browser action per step from a page's clickable, typeable and selectable elements, exposed as an MCP server, CLI and library. By [Joey Kudish](https://github.com/jkudish). `code-inspected` <!-- catalog:jev-browser-jkudish -->
+- [jev-lint](https://github.com/mizchi/jev-lint) — Uses Jev to lint the things a parser cannot check, such as whether a function does what its name says or whether a comment is still true. By [Kotaro Chikuba](https://github.com/mizchi). `code-inspected` <!-- catalog:jev-lint -->
+- [voice-browser](https://github.com/moritzkremb/jev-voice-browser) — Uses Jev to decide whether a partial voice transcript is a complete, addressed, non-destructive command, then acts on a real browser before the sentence ends. By [Moritz Kremb](https://github.com/moritzkremb). `code-inspected` <!-- catalog:jev-voice-browser -->
+- [jev-shell-history](https://github.com/mrnugget/jev-shell-history) — Uses Jev to rank which of your recent shell history entries you are completing, shown as a fish-style zsh autosuggestion. By [Thorsten Ball](https://github.com/mrnugget). `code-inspected` <!-- catalog:jev-shell-history -->
+- [Jev Recruiter](https://github.com/skeptrunedev/jev-recruiter) — Uses Jev to choose where to browse on LinkedIn, screen professional titles, and judge visible profile excerpts against a written brief. By [@skeptrunedev](https://github.com/skeptrunedev). `code-inspected` <!-- catalog:jev-recruiter -->
+- [is-malicious?](https://github.com/luantak/is-malicious) — Uses Jev to judge whether a dependency diff or package looks malicious, as a CLI, an agent skill and a GitHub Actions check. By [@luantak](https://github.com/luantak). `code-inspected` <!-- catalog:is-malicious -->
+- [fastbrowse](https://github.com/agent-labs-dev/fastbrowse) — Uses Jev to choose browser actions, reaching the API directly or through the Vercel AI Gateway depending on which key is set. Maintained by [Agent Labs](https://github.com/agent-labs-dev). `code-inspected` <!-- catalog:fastbrowse -->
+- [Jev DSH Decision Engine](https://github.com/Devin-AXIS/jev-dsh-decision) — A DSH desktop plugin that uses Jev to judge a selected task context against written criteria, with the key resolved from the host credential store. By [@Devin-AXIS](https://github.com/Devin-AXIS). `code-inspected` <!-- catalog:jev-dsh-decision -->
 
 ## Model and skill routing
 
@@ -59,6 +67,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [SkillRanker](https://github.com/Dicklesworthstone/skillranker) — Ranks which agent skill fits the next step from live session context. By [Jeff Emanuel](https://github.com/Dicklesworthstone). `code-inspected` <!-- catalog:skillranker -->
 - [Official skill-suggestion cookbook](https://docs.typesafe.ai/cookbooks/skill_suggestion) — Two Jev requests rank 182 Hermes skills and may suggest none. Maintained by [TypeSafe AI](https://github.com/typesafe-ai). `documented-example` <!-- catalog:cookbook-skill-suggestion -->
 - [Jev Agent Skill Router](https://github.com/GodsBoy/jev-agent-skill-router) — Routes over a skill catalogue with Jev Choice and Noul gates; it does not load the skills. By [Dewaldt Huysamen](https://github.com/GodsBoy). `code-inspected` <!-- catalog:jev-agent-skill-router -->
+- [jev-eval-agent](https://github.com/vinilana/jev-eval-agent) — Uses Jev to pick the tool before each agent step, then measures how many steps that takes versus letting the LLM choose from all 100 tools. By [Vinicius Lana](https://github.com/vinilana). `code-inspected` <!-- catalog:jev-eval-agent -->
 
 ## Email and inbox routing
 
@@ -69,6 +78,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [Jev MCP (jkudish)](https://github.com/jkudish/jev-mcp) — MCP tools that verify claims, screen content, and rank candidates with Jev. By [Joey Kudish](https://github.com/jkudish). `code-inspected` <!-- catalog:jev-mcp -->
 - [typesafe-mcp](https://github.com/itsmostafa/typesafe-mcp) — Community MCP that exposes TypeSafe System One to Claude or Codex. By [@itsmostafa](https://github.com/itsmostafa). `demo-inspected` <!-- catalog:typesafe-mcp -->
 - [y0usaf/typesafe-mcp](https://github.com/y0usaf/typesafe-mcp) — One MCP evaluate(state, questions) tool that POSTs to the TypeSafe API. By [Sami Ansari](https://github.com/y0usaf). Announced by [@realy0usaf](https://x.com/realy0usaf). `code-inspected` <!-- catalog:y0usaf-typesafe-mcp -->
+- [Jev Review (MCP)](https://github.com/NiazMorshed2007/jev-review) — Local MCP server that gives a coding agent structured Jev quality scores across correctness, complexity, tests and security while it works. By [Niaz Morshed](https://github.com/NiazMorshed2007). `code-inspected` <!-- catalog:jev-review-mcp -->
 
 ## Official cookbooks and patterns
 
@@ -93,6 +103,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 ## Platform integrations
 
 - [Vercel AI Gateway + AI SDK evaluate](https://ai-sdk.dev/docs/ai-sdk-core/evaluation) — Jev as typesafe-ai/jev on AI Gateway, plus AI SDK 7 experimental_evaluate. Maintained by [Vercel](https://github.com/vercel). `documented-example` <!-- catalog:vercel-ai-gateway-jev -->
+- [Jev for Home Assistant](https://github.com/AboveColin/HA-Jev) — Uses Jev to answer typed questions about a live Home Assistant house and exposes the answers as sensors and binary sensors. By [Colin de Vries](https://github.com/AboveColin). `code-inspected` <!-- catalog:ha-jev -->
 
 ## Community clients
 
@@ -109,6 +120,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [advocaat](https://github.com/pithings/advocaat) — Small TypeScript ask() client plus an agent skill over Jev. Maintained by [PiThings](https://github.com/pithings). `code-inspected` <!-- catalog:advocaat -->
 - [fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) — Uses Jev to decide which tool calls and results to drop during context compaction, keeping everything else verbatim. By [tamara tran](https://github.com/tamaratran). `code-inspected` <!-- catalog:fast-jev-compaction -->
 - [Jev Browser Use](https://github.com/wy-coliney/jev-browser-use) — Uses Jev to choose browser navigation, clicks and scrolling while the coding agent keeps text input and final verification. By [@wy-coliney](https://github.com/wy-coliney). `code-inspected` <!-- catalog:jev-browser-use -->
+- [Skillbox](https://github.com/kitze/skillbox) — Self-hosted agent skill library that uses Jev to recommend which stored skills fit the current request. By [@kitze](https://github.com/kitze). `code-inspected` <!-- catalog:skillbox -->
 
 ## Other awesome-Jev lists
 

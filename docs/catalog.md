@@ -259,6 +259,105 @@ Uses Jev to build AI functions, surfacing uncertain examples for labeling and op
 - Install / start: https://github.com/sutro-sh/jev-align#quick-start
 - Caveat: Self-described as experimental. Requires Python 3.11 or newer. Optimization quality depends on your labeled examples and was not evaluated here.
 
+### [Jev Browser](https://github.com/jkudish/jev-browser)
+<!-- catalog:jev-browser-jkudish -->
+
+By [Joey Kudish](https://github.com/jkudish).
+
+Uses Jev to pick one browser action per step from a page's clickable, typeable and selectable elements, exposed as an MCP server, CLI and library.
+
+- Action / outcome: Drives headless Playwright Chromium toward a task and URL. Returns the final page, a step trace with per-step confidences, console errors and a screenshot. Code owns the loop: budgets, recovery and stop gates.
+- Jev's role: Per-step choice of the next action and target element, plus goal-met and stuck probabilities
+- Origin: community · Evidence: `code-inspected` · Readiness: installable
+- Install / start: https://github.com/jkudish/jev-browser#install
+- Caveat: Early software; the README warns about rough edges on harder sites. The published latency and cost figures were not reproduced here.
+
+### [jev-lint](https://github.com/mizchi/jev-lint)
+<!-- catalog:jev-lint -->
+
+By [Kotaro Chikuba](https://github.com/mizchi).
+
+Uses Jev to lint the things a parser cannot check, such as whether a function does what its name says or whether a comment is still true.
+
+- Action / outcome: Matches code with ast-grep, then sends one file as state with many independent questions per run and prints flagged lines with probabilities and per-rule cutoffs. Ships rules for TypeScript, JavaScript, Rust, Python, Go, Markdown, package.json and git commits.
+- Jev's role: Many independent per-match judgments over one file of state, batched into a single request
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Caveat: Rule cutoffs in RULES.md come from the author's own committed baselines and were not re-derived here. Checks that call the model need a key and cost money per run.
+
+### [voice-browser](https://github.com/moritzkremb/jev-voice-browser)
+<!-- catalog:jev-voice-browser -->
+
+By [Moritz Kremb](https://github.com/moritzkremb).
+
+Uses Jev to decide whether a partial voice transcript is a complete, addressed, non-destructive command, then acts on a real browser before the sentence ends.
+
+- Action / outcome: Streams partial transcripts from the Web Speech API to a Node server that snapshots the page, asks Jev around a dozen typed questions in one request, and decides whether to act, wait, ask or ignore on a headed Chromium window driven by Playwright.
+- Jev's role: One request with about a dozen typed questions: intent, target element, site, command completeness, addressed-to-me, destructiveness
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Caveat: Acts on a live browser from speech, so a misread command can navigate or type. The README's 250 to 350 ms latency claim was not reproduced here.
+
+### [jev-shell-history](https://github.com/mrnugget/jev-shell-history)
+<!-- catalog:jev-shell-history -->
+
+By [Thorsten Ball](https://github.com/mrnugget).
+
+Uses Jev to rank which of your recent shell history entries you are completing, shown as a fish-style zsh autosuggestion.
+
+- Action / outcome: A zsh plugin that sends the last 100 distinct history entries plus the current input to Jev and renders the best match in grey after the cursor with its score. Right arrow or Ctrl-E accepts it. Prefix mode completes literally, fuzzy mode can replace the line.
+- Jev's role: Ranks candidate history entries against the partially typed command and returns per-candidate probabilities
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
+- Install / start: https://github.com/mrnugget/jev-shell-history#install
+- Caveat: Every keystroke past the minimum length can trigger a request, so cost scales with typing. Your shell history is sent to the API. No license file at the time of review.
+
+### [Jev Recruiter](https://github.com/skeptrunedev/jev-recruiter)
+<!-- catalog:jev-recruiter -->
+
+By [@skeptrunedev](https://github.com/skeptrunedev).
+
+Uses Jev to choose where to browse on LinkedIn, screen professional titles, and judge visible profile excerpts against a written brief.
+
+- Action / outcome: A local workspace built on Browser Use's Jev Ultrafast and Browser Harness. It starts from a people search, follows selected sidebar recommendations, saves discovered profile URLs with their source and screening result, and exports JSON. The live browser is visible and runs can be paused and stepped.
+- Jev's role: Navigation choices, title screening, and per-criterion evidence selection with no secondary text model
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/skeptrunedev/jev-recruiter#quick-start
+- Caveat: Automates a signed-in LinkedIn session, which can conflict with that site's terms and risks the account. Screening people is a consequential use; the model's judgments were not evaluated for fairness here.
+
+### [is-malicious?](https://github.com/luantak/is-malicious)
+<!-- catalog:is-malicious -->
+
+By [@luantak](https://github.com/luantak).
+
+Uses Jev to judge whether a dependency diff or package looks malicious, as a CLI, an agent skill and a GitHub Actions check.
+
+- Action / outcome: Discovers and chunks changed files, runs deterministic built-in checks first, then asks Jev about the remaining chunks and prints a verdict. Ships benign, telemetry and dropper fixtures plus ready-made PR scanning workflows.
+- Jev's role: Per-chunk judgments of suspicious behavior in source and package metadata
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Caveat: A screening aid, not a security guarantee: it can miss real attacks and flag benign code. Detection rates were not measured here beyond the shipped fixtures.
+
+### [fastbrowse](https://github.com/agent-labs-dev/fastbrowse)
+<!-- catalog:fastbrowse -->
+
+Maintained by [Agent Labs](https://github.com/agent-labs-dev).
+
+Uses Jev to choose browser actions, reaching the API directly or through the Vercel AI Gateway depending on which key is set.
+
+- Action / outcome: A Python browser agent that captures page state, asks Jev for the next operation, and runs live evals comparing the direct TypeSafe path against the gateway path. Ships adapters for local Chrome and Browser Use Cloud plus an autoconsent bundle.
+- Jev's role: Chooses the next browser operation and target from captured page state
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Caveat: Jev is one of two routes; with only a gateway key set the same questions go to the Vercel AI Gateway instead. The repository's own eval numbers were not reproduced here.
+
+### [Jev DSH Decision Engine](https://github.com/Devin-AXIS/jev-dsh-decision)
+<!-- catalog:jev-dsh-decision -->
+
+By [@Devin-AXIS](https://github.com/Devin-AXIS).
+
+A DSH desktop plugin that uses Jev to judge a selected task context against written criteria, with the key resolved from the host credential store.
+
+- Action / outcome: Registers Jev-backed actions inside DSH, resolves TYPESAFE_API_KEY through the host's credentials service rather than plugin source, sends the selected task context and criteria to the System One endpoint, and returns the decision to the host's tools and skills services.
+- Jev's role: Typed decision over a selected task context and user-written criteria
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
+- Caveat: Documentation is in Chinese and the plugin only runs inside a DSH install that provides the credentials, tools and skills services. Young repository with a small commit history.
+
 ## Model and skill routing
 
 ### [jev-router](https://github.com/gargpratyush/jev-router)
@@ -327,6 +426,18 @@ Routes over a skill catalogue with Jev Choice and Noul gates; it does not load t
 - Install / start: https://github.com/GodsBoy/jev-agent-skill-router#install-and-verify
 - Caveat: Native x_search named this repo without a status citation; GitHub independently inspected. Benchmark is 24 synthetic skills / 72 requests, not a live Hermes catalogue. CLI name jev-router collides with gargpratyush/jev-router. 3 stars. Accuracy numbers are author-recorded, not re-run here.
 
+### [jev-eval-agent](https://github.com/vinilana/jev-eval-agent)
+<!-- catalog:jev-eval-agent -->
+
+By [Vinicius Lana](https://github.com/vinilana).
+
+Uses Jev to pick the tool before each agent step, then measures how many steps that takes versus letting the LLM choose from all 100 tools.
+
+- Action / outcome: A personal-assistant agent with 100 mocked tools, served through OpenRouter, that runs in two modes selected by one environment variable. In jev-classifier mode Jev picks the tool from conversation state and only that tool is exposed to the LLM, which fills the arguments. Evals and a results UI are included.
+- Jev's role: Choice of one tool out of 100 before every model step, from the conversation state
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Caveat: All 100 tools are mocked, so the comparison measures step counts on synthetic tasks rather than real outcomes. The committed eval results were not reproduced here.
+
 ## Email and inbox routing
 
 ### [Jev email intent workflow](https://github.com/GiesN/typesafe-jev-workflow)
@@ -382,6 +493,19 @@ One MCP evaluate(state, questions) tool that POSTs to the TypeSafe API.
 - Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
 - Install / start: https://github.com/y0usaf/typesafe-mcp#install
 - Caveat: Launch-week MCP. Distinct from itsmostafa/typesafe-mcp and jkudish/jev-mcp. 3 stars. Not official.
+
+### [Jev Review (MCP)](https://github.com/NiazMorshed2007/jev-review)
+<!-- catalog:jev-review-mcp -->
+
+By [Niaz Morshed](https://github.com/NiazMorshed2007).
+
+Local MCP server that gives a coding agent structured Jev quality scores across correctness, complexity, tests and security while it works.
+
+- Action / outcome: Exposes a single jev_review tool over MCP stdio to Claude Code, Codex, Cursor and OpenCode. The coding agent still diagnoses and edits; Jev supplies scalar scores per quality dimension. No hosted backend, the only remote call goes to the configured Jev API.
+- Jev's role: Independent per-dimension quality scores over a code diff or file
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
+- Install / start: https://github.com/NiazMorshed2007/jev-review#quick-start
+- Caveat: A different project from the similarly named jev-review by devagrawal09 already in this catalog. Distributed from GitHub only, not npm. Score quality was not benchmarked here.
 
 ## Official cookbooks and patterns
 
@@ -555,6 +679,18 @@ Jev as typesafe-ai/jev on AI Gateway, plus AI SDK 7 experimental_evaluate.
 - Demo: https://ai-sdk.dev/docs/ai-sdk-core/evaluation
 - Caveat: API is experimental. TypeSafe workflow-eval multipliers in the changelog are vendor-attributed.
 
+### [Jev for Home Assistant](https://github.com/AboveColin/HA-Jev)
+<!-- catalog:ha-jev -->
+
+By [Colin de Vries](https://github.com/AboveColin).
+
+Uses Jev to answer typed questions about a live Home Assistant house and exposes the answers as sensors and binary sensors.
+
+- Action / outcome: A HACS custom integration with a config flow for the API address and key. It builds state snapshots from tracked entities, asks Jev, and publishes the typed results as entities plus a conversation agent, with usage accounting and diagnostics.
+- Jev's role: Typed judgments over a snapshot of selected Home Assistant entity states
+- Origin: community · Evidence: `code-inspected` · Readiness: installable
+- Caveat: A custom HACS integration, not an official Home Assistant one. Polling a house full of entities bills per request; the built-in usage accounting was not verified against a real bill.
+
 ## Community clients
 
 ### [ruby_llm-typesafe](https://github.com/kieranklaassen/ruby_llm-typesafe)
@@ -688,6 +824,18 @@ Uses Jev to choose browser navigation, clicks and scrolling while the coding age
 - Origin: community · Evidence: `code-inspected` · Readiness: installable
 - Install / start: https://github.com/wy-coliney/jev-browser-use#install
 - Caveat: The 5-10x speedup claim comes from the author's own workflows and was not reproduced here. Decisions run on text candidates, not pixels.
+
+### [Skillbox](https://github.com/kitze/skillbox)
+<!-- catalog:skillbox -->
+
+By [@kitze](https://github.com/kitze).
+
+Self-hosted agent skill library that uses Jev to recommend which stored skills fit the current request.
+
+- Action / outcome: Runs as a self-hostable service with a CLI and MCP surface for managing a personal skill collection, and calls the System One endpoint to rank recommendations. Ships Docker Compose, Coolify and Umbrel deployment paths plus a recommendation benchmark script.
+- Jev's role: Ranks stored skills against the current request to produce recommendations
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
+- Caveat: Jev powers one feature, the recommendations; the rest of the product is a skill manager that works without a key. Self-hosting requires running the Compose stack.
 
 ## Other awesome-Jev lists
 
