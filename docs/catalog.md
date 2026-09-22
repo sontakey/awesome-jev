@@ -358,6 +358,85 @@ A DSH desktop plugin that uses Jev to judge a selected task context against writ
 - Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
 - Caveat: Documentation is in Chinese and the plugin only runs inside a DSH install that provides the credentials, tools and skills services. Young repository with a small commit history.
 
+### [memsearch](https://github.com/zilliztech/memsearch)
+<!-- catalog:memsearch-jev-reranker -->
+
+Maintained by [Zilliz](https://github.com/zilliztech).
+
+Uses Jev to rerank recalled memories before a coding agent sees them.
+
+- Action / outcome: Runs a semantic memory store for coding agents across Claude Code, Codex and other harnesses, and offers Jev as an opt-in reranker: jev_reranker.py POSTs the query and candidate memories to the System One endpoint and reorders results by the returned judgment before they reach the agent.
+- Jev's role: Opt-in reranking judgment over recalled memory candidates
+- Origin: community · Evidence: `code-inspected` · Readiness: installable
+- Install / start: https://zilliztech.github.io/memsearch/
+- Caveat: Jev is one optional reranker backend, not the default path, so most of the project runs without TypeSafe. Reranking quality numbers in the evaluation docs were not reproduced here.
+
+### [Hippo](https://github.com/kitfunso/hippo-memory)
+<!-- catalog:hippo-memory-jev-reranker -->
+
+By [Keith So](https://github.com/kitfunso).
+
+Uses Jev to rerank recalled memories in a decay-based memory layer for agents.
+
+- Action / outcome: Runs a local SQLite memory layer with decay and provenance for CLI agents, and ships an opt-in Jev reranker: src/rerankers/jev.ts posts the query and candidate memories to the System One endpoint so hippo recall can order results by judgment instead of raw similarity.
+- Jev's role: Opt-in reranking judgment over recalled memory candidates
+- Origin: community · Evidence: `code-inspected` · Readiness: installable
+- Install / start: https://github.com/kitfunso/hippo-memory#readme
+- Demo: https://hippo-memory.com
+- Caveat: Jev is one opt-in reranker flag; the default recall path does not call TypeSafe. Large repository where the Jev surface is a small part of the whole.
+
+### [Jeview](https://github.com/andududu/jeview)
+<!-- catalog:jeview -->
+
+By [Mihai Ionescu](https://github.com/andududu).
+
+Uses a local gateway to record and draw every Jev call your code makes.
+
+- Action / outcome: Sits between your code and TypeSafe on 127.0.0.1:4777, forwards each request to the System One endpoint with your key, returns Jev's answer unchanged, stores every call in a local SQLite database and draws them on a live map. Requests can be grouped under a project label by path.
+- Jev's role: None of its own: it proxies and visualises the caller's Jev requests and answers
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/andududu/jeview#run-it
+- Caveat: Unofficial and not affiliated with TypeSafe, as the README states. Young repository created 2026-09-21 with a small commit history, and it proxies your API key, so run it locally only.
+
+### [jev-edge](https://github.com/kiwi0719/jev-edge)
+<!-- catalog:jev-edge -->
+
+By [@kiwi0719](https://github.com/kiwi0719).
+
+Uses Jev at an nginx or APISIX gateway to judge requests before they reach a backend.
+
+- Action / outcome: Runs as an OpenResty or Apache APISIX plugin that applies cheap L1 rules first, then sends the remaining requests to the System One endpoint for a typed admission judgment, logging one JSON line per judged request and exposing health and config endpoints under /_jev.
+- Jev's role: Typed admission judgment on requests that pass the deterministic rule layer
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
+- Install / start: https://github.com/kiwi0719/jev-edge#try-it-in-30-seconds
+- Caveat: Independent project, not affiliated with TypeSafe. Only 4 stars and created 2026-09-21, so it is new and unproven in production. Putting a network judgment in the request path adds latency and a failure mode you must configure around.
+
+### [jev-agent-browser](https://github.com/forvela/jev-agent-browser)
+<!-- catalog:jev-agent-browser -->
+
+By [@forvela](https://github.com/forvela).
+
+Uses Jev to pick the next typed browser action and hands ambiguity back to the parent agent.
+
+- Action / outcome: Gives a parent agent a bounded browser task: Jev chooses the next typed action through the official JavaScript SDK, Vercel's agent-browser executes it, and ambiguity, repetition or a stuck state becomes a structured handoff back to the parent instead of a guess.
+- Jev's role: Typed next-action selection per browser step, plus stuck and ambiguity gates
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/forvela/jev-agent-browser#quick-start
+- Caveat: Young repository with 7 stars and a small commit history. Requires the separate agent-browser package. The npm package page returned 403 to an automated check, so install was verified from the repository rather than the registry page.
+
+### [jev-ood-calibration](https://github.com/scienthoon/jev-ood-calibration)
+<!-- catalog:jev-ood-calibration -->
+
+By [@scienthoon](https://github.com/scienthoon).
+
+Uses Jev on a task it cannot have seen to test whether its probabilities stay calibrated.
+
+- Action / outcome: Sends JSONL records to Jev through the Vercel AI Gateway with one evaluate call per record, then reports accuracy, NLL, ECE and a refit temperature on three public benchmarks alongside a rule-based task built to be out of distribution.
+- Jev's role: The system under test: typed answers with probabilities that the harness scores for calibration
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/scienthoon/jev-ood-calibration#readme
+- Caveat: Independent single-author study with 4 stars whose numbers were not re-run here. It calls Jev through the Vercel AI Gateway rather than api.typesafe.ai directly, and running it costs gateway inference spend.
+
 ## Model and skill routing
 
 ### [jev-router](https://github.com/gargpratyush/jev-router)
@@ -1053,4 +1132,17 @@ Serves the TypeSafe HTTP API shape from an open Qwen model running on SGLang.
 - Origin: related · Evidence: `demo-inspected` · Readiness: related-not-jev-api
 - Install / start: https://github.com/ekzhang/openjev-sglang#run-on-modal
 - Caveat: Not TypeSafe weights, only the API shape. Running it needs a Modal account and B200 GPU time, so cost is on you. Eval numbers were not reproduced here.
+
+### [Laya](https://github.com/receptron/laya)
+<!-- catalog:laya -->
+
+Maintained by [Receptron](https://github.com/receptron).
+
+Runs an open Jev-compatible decision model in Node through ONNX Runtime. Not api.typesafe.ai.
+
+- Action / outcome: Loads the open Laya weights from Hugging Face and answers choice, score and noul questions with calibrated probabilities in one forward pass, using a systemOne() call whose request and response shape follows TypeSafe Jev's system_one API. Runs locally on ONNX Runtime with no Python at runtime.
+- Jev's role: none (open model reproducing the System One request and response shape)
+- Origin: related · Evidence: `code-inspected` · Readiness: related-not-jev-api
+- Install / start: https://github.com/receptron/laya#install
+- Caveat: Not TypeSafe weights and not api.typesafe.ai, only the same API shape from the open Laya model by Convai Innovations. First use downloads about 1.7 GB of ONNX weights and needs roughly 2 GB of RAM. Parity with the Python reference is an author claim that was not re-run here.
 

@@ -5,12 +5,12 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-79_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-86_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (27)
+- [Action-taking projects](#action-taking-projects) (33)
 - [Model and skill routing](#model-and-skill-routing) (6)
 - [Email and inbox routing](#email-and-inbox-routing) (1)
 - [MCP and agent bridges](#mcp-and-agent-bridges) (4)
@@ -21,7 +21,7 @@ Jev does not chat, write code, or see images. It returns Choice, Score, or Noul 
 - [Community clients](#community-clients) (5)
 - [Installable agent skills](#installable-agent-skills) (6)
 - [Other awesome-Jev lists](#other-awesome-jev-lists) (11)
-- [Related, not TypeSafe Jev](#related-not-typesafe-jev) (6)
+- [Related, not TypeSafe Jev](#related-not-typesafe-jev) (7)
 - [Quick start](#quick-start)
 - [Evidence](#evidence)
 - [Details](#details)
@@ -59,6 +59,12 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [is-malicious?](https://github.com/luantak/is-malicious) — Uses Jev to judge whether a dependency diff or package looks malicious, as a CLI, an agent skill and a GitHub Actions check. By [@luantak](https://github.com/luantak). `code-inspected` <!-- catalog:is-malicious -->
 - [fastbrowse](https://github.com/agent-labs-dev/fastbrowse) — Uses Jev to choose browser actions, reaching the API directly or through the Vercel AI Gateway depending on which key is set. Maintained by [Agent Labs](https://github.com/agent-labs-dev). `code-inspected` <!-- catalog:fastbrowse -->
 - [Jev DSH Decision Engine](https://github.com/Devin-AXIS/jev-dsh-decision) — A DSH desktop plugin that uses Jev to judge a selected task context against written criteria, with the key resolved from the host credential store. By [@Devin-AXIS](https://github.com/Devin-AXIS). `code-inspected` <!-- catalog:jev-dsh-decision -->
+- [memsearch](https://github.com/zilliztech/memsearch) — Uses Jev to rerank recalled memories before a coding agent sees them. Maintained by [Zilliz](https://github.com/zilliztech). `code-inspected` <!-- catalog:memsearch-jev-reranker -->
+- [Hippo](https://github.com/kitfunso/hippo-memory) — Uses Jev to rerank recalled memories in a decay-based memory layer for agents. By [Keith So](https://github.com/kitfunso). `code-inspected` <!-- catalog:hippo-memory-jev-reranker -->
+- [Jeview](https://github.com/andududu/jeview) — Uses a local gateway to record and draw every Jev call your code makes. By [Mihai Ionescu](https://github.com/andududu). `code-inspected` <!-- catalog:jeview -->
+- [jev-edge](https://github.com/kiwi0719/jev-edge) — Uses Jev at an nginx or APISIX gateway to judge requests before they reach a backend. By [@kiwi0719](https://github.com/kiwi0719). `code-inspected` <!-- catalog:jev-edge -->
+- [jev-agent-browser](https://github.com/forvela/jev-agent-browser) — Uses Jev to pick the next typed browser action and hands ambiguity back to the parent agent. By [@forvela](https://github.com/forvela). `code-inspected` <!-- catalog:jev-agent-browser -->
+- [jev-ood-calibration](https://github.com/scienthoon/jev-ood-calibration) — Uses Jev on a task it cannot have seen to test whether its probabilities stay calibrated. By [@scienthoon](https://github.com/scienthoon). `code-inspected` <!-- catalog:jev-ood-calibration -->
 
 ## Model and skill routing
 
@@ -144,6 +150,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [NanoJev](https://github.com/TianyuCodings/NanoJev) — A 0.6B open replica of the System One shape, trained to answer decision questions with probability distributions. By [@TianyuCodings](https://github.com/TianyuCodings). `demo-inspected` <!-- catalog:nanojev -->
 - [Simple Jev](https://github.com/featherless-ai/simple-jev) — Builds System One style typed answers from open Hugging Face models by reading next-token logits instead of generating JSON. Maintained by [Featherless AI](https://github.com/featherless-ai). `demo-inspected` <!-- catalog:simple-jev -->
 - [openjev-sglang](https://github.com/ekzhang/openjev-sglang) — Serves the TypeSafe HTTP API shape from an open Qwen model running on SGLang. By [Eric Zhang](https://github.com/ekzhang). `demo-inspected` <!-- catalog:openjev-sglang -->
+- [Laya](https://github.com/receptron/laya) — Runs an open Jev-compatible decision model in Node through ONNX Runtime. Not api.typesafe.ai. Maintained by [Receptron](https://github.com/receptron). `code-inspected` <!-- catalog:laya -->
 
 
 ## Quick start

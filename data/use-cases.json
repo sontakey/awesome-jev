@@ -2765,6 +2765,279 @@
       "creator_display": "@Devin-AXIS",
       "creator_url": "https://github.com/Devin-AXIS",
       "credit_kind": "by"
+    },
+    {
+      "id": "memsearch-jev-reranker",
+      "title": "memsearch",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to rerank recalled memories before a coding agent sees them.",
+      "actual_actions_or_outcome": "Runs a semantic memory store for coding agents across Claude Code, Codex and other harnesses, and offers Jev as an opt-in reranker: jev_reranker.py POSTs the query and candidate memories to the System One endpoint and reorders results by the returned judgment before they reach the agent.",
+      "jev_role": "Opt-in reranking judgment over recalled memory candidates",
+      "other_components": [
+        "Python package on PyPI",
+        "SQLite and vector store",
+        "harness plugins",
+        "pytest suite"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/zilliztech/memsearch",
+          "type": "repo",
+          "what_verified": "src/memsearch/jev_reranker.py sets ENDPOINT to https://api.typesafe.ai/v1/systemone; src/memsearch/reranker.py documents TYPESAFE_API_KEY; tests/test_jev_reranker.py sets the key in a monkeypatched env; 2633 stars on 2026-09-22",
+          "author": "zilliztech",
+          "date": "2026-09-22"
+        },
+        {
+          "url": "https://zilliztech.github.io/memsearch/",
+          "type": "docs",
+          "what_verified": "Published documentation site returns 200 and carries the configuration page that documents TYPESAFE_API_KEY",
+          "author": "zilliztech",
+          "date": "2026-09-22"
+        }
+      ],
+      "repo_url": "https://github.com/zilliztech/memsearch",
+      "demo_url": null,
+      "install_url": "https://zilliztech.github.io/memsearch/",
+      "caveats": "Jev is one optional reranker backend, not the default path, so most of the project runs without TypeSafe. Reranking quality numbers in the evaluation docs were not reproduced here.",
+      "readiness": "installable",
+      "skill_frameworks": [
+        "claude-code",
+        "codex",
+        "mcp"
+      ],
+      "last_checked": "2026-09-22",
+      "creator_display": "Zilliz",
+      "creator_url": "https://github.com/zilliztech",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "hippo-memory-jev-reranker",
+      "title": "Hippo",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to rerank recalled memories in a decay-based memory layer for agents.",
+      "actual_actions_or_outcome": "Runs a local SQLite memory layer with decay and provenance for CLI agents, and ships an opt-in Jev reranker: src/rerankers/jev.ts posts the query and candidate memories to the System One endpoint so hippo recall can order results by judgment instead of raw similarity.",
+      "jev_role": "Opt-in reranking judgment over recalled memory candidates",
+      "other_components": [
+        "npm package",
+        "SQLite",
+        "MCP client support",
+        "TypeScript test suite"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/kitfunso/hippo-memory",
+          "type": "repo",
+          "what_verified": "src/rerankers/jev.ts sets ENDPOINT to https://api.typesafe.ai/v1/systemone; tests/rerankers/jev.test.ts sets process.env.TYPESAFE_API_KEY; CHANGELOG documents --reranker jev as opt-in; 753 stars on 2026-09-22",
+          "author": "kitfunso",
+          "date": "2026-09-22"
+        },
+        {
+          "url": "https://hippo-memory.com",
+          "type": "site",
+          "what_verified": "Project site returns 200",
+          "author": "kitfunso",
+          "date": "2026-09-22"
+        }
+      ],
+      "repo_url": "https://github.com/kitfunso/hippo-memory",
+      "demo_url": "https://hippo-memory.com",
+      "install_url": "https://github.com/kitfunso/hippo-memory#readme",
+      "caveats": "Jev is one opt-in reranker flag; the default recall path does not call TypeSafe. Large repository where the Jev surface is a small part of the whole.",
+      "readiness": "installable",
+      "skill_frameworks": [
+        "claude-code",
+        "codex",
+        "mcp"
+      ],
+      "last_checked": "2026-09-22",
+      "creator_display": "Keith So",
+      "creator_url": "https://github.com/kitfunso",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jeview",
+      "title": "Jeview",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses a local gateway to record and draw every Jev call your code makes.",
+      "actual_actions_or_outcome": "Sits between your code and TypeSafe on 127.0.0.1:4777, forwards each request to the System One endpoint with your key, returns Jev's answer unchanged, stores every call in a local SQLite database and draws them on a live map. Requests can be grouped under a project label by path.",
+      "jev_role": "None of its own: it proxies and visualises the caller's Jev requests and answers",
+      "other_components": [
+        "Node 24 with no dependencies",
+        "SQLite",
+        "local web UI",
+        "mock endpoint for tests"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/andududu/jeview",
+          "type": "repo",
+          "what_verified": "src/jeview.ts exports JEV_ENDPOINT = https://api.typesafe.ai/v1/systemone; README documents the 127.0.0.1:4777 gateway path and the --jev-endpoint mock flag; 24 stars on 2026-09-22",
+          "author": "andududu",
+          "date": "2026-09-22"
+        }
+      ],
+      "repo_url": "https://github.com/andududu/jeview",
+      "demo_url": null,
+      "install_url": "https://github.com/andududu/jeview#run-it",
+      "caveats": "Unofficial and not affiliated with TypeSafe, as the README states. Young repository created 2026-09-21 with a small commit history, and it proxies your API key, so run it locally only.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-22",
+      "creator_display": "Mihai Ionescu",
+      "creator_url": "https://github.com/andududu",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-edge",
+      "title": "jev-edge",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev at an nginx or APISIX gateway to judge requests before they reach a backend.",
+      "actual_actions_or_outcome": "Runs as an OpenResty or Apache APISIX plugin that applies cheap L1 rules first, then sends the remaining requests to the System One endpoint for a typed admission judgment, logging one JSON line per judged request and exposing health and config endpoints under /_jev.",
+      "jev_role": "Typed admission judgment on requests that pass the deterministic rule layer",
+      "other_components": [
+        "OpenResty and Lua",
+        "Apache APISIX plugin",
+        "Docker Compose demo",
+        "CI and benchmark scripts"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/kiwi0719/jev-edge",
+          "type": "repo",
+          "what_verified": "adapters/openresty/lib/resty/jev/providers/jev.lua posts to https://api.typesafe.ai/v1/systemone; adapters/openresty/conf/jev-edge.conf.lua sets the same endpoint; demo/nginx.conf declares env TYPESAFE_API_KEY; 4 stars on 2026-09-22",
+          "author": "kiwi0719",
+          "date": "2026-09-22"
+        }
+      ],
+      "repo_url": "https://github.com/kiwi0719/jev-edge",
+      "demo_url": null,
+      "install_url": "https://github.com/kiwi0719/jev-edge#try-it-in-30-seconds",
+      "caveats": "Independent project, not affiliated with TypeSafe. Only 4 stars and created 2026-09-21, so it is new and unproven in production. Putting a network judgment in the request path adds latency and a failure mode you must configure around.",
+      "readiness": "installable-from-source",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-22",
+      "creator_display": "@kiwi0719",
+      "creator_url": "https://github.com/kiwi0719",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-agent-browser",
+      "title": "jev-agent-browser",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to pick the next typed browser action and hands ambiguity back to the parent agent.",
+      "actual_actions_or_outcome": "Gives a parent agent a bounded browser task: Jev chooses the next typed action through the official JavaScript SDK, Vercel's agent-browser executes it, and ambiguity, repetition or a stuck state becomes a structured handoff back to the parent instead of a guess.",
+      "jev_role": "Typed next-action selection per browser step, plus stuck and ambiguity gates",
+      "other_components": [
+        "@typesafe-ai/sdk",
+        "vercel-labs/agent-browser",
+        "Node CLI on npm"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/forvela/jev-agent-browser",
+          "type": "repo",
+          "what_verified": "src/decision.js imports TypeSafeClient from @typesafe-ai/sdk; package.json depends on @typesafe-ai/sdk ^0.6.0; src/cli.js documents TYPESAFE_API_KEY as required for the default transport; README shows a recorded 17-second run; 7 stars on 2026-09-22",
+          "author": "forvela",
+          "date": "2026-09-22"
+        }
+      ],
+      "repo_url": "https://github.com/forvela/jev-agent-browser",
+      "demo_url": null,
+      "install_url": "https://github.com/forvela/jev-agent-browser#quick-start",
+      "caveats": "Young repository with 7 stars and a small commit history. Requires the separate agent-browser package. The npm package page returned 403 to an automated check, so install was verified from the repository rather than the registry page.",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-22",
+      "creator_display": "@forvela",
+      "creator_url": "https://github.com/forvela",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-ood-calibration",
+      "title": "jev-ood-calibration",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev on a task it cannot have seen to test whether its probabilities stay calibrated.",
+      "actual_actions_or_outcome": "Sends JSONL records to Jev through the Vercel AI Gateway with one evaluate call per record, then reports accuracy, NLL, ECE and a refit temperature on three public benchmarks alongside a rule-based task built to be out of distribution.",
+      "jev_role": "The system under test: typed answers with probabilities that the harness scores for calibration",
+      "other_components": [
+        "Vercel AI Gateway",
+        "AI SDK experimental_evaluate",
+        "Node scripts",
+        "JSONL datasets"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/scienthoon/jev-ood-calibration",
+          "type": "repo",
+          "what_verified": "scripts/jev_eval.mjs sends records to model id typesafe-ai/jev through the Vercel AI Gateway; README reports per-dataset accuracy, NLL, ECE and refit temperature and credits an api.typesafe.ai finding from another repo's issue; 4 stars on 2026-09-22",
+          "author": "scienthoon",
+          "date": "2026-09-22"
+        }
+      ],
+      "repo_url": "https://github.com/scienthoon/jev-ood-calibration",
+      "demo_url": null,
+      "install_url": "https://github.com/scienthoon/jev-ood-calibration#readme",
+      "caveats": "Independent single-author study with 4 stars whose numbers were not re-run here. It calls Jev through the Vercel AI Gateway rather than api.typesafe.ai directly, and running it costs gateway inference spend.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-22",
+      "creator_display": "@scienthoon",
+      "creator_url": "https://github.com/scienthoon",
+      "credit_kind": "by"
+    },
+    {
+      "id": "laya",
+      "title": "Laya",
+      "category": "related-not-jev",
+      "highlight": false,
+      "short_description": "Runs an open Jev-compatible decision model in Node through ONNX Runtime. Not api.typesafe.ai.",
+      "actual_actions_or_outcome": "Loads the open Laya weights from Hugging Face and answers choice, score and noul questions with calibrated probabilities in one forward pass, using a systemOne() call whose request and response shape follows TypeSafe Jev's system_one API. Runs locally on ONNX Runtime with no Python at runtime.",
+      "jev_role": "none (open model reproducing the System One request and response shape)",
+      "other_components": [
+        "ONNX Runtime",
+        "npm package",
+        "Hugging Face weights",
+        "TypeScript types"
+      ],
+      "origin": "related",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/receptron/laya",
+          "type": "repo",
+          "what_verified": "src/types.ts states the request and response shapes follow TypeSafe Jev's system_one API; src/laya.ts implements systemOne(); src/sequence.ts maps the choice, score and noul question types; examples/basic.ts calls laya.systemOne(); 235 stars on 2026-09-22",
+          "author": "receptron",
+          "date": "2026-09-22"
+        }
+      ],
+      "repo_url": "https://github.com/receptron/laya",
+      "demo_url": null,
+      "install_url": "https://github.com/receptron/laya#install",
+      "caveats": "Not TypeSafe weights and not api.typesafe.ai, only the same API shape from the open Laya model by Convai Innovations. First use downloads about 1.7 GB of ONNX weights and needs roughly 2 GB of RAM. Parity with the Python reference is an author claim that was not re-run here.",
+      "readiness": "related-not-jev-api",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-22",
+      "creator_display": "Receptron",
+      "creator_url": "https://github.com/receptron",
+      "credit_kind": "maintained-by"
     }
   ]
 }
