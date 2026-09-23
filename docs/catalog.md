@@ -437,6 +437,45 @@ Uses Jev on a task it cannot have seen to test whether its probabilities stay ca
 - Install / start: https://github.com/scienthoon/jev-ood-calibration#readme
 - Caveat: Independent single-author study with 4 stars whose numbers were not re-run here. It calls Jev through the Vercel AI Gateway rather than api.typesafe.ai directly, and running it costs gateway inference spend.
 
+### [DocJev](https://github.com/jerryjliu/docjev)
+<!-- catalog:docjev -->
+
+By [Jerry Liu](https://github.com/jerryjliu).
+
+Uses Jev to classify a document into one category, or to split a packet into ordered page ranges.
+
+- Action / outcome: Python library and CLI take a PDF, DOCX, or PPTX plus natural-language category rules. LiteParse extracts page text. Optional LlamaParse and a local review app are in the repo.
+- Jev's role: Choice over the category rules, via typesafe_sdk system_one
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/jerryjliu/docjev#quick-start
+- Caveat: Independent of LlamaIndex hosted Classify and Split. Accuracy and latency figures in the README were not remeasured. Needs a TypeSafe API key.
+
+### [JevGPT](https://github.com/Bewinxed/jevgpt)
+<!-- catalog:jevgpt -->
+
+By [Omar Al Matar](https://github.com/Bewinxed).
+
+Uses Jev to pick the next word from a fixed dictionary so a chatbot can answer without generating text.
+
+- Action / outcome: Chat client sends the transcript as state and walks a dictionary with bucketed choices, then a runoff choice, until a completeness check stops it.
+- Jev's role: Choice over dictionary buckets, then a runoff choice, plus a completeness noul
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/Bewinxed/jevgpt#readme
+- Caveat: Interactive demo, not a general chatbot. The author's 255-choice cap note and latency claims were not remeasured. Needs a TypeSafe API key.
+
+### [System One Harness](https://github.com/HarnessRouter/SystemOneHarness)
+<!-- catalog:systemone-harness -->
+
+Maintained by [HarnessRouter](https://github.com/HarnessRouter).
+
+Uses Jev, or an OpenRouter System One route, to answer the typed questions in a decision harness.
+
+- Action / outcome: Python CLI runs a harness against a System One provider. The TypeSafe provider posts to the official endpoint. OpenRouter is the other key path.
+- Jev's role: TypeSafe provider posts state and questions to api.typesafe.ai/v1/systemone
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/HarnessRouter/SystemOneHarness#quickstart
+- Caveat: Jev is one of two providers, not the only route. A fixture path in provider.py returns scripted probabilities; the TypeSafe class is the live path. Conformance numbers were not remeasured.
+
 ## Model and skill routing
 
 ### [jev-router](https://github.com/gargpratyush/jev-router)
@@ -770,6 +809,32 @@ Uses Jev to answer typed questions about a live Home Assistant house and exposes
 - Origin: community · Evidence: `code-inspected` · Readiness: installable
 - Caveat: A custom HACS integration, not an official Home Assistant one. Polling a house full of entities bills per request; the built-in usage accounting was not verified against a real bill.
 
+### [Jev for Apple Foundation Models](https://github.com/peterfriese/jev-foundation-models)
+<!-- catalog:jev-foundation-models -->
+
+By [Peter Friese](https://github.com/peterfriese).
+
+Uses Jev to evaluate typed Swift structs and enums inside Apple's Foundation Models framework.
+
+- Action / outcome: Swift package posts application state to Jev and maps the typed answer back into a Foundation Models language-model call.
+- Jev's role: LanguageModel that posts to api.typesafe.ai/v1/systemone
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/peterfriese/jev-foundation-models#readme
+- Caveat: Unofficial bridge. The 40-150ms claim was not remeasured. The README warns not to embed the API key in a mobile app.
+
+### [Jev Labeler](https://github.com/yamadashy/jev-labeler-action)
+<!-- catalog:jev-labeler -->
+
+By [Kazuki Yamada](https://github.com/yamadashy).
+
+Uses Jev to decide which existing GitHub labels apply to an issue or pull request.
+
+- Action / outcome: GitHub Action asks one yes/no question per label already defined in the repo and applies the labels that clear a threshold.
+- Jev's role: One noul question per label
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/yamadashy/jev-labeler-action#quick-start
+- Caveat: Label quality depends on the descriptions already on the repo labels. Thresholds were not remeasured. A wrong label is the failure mode the README describes.
+
 ## Community clients
 
 ### [ruby_llm-typesafe](https://github.com/kieranklaassen/ruby_llm-typesafe)
@@ -1054,6 +1119,19 @@ Curated Jev list following the awesome.re conventions with a CI lint on every ch
 - Origin: community · Evidence: `demo-inspected` · Readiness: list
 - Caveat: Entries were not independently verified by this catalog.
 
+### [Awesome JEV gallery (OmniJev)](https://github.com/OmniJev/awesome-jev-gallery)
+<!-- catalog:list-omnijev -->
+
+Maintained by [OmniJev](https://github.com/OmniJev).
+
+Collects papers, open models, and evals around System One and Jev.
+
+- Action / outcome: README gallery with a linked site. It is a papers, models, and evals list, not a directory of runnable apps.
+- Jev's role: none (curated list)
+- Origin: community · Evidence: `demo-inspected` · Readiness: curated-list
+- Install / start: https://github.com/OmniJev/awesome-jev-gallery#readme
+- Caveat: Papers and eval gallery, not a project directory. Outbound links were not opened one by one. Org created 2026-09-17. The 223-star count was not audited.
+
 ## Related, not TypeSafe Jev
 
 ### [OpenJev](https://github.com/TheoLeeCJ/openjev)
@@ -1145,4 +1223,17 @@ Runs an open Jev-compatible decision model in Node through ONNX Runtime. Not api
 - Origin: related · Evidence: `code-inspected` · Readiness: related-not-jev-api
 - Install / start: https://github.com/receptron/laya#install
 - Caveat: Not TypeSafe weights and not api.typesafe.ai, only the same API shape from the open Laya model by Convai Innovations. First use downloads about 1.7 GB of ONNX weights and needs roughly 2 GB of RAM. Parity with the Python reference is an author claim that was not re-run here.
+
+### [decider](https://github.com/Mapika/decider)
+<!-- catalog:decider -->
+
+By [Mark Marosi](https://github.com/Mapika).
+
+Answers choice, score, and noul questions from a local model. Not api.typesafe.ai.
+
+- Action / outcome: Serves Jev-shaped requests from local weights. The repo includes a game bench that records probability bars for Tetris, Breakout, Pong, Snake, and Connect Four.
+- Jev's role: none (local model using the System One wire format)
+- Origin: related · Evidence: `code-inspected` · Readiness: related-not-jev-api
+- Install / start: https://github.com/Mapika/decider#readme
+- Caveat: Not TypeSafe weights and not api.typesafe.ai. Game scores in the README were not remeasured. Weights are a separate Hugging Face download.
 

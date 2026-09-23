@@ -5,23 +5,23 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-86_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-93_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (33)
+- [Action-taking projects](#action-taking-projects) (36)
 - [Model and skill routing](#model-and-skill-routing) (6)
 - [Email and inbox routing](#email-and-inbox-routing) (1)
 - [MCP and agent bridges](#mcp-and-agent-bridges) (4)
 - [Official cookbooks and patterns](#official-cookbooks-and-patterns) (4)
 - [Official SDKs and adapter](#official-sdks-and-adapter) (3)
 - [Official docs, skill, and launch demos](#official-docs-skill-and-launch-demos) (4)
-- [Platform integrations](#platform-integrations) (2)
+- [Platform integrations](#platform-integrations) (4)
 - [Community clients](#community-clients) (5)
 - [Installable agent skills](#installable-agent-skills) (6)
-- [Other awesome-Jev lists](#other-awesome-jev-lists) (11)
-- [Related, not TypeSafe Jev](#related-not-typesafe-jev) (7)
+- [Other awesome-Jev lists](#other-awesome-jev-lists) (12)
+- [Related, not TypeSafe Jev](#related-not-typesafe-jev) (8)
 - [Quick start](#quick-start)
 - [Evidence](#evidence)
 - [Details](#details)
@@ -65,6 +65,9 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [jev-edge](https://github.com/kiwi0719/jev-edge) — Uses Jev at an nginx or APISIX gateway to judge requests before they reach a backend. By [@kiwi0719](https://github.com/kiwi0719). `code-inspected` <!-- catalog:jev-edge -->
 - [jev-agent-browser](https://github.com/forvela/jev-agent-browser) — Uses Jev to pick the next typed browser action and hands ambiguity back to the parent agent. By [@forvela](https://github.com/forvela). `code-inspected` <!-- catalog:jev-agent-browser -->
 - [jev-ood-calibration](https://github.com/scienthoon/jev-ood-calibration) — Uses Jev on a task it cannot have seen to test whether its probabilities stay calibrated. By [@scienthoon](https://github.com/scienthoon). `code-inspected` <!-- catalog:jev-ood-calibration -->
+- [DocJev](https://github.com/jerryjliu/docjev) — Uses Jev to classify a document into one category, or to split a packet into ordered page ranges. By [Jerry Liu](https://github.com/jerryjliu). `code-inspected` <!-- catalog:docjev -->
+- [JevGPT](https://github.com/Bewinxed/jevgpt) — Uses Jev to pick the next word from a fixed dictionary so a chatbot can answer without generating text. By [Omar Al Matar](https://github.com/Bewinxed). `code-inspected` <!-- catalog:jevgpt -->
+- [System One Harness](https://github.com/HarnessRouter/SystemOneHarness) — Uses Jev, or an OpenRouter System One route, to answer the typed questions in a decision harness. Maintained by [HarnessRouter](https://github.com/HarnessRouter). `code-inspected` <!-- catalog:systemone-harness -->
 
 ## Model and skill routing
 
@@ -110,6 +113,8 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 
 - [Vercel AI Gateway + AI SDK evaluate](https://ai-sdk.dev/docs/ai-sdk-core/evaluation) — Jev as typesafe-ai/jev on AI Gateway, plus AI SDK 7 experimental_evaluate. Maintained by [Vercel](https://github.com/vercel). `documented-example` <!-- catalog:vercel-ai-gateway-jev -->
 - [Jev for Home Assistant](https://github.com/AboveColin/HA-Jev) — Uses Jev to answer typed questions about a live Home Assistant house and exposes the answers as sensors and binary sensors. By [Colin de Vries](https://github.com/AboveColin). `code-inspected` <!-- catalog:ha-jev -->
+- [Jev for Apple Foundation Models](https://github.com/peterfriese/jev-foundation-models) — Uses Jev to evaluate typed Swift structs and enums inside Apple's Foundation Models framework. By [Peter Friese](https://github.com/peterfriese). `code-inspected` <!-- catalog:jev-foundation-models -->
+- [Jev Labeler](https://github.com/yamadashy/jev-labeler-action) — Uses Jev to decide which existing GitHub labels apply to an issue or pull request. By [Kazuki Yamada](https://github.com/yamadashy). `code-inspected` <!-- catalog:jev-labeler -->
 
 ## Community clients
 
@@ -141,6 +146,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [awesome-jev (AppitStudio)](https://github.com/AppitStudio/awesome-jev) — Directory split into Jev-powered apps, developer resources, and small inspectable workflows. Maintained by [AppitStudio](https://github.com/AppitStudio). `demo-inspected` <!-- catalog:list-appitstudio -->
 - [awesome-jev-tools (v-modal)](https://github.com/v-modal/awesome-jev-tools) — Curated Jev list whose README is generated as an aggregate of per-category files. Maintained by [v-modal](https://github.com/v-modal). `demo-inspected` <!-- catalog:list-v-modal -->
 - [Awesome Jev (valentynkit)](https://github.com/valentynkit/awesome-jev-typesafe) — Curated Jev list following the awesome.re conventions with a CI lint on every change. By [@valentynkit](https://github.com/valentynkit). `demo-inspected` <!-- catalog:list-valentynkit -->
+- [Awesome JEV gallery (OmniJev)](https://github.com/OmniJev/awesome-jev-gallery) — Collects papers, open models, and evals around System One and Jev. Maintained by [OmniJev](https://github.com/OmniJev). `demo-inspected` <!-- catalog:list-omnijev -->
 
 ## Related, not TypeSafe Jev
 
@@ -151,6 +157,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [Simple Jev](https://github.com/featherless-ai/simple-jev) — Builds System One style typed answers from open Hugging Face models by reading next-token logits instead of generating JSON. Maintained by [Featherless AI](https://github.com/featherless-ai). `demo-inspected` <!-- catalog:simple-jev -->
 - [openjev-sglang](https://github.com/ekzhang/openjev-sglang) — Serves the TypeSafe HTTP API shape from an open Qwen model running on SGLang. By [Eric Zhang](https://github.com/ekzhang). `demo-inspected` <!-- catalog:openjev-sglang -->
 - [Laya](https://github.com/receptron/laya) — Runs an open Jev-compatible decision model in Node through ONNX Runtime. Not api.typesafe.ai. Maintained by [Receptron](https://github.com/receptron). `code-inspected` <!-- catalog:laya -->
+- [decider](https://github.com/Mapika/decider) — Answers choice, score, and noul questions from a local model. Not api.typesafe.ai. By [Mark Marosi](https://github.com/Mapika). `code-inspected` <!-- catalog:decider -->
 
 
 ## Quick start

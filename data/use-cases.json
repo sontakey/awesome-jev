@@ -3038,6 +3038,245 @@
       "creator_display": "Receptron",
       "creator_url": "https://github.com/receptron",
       "credit_kind": "maintained-by"
+    },
+    {
+      "id": "docjev",
+      "title": "DocJev",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to classify a document into one category, or to split a packet into ordered page ranges.",
+      "actual_actions_or_outcome": "Python library and CLI take a PDF, DOCX, or PPTX plus natural-language category rules. LiteParse extracts page text. Optional LlamaParse and a local review app are in the repo.",
+      "jev_role": "Choice over the category rules, via typesafe_sdk system_one",
+      "other_components": [
+        "LiteParse",
+        "optional LlamaParse",
+        "Python CLI"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/jerryjliu/docjev",
+          "type": "repo",
+          "what_verified": "src/jev_docs/engines/jev.py calls AsyncTypeSafeClient.system_one and reads a category Choice; README quick start requires TYPESAFE_API_KEY; 349 stars on 2026-09-23",
+          "author": "Jerry Liu",
+          "date": "2026-09-23"
+        }
+      ],
+      "repo_url": "https://github.com/jerryjliu/docjev",
+      "demo_url": null,
+      "install_url": "https://github.com/jerryjliu/docjev#quick-start",
+      "caveats": "Independent of LlamaIndex hosted Classify and Split. Accuracy and latency figures in the README were not remeasured. Needs a TypeSafe API key.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-23",
+      "creator_display": "Jerry Liu",
+      "creator_url": "https://github.com/jerryjliu",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-foundation-models",
+      "title": "Jev for Apple Foundation Models",
+      "category": "platform-integration",
+      "highlight": false,
+      "short_description": "Uses Jev to evaluate typed Swift structs and enums inside Apple's Foundation Models framework.",
+      "actual_actions_or_outcome": "Swift package posts application state to Jev and maps the typed answer back into a Foundation Models language-model call.",
+      "jev_role": "LanguageModel that posts to api.typesafe.ai/v1/systemone",
+      "other_components": [
+        "Swift 6",
+        "Apple Foundation Models"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/peterfriese/jev-foundation-models",
+          "type": "repo",
+          "what_verified": "Sources/JevFoundationModels/JevLanguageModel.swift hardcodes https://api.typesafe.ai/v1/systemone; README describes the Foundation Models bridge; 37 stars on 2026-09-23",
+          "author": "Peter Friese",
+          "date": "2026-09-23"
+        }
+      ],
+      "repo_url": "https://github.com/peterfriese/jev-foundation-models",
+      "demo_url": null,
+      "install_url": "https://github.com/peterfriese/jev-foundation-models#readme",
+      "caveats": "Unofficial bridge. The 40-150ms claim was not remeasured. The README warns not to embed the API key in a mobile app.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-23",
+      "creator_display": "Peter Friese",
+      "creator_url": "https://github.com/peterfriese",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-labeler",
+      "title": "Jev Labeler",
+      "category": "platform-integration",
+      "highlight": false,
+      "short_description": "Uses Jev to decide which existing GitHub labels apply to an issue or pull request.",
+      "actual_actions_or_outcome": "GitHub Action asks one yes/no question per label already defined in the repo and applies the labels that clear a threshold.",
+      "jev_role": "One noul question per label",
+      "other_components": [
+        "GitHub Action"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/yamadashy/jev-labeler-action",
+          "type": "repo",
+          "what_verified": "src/jev/client.ts sets the default endpoint to https://api.typesafe.ai/v1/systemone; tests assert that URL; README quick start describes the label threshold; 0 stars and 12 commits on 2026-09-23",
+          "author": "Kazuki Yamada",
+          "date": "2026-09-23"
+        }
+      ],
+      "repo_url": "https://github.com/yamadashy/jev-labeler-action",
+      "demo_url": null,
+      "install_url": "https://github.com/yamadashy/jev-labeler-action#quick-start",
+      "caveats": "Label quality depends on the descriptions already on the repo labels. Thresholds were not remeasured. A wrong label is the failure mode the README describes.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-23",
+      "creator_display": "Kazuki Yamada",
+      "creator_url": "https://github.com/yamadashy",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jevgpt",
+      "title": "JevGPT",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to pick the next word from a fixed dictionary so a chatbot can answer without generating text.",
+      "actual_actions_or_outcome": "Chat client sends the transcript as state and walks a dictionary with bucketed choices, then a runoff choice, until a completeness check stops it.",
+      "jev_role": "Choice over dictionary buckets, then a runoff choice, plus a completeness noul",
+      "other_components": [
+        "Python chat client",
+        "fixed dictionary"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/Bewinxed/jevgpt",
+          "type": "repo",
+          "what_verified": "src/jevgpt/sampler.py posts to https://api.typesafe.ai/v1/systemone and builds Next-word choice questions; README describes the dictionary chat loop; 26 stars on 2026-09-23",
+          "author": "Omar Al Matar",
+          "date": "2026-09-23"
+        }
+      ],
+      "repo_url": "https://github.com/Bewinxed/jevgpt",
+      "demo_url": null,
+      "install_url": "https://github.com/Bewinxed/jevgpt#readme",
+      "caveats": "Interactive demo, not a general chatbot. The author's 255-choice cap note and latency claims were not remeasured. Needs a TypeSafe API key.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-23",
+      "creator_display": "Omar Al Matar",
+      "creator_url": "https://github.com/Bewinxed",
+      "credit_kind": "by"
+    },
+    {
+      "id": "systemone-harness",
+      "title": "System One Harness",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev, or an OpenRouter System One route, to answer the typed questions in a decision harness.",
+      "actual_actions_or_outcome": "Python CLI runs a harness against a System One provider. The TypeSafe provider posts to the official endpoint. OpenRouter is the other key path.",
+      "jev_role": "TypeSafe provider posts state and questions to api.typesafe.ai/v1/systemone",
+      "other_components": [
+        "OpenRouter adapter",
+        "Python CLI"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/HarnessRouter/SystemOneHarness",
+          "type": "repo",
+          "what_verified": "systemone_harness/provider.py constructs a client at https://api.typesafe.ai/v1/systemone; CLI accepts TYPESAFE_API_KEY or OPENROUTER_API_KEY; 127 stars and 24 commits on 2026-09-23",
+          "author": "HarnessRouter",
+          "date": "2026-09-23"
+        }
+      ],
+      "repo_url": "https://github.com/HarnessRouter/SystemOneHarness",
+      "demo_url": null,
+      "install_url": "https://github.com/HarnessRouter/SystemOneHarness#quickstart",
+      "caveats": "Jev is one of two providers, not the only route. A fixture path in provider.py returns scripted probabilities; the TypeSafe class is the live path. Conformance numbers were not remeasured.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-23",
+      "creator_display": "HarnessRouter",
+      "creator_url": "https://github.com/HarnessRouter",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "decider",
+      "title": "decider",
+      "category": "related-not-jev",
+      "highlight": false,
+      "short_description": "Answers choice, score, and noul questions from a local model. Not api.typesafe.ai.",
+      "actual_actions_or_outcome": "Serves Jev-shaped requests from local weights. The repo includes a game bench that records probability bars for Tetris, Breakout, Pong, Snake, and Connect Four.",
+      "jev_role": "none (local model using the System One wire format)",
+      "other_components": [
+        "local weights",
+        "Hugging Face model",
+        "game bench"
+      ],
+      "origin": "related",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/Mapika/decider",
+          "type": "repo",
+          "what_verified": "decider/systemone.py documents the same wire format as POST /v1/systemone and parses choice, score, and noul locally; no api.typesafe.ai call in the inspected files; 328 stars and 72 commits on 2026-09-23",
+          "author": "Mark Marosi",
+          "date": "2026-09-23"
+        }
+      ],
+      "repo_url": "https://github.com/Mapika/decider",
+      "demo_url": null,
+      "install_url": "https://github.com/Mapika/decider#readme",
+      "caveats": "Not TypeSafe weights and not api.typesafe.ai. Game scores in the README were not remeasured. Weights are a separate Hugging Face download.",
+      "readiness": "related-not-jev-api",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-23",
+      "creator_display": "Mark Marosi",
+      "creator_url": "https://github.com/Mapika",
+      "credit_kind": "by"
+    },
+    {
+      "id": "list-omnijev",
+      "title": "Awesome JEV gallery (OmniJev)",
+      "category": "awesome-list",
+      "highlight": false,
+      "short_description": "Collects papers, open models, and evals around System One and Jev.",
+      "actual_actions_or_outcome": "README gallery with a linked site. It is a papers, models, and evals list, not a directory of runnable apps.",
+      "jev_role": "none (curated list)",
+      "other_components": [
+        "GitHub Pages site"
+      ],
+      "origin": "community",
+      "evidence_level": "demo-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/OmniJev/awesome-jev-gallery",
+          "type": "repo",
+          "what_verified": "README describes a papers, open-model, and eval gallery and badges claim 137 entries; 223 stars and 47 commits on 2026-09-23; individual outbound links were not opened",
+          "author": "OmniJev",
+          "date": "2026-09-23"
+        }
+      ],
+      "repo_url": "https://github.com/OmniJev/awesome-jev-gallery",
+      "demo_url": null,
+      "install_url": "https://github.com/OmniJev/awesome-jev-gallery#readme",
+      "caveats": "Papers and eval gallery, not a project directory. Outbound links were not opened one by one. Org created 2026-09-17. The 223-star count was not audited.",
+      "readiness": "curated-list",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-23",
+      "creator_display": "OmniJev",
+      "creator_url": "https://github.com/OmniJev",
+      "credit_kind": "maintained-by"
     }
   ]
 }
+
