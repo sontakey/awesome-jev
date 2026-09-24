@@ -476,6 +476,59 @@ Uses Jev, or an OpenRouter System One route, to answer the typed questions in a 
 - Install / start: https://github.com/HarnessRouter/SystemOneHarness#quickstart
 - Caveat: Jev is one of two providers, not the only route. A fixture path in provider.py returns scripted probabilities; the TypeSafe class is the live path. Conformance numbers were not remeasured.
 
+### [Shapeshift](https://github.com/anishfn/shapeshift)
+<!-- catalog:shapeshift -->
+
+By [Anish Gupta](https://github.com/anishfn).
+
+Uses Jev to read what you type into one text box and turn it into the right card: an event, a checklist, a timer, a color picker.
+
+- Action / outcome: Next.js app classifies free text in one request of 14 typed questions and renders the matching UI card. Hosted demo on Vercel. Falls back to a built-in keyword classifier when no key is set.
+- Jev's role: One systemOne call with choice, noul, and score questions picks the card type and its signals
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/anishfn/shapeshift#quick-start
+- Demo: https://shapeshiftui.vercel.app
+- Caveat: Runs offline by default with a keyword classifier; Jev is used only when TYPESAFE_API_KEY is set, so the hosted demo may not be exercising Jev. Classification quality was not remeasured.
+
+### [JevRev](https://github.com/Alex314618-create/JevRev)
+<!-- catalog:jevrev -->
+
+By [@Alex314618-create](https://github.com/Alex314618-create).
+
+Uses Jev to shortlist and score an LLM's candidate plans in a loop, so only the options worth continuing get more time and tokens.
+
+- Action / outcome: Node CLI puts Jev beside a coding LLM: the LLM proposes plans, Jev scores them, and correctness checks pick the evidence winner. Ships a worked CSV-parser case and a run viewer.
+- Jev's role: noul and score judgments via the official JS SDK (systemOne) that filter plans and check progress
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/Alex314618-create/JevRev#readme
+- Caveat: Young repo from a one-repo account; the star count was not audited. The worked case outcome was not reproduced. Needs a TypeSafe API key plus an LLM.
+
+### [jev-guard](https://github.com/klauswg/jev-guard)
+<!-- catalog:jev-guard -->
+
+By [@klauswg](https://github.com/klauswg).
+
+Uses Jev to triage the risk of crypto deposits and withdrawals, while hard-coded rules decide what gets frozen or sent to a human.
+
+- Action / outcome: Spring Boot gateway builds 24h features, applies a hard-rule veto layer, then asks Jev for a risk level. Uncertain or failed calls degrade to manual review. Includes a simulator and an eval runner against a rules-only baseline.
+- Jev's role: TypeSafeJevClient posts rendered transfer state to api.typesafe.ai/v1/systemone; code owns the final action
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
+- Install / start: https://github.com/klauswg/jev-guard#readme
+- Caveat: Demo and research project on simulated transfers, not financial or compliance advice and not a production AML control. Eval numbers were not remeasured. Mock client exists; the TypeSafe client is the live path.
+
+### [JevShield](https://github.com/lgy1027/jevshield)
+<!-- catalog:jevshield -->
+
+By [@lgy1027](https://github.com/lgy1027).
+
+Uses Jev to pick which agent role handles a request and to approve or block tool calls with side effects before they run.
+
+- Action / outcome: Python library adds typed intent classification, route-before-tool-exposure, and guard authorization with audit logs to any agent framework. LangChain integration included.
+- Jev's role: Choice and noul decisions through a client that targets api.typesafe.ai/v1/systemone (or OpenRouter's System One route)
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/lgy1027/jevshield#quick-start
+- Caveat: Jev is one of two System One providers (TypeSafe or OpenRouter). Guard decisions were not tested; treat as a control layer to evaluate, not a security guarantee. Some code comments are in Chinese.
+
 ## Model and skill routing
 
 ### [jev-router](https://github.com/gargpratyush/jev-router)
@@ -835,6 +888,19 @@ Uses Jev to decide which existing GitHub labels apply to an issue or pull reques
 - Install / start: https://github.com/yamadashy/jev-labeler-action#quick-start
 - Caveat: Label quality depends on the descriptions already on the repo labels. Thresholds were not remeasured. A wrong label is the failure mode the README describes.
 
+### [Yao Agents decision tool](https://github.com/YaoApp/yao)
+<!-- catalog:yao-agents-decision -->
+
+Maintained by [YaoApp](https://github.com/YaoApp).
+
+Uses Jev as the decision provider behind Yao Agents' decision_decide tool, so agents get typed choices, scores, and probabilities.
+
+- Action / outcome: Yao Agents ships a TypeSafe provider preset and a decision_decide tool. An agent sends state plus choice, score, or noul questions and gets typed answers with probabilities back.
+- Jev's role: TypeSafe provider preset (api.typesafe.ai, model jev-latest, capability decision) that answers decision_decide calls
+- Origin: community · Evidence: `code-inspected` · Readiness: installable
+- Install / start: https://github.com/YaoApp/yao#readme
+- Caveat: Jev is one provider inside a large, older agent platform (repo dates to 2021); the star count reflects Yao as a whole, not the Jev integration. Needs a TypeSafe API key configured in Yao settings. The decision tool was not run.
+
 ## Community clients
 
 ### [ruby_llm-typesafe](https://github.com/kieranklaassen/ruby_llm-typesafe)
@@ -980,6 +1046,19 @@ Self-hosted agent skill library that uses Jev to recommend which stored skills f
 - Jev's role: Ranks stored skills against the current request to produce recommendations
 - Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
 - Caveat: Jev powers one feature, the recommendations; the rest of the product is a skill manager that works without a key. Self-hosting requires running the Compose stack.
+
+### [jev-browser](https://github.com/ChenYCL/jev-browser-skill)
+<!-- catalog:jev-browser-chenycl -->
+
+By [@ChenYCL](https://github.com/ChenYCL).
+
+Uses Jev to choose the next click, field, or link on a web page, so a coding agent can drive a browser without a vision model.
+
+- Action / outcome: Agent skill and CLI run a code-owned browser loop on Chrome, Safari, or ego; Jev picks among page candidates each step. README shows recorded Wikipedia, form, and pricing-page runs with per-run cost.
+- Jev's role: Client posts page state and candidate questions to api.typesafe.ai/v1/systemone each step
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/ChenYCL/jev-browser-skill#readme
+- Caveat: Demo costs and timings are the author's; not reproduced. An experimental fully local backend also exists; the TypeSafe client is the default live path. Different project from the cataloged jev-browser-use and jkudish/jev-browser.
 
 ## Other awesome-Jev lists
 

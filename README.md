@@ -5,21 +5,21 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-93_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-99_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (36)
+- [Action-taking projects](#action-taking-projects) (40)
 - [Model and skill routing](#model-and-skill-routing) (6)
 - [Email and inbox routing](#email-and-inbox-routing) (1)
 - [MCP and agent bridges](#mcp-and-agent-bridges) (4)
 - [Official cookbooks and patterns](#official-cookbooks-and-patterns) (4)
 - [Official SDKs and adapter](#official-sdks-and-adapter) (3)
 - [Official docs, skill, and launch demos](#official-docs-skill-and-launch-demos) (4)
-- [Platform integrations](#platform-integrations) (4)
+- [Platform integrations](#platform-integrations) (5)
 - [Community clients](#community-clients) (5)
-- [Installable agent skills](#installable-agent-skills) (6)
+- [Installable agent skills](#installable-agent-skills) (7)
 - [Other awesome-Jev lists](#other-awesome-jev-lists) (12)
 - [Related, not TypeSafe Jev](#related-not-typesafe-jev) (8)
 - [Quick start](#quick-start)
@@ -68,6 +68,10 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [DocJev](https://github.com/jerryjliu/docjev) — Uses Jev to classify a document into one category, or to split a packet into ordered page ranges. By [Jerry Liu](https://github.com/jerryjliu). `code-inspected` <!-- catalog:docjev -->
 - [JevGPT](https://github.com/Bewinxed/jevgpt) — Uses Jev to pick the next word from a fixed dictionary so a chatbot can answer without generating text. By [Omar Al Matar](https://github.com/Bewinxed). `code-inspected` <!-- catalog:jevgpt -->
 - [System One Harness](https://github.com/HarnessRouter/SystemOneHarness) — Uses Jev, or an OpenRouter System One route, to answer the typed questions in a decision harness. Maintained by [HarnessRouter](https://github.com/HarnessRouter). `code-inspected` <!-- catalog:systemone-harness -->
+- [Shapeshift](https://github.com/anishfn/shapeshift) — Uses Jev to read what you type into one text box and turn it into the right card: an event, a checklist, a timer, a color picker. By [Anish Gupta](https://github.com/anishfn). `code-inspected` <!-- catalog:shapeshift -->
+- [JevRev](https://github.com/Alex314618-create/JevRev) — Uses Jev to shortlist and score an LLM's candidate plans in a loop, so only the options worth continuing get more time and tokens. By [@Alex314618-create](https://github.com/Alex314618-create). `code-inspected` <!-- catalog:jevrev -->
+- [jev-guard](https://github.com/klauswg/jev-guard) — Uses Jev to triage the risk of crypto deposits and withdrawals, while hard-coded rules decide what gets frozen or sent to a human. By [@klauswg](https://github.com/klauswg). `code-inspected` <!-- catalog:jev-guard -->
+- [JevShield](https://github.com/lgy1027/jevshield) — Uses Jev to pick which agent role handles a request and to approve or block tool calls with side effects before they run. By [@lgy1027](https://github.com/lgy1027). `code-inspected` <!-- catalog:jevshield -->
 
 ## Model and skill routing
 
@@ -115,6 +119,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [Jev for Home Assistant](https://github.com/AboveColin/HA-Jev) — Uses Jev to answer typed questions about a live Home Assistant house and exposes the answers as sensors and binary sensors. By [Colin de Vries](https://github.com/AboveColin). `code-inspected` <!-- catalog:ha-jev -->
 - [Jev for Apple Foundation Models](https://github.com/peterfriese/jev-foundation-models) — Uses Jev to evaluate typed Swift structs and enums inside Apple's Foundation Models framework. By [Peter Friese](https://github.com/peterfriese). `code-inspected` <!-- catalog:jev-foundation-models -->
 - [Jev Labeler](https://github.com/yamadashy/jev-labeler-action) — Uses Jev to decide which existing GitHub labels apply to an issue or pull request. By [Kazuki Yamada](https://github.com/yamadashy). `code-inspected` <!-- catalog:jev-labeler -->
+- [Yao Agents decision tool](https://github.com/YaoApp/yao) — Uses Jev as the decision provider behind Yao Agents' decision_decide tool, so agents get typed choices, scores, and probabilities. Maintained by [YaoApp](https://github.com/YaoApp). `code-inspected` <!-- catalog:yao-agents-decision -->
 
 ## Community clients
 
@@ -132,6 +137,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) — Uses Jev to decide which tool calls and results to drop during context compaction, keeping everything else verbatim. By [tamara tran](https://github.com/tamaratran). `code-inspected` <!-- catalog:fast-jev-compaction -->
 - [Jev Browser Use](https://github.com/wy-coliney/jev-browser-use) — Uses Jev to choose browser navigation, clicks and scrolling while the coding agent keeps text input and final verification. By [@wy-coliney](https://github.com/wy-coliney). `code-inspected` <!-- catalog:jev-browser-use -->
 - [Skillbox](https://github.com/kitze/skillbox) — Self-hosted agent skill library that uses Jev to recommend which stored skills fit the current request. By [@kitze](https://github.com/kitze). `code-inspected` <!-- catalog:skillbox -->
+- [jev-browser](https://github.com/ChenYCL/jev-browser-skill) — Uses Jev to choose the next click, field, or link on a web page, so a coding agent can drive a browser without a vision model. By [@ChenYCL](https://github.com/ChenYCL). `code-inspected` <!-- catalog:jev-browser-chenycl -->
 
 ## Other awesome-Jev lists
 

@@ -3276,6 +3276,222 @@
       "creator_display": "OmniJev",
       "creator_url": "https://github.com/OmniJev",
       "credit_kind": "maintained-by"
+    },
+    {
+      "id": "yao-agents-decision",
+      "title": "Yao Agents decision tool",
+      "category": "platform-integration",
+      "highlight": false,
+      "short_description": "Uses Jev as the decision provider behind Yao Agents' decision_decide tool, so agents get typed choices, scores, and probabilities.",
+      "actual_actions_or_outcome": "Yao Agents ships a TypeSafe provider preset and a decision_decide tool. An agent sends state plus choice, score, or noul questions and gets typed answers with probabilities back.",
+      "jev_role": "TypeSafe provider preset (api.typesafe.ai, model jev-latest, capability decision) that answers decision_decide calls",
+      "other_components": [
+        "Yao Agents platform",
+        "Go",
+        "yao-decision agent skill"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/YaoApp/yao",
+          "type": "repo",
+          "what_verified": "llmprovider/presets.yml defines a TypeSafe AI provider at https://api.typesafe.ai with model jev-latest and capability decision; tools/decision/decide.go validates choice/score/noul questions and calls the decision connector; openapi/setting/typesafe_test.go validates a key against api.typesafe.ai; README announces Jev in Yao Agents; 8002 stars on 2026-09-24",
+          "author": "YaoApp",
+          "date": "2026-09-24"
+        }
+      ],
+      "repo_url": "https://github.com/YaoApp/yao",
+      "demo_url": null,
+      "install_url": "https://github.com/YaoApp/yao#readme",
+      "caveats": "Jev is one provider inside a large, older agent platform (repo dates to 2021); the star count reflects Yao as a whole, not the Jev integration. Needs a TypeSafe API key configured in Yao settings. The decision tool was not run.",
+      "readiness": "installable",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-24",
+      "creator_display": "YaoApp",
+      "creator_url": "https://github.com/YaoApp",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "shapeshift",
+      "title": "Shapeshift",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to read what you type into one text box and turn it into the right card: an event, a checklist, a timer, a color picker.",
+      "actual_actions_or_outcome": "Next.js app classifies free text in one request of 14 typed questions and renders the matching UI card. Hosted demo on Vercel. Falls back to a built-in keyword classifier when no key is set.",
+      "jev_role": "One systemOne call with choice, noul, and score questions picks the card type and its signals",
+      "other_components": [
+        "Next.js",
+        "Bun",
+        "offline keyword classifier"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/anishfn/shapeshift",
+          "type": "repo",
+          "what_verified": "src/lib/jev/client.ts imports TypeSafeClient from @typesafe-ai/sdk and calls systemOne; src/lib/jev/questions.ts builds choice/noul/score questions; README quick start and optional TYPESAFE_API_KEY; 495 stars, 18 commits on 2026-09-24",
+          "author": "Anish Gupta",
+          "date": "2026-09-24"
+        }
+      ],
+      "repo_url": "https://github.com/anishfn/shapeshift",
+      "demo_url": "https://shapeshiftui.vercel.app",
+      "install_url": "https://github.com/anishfn/shapeshift#quick-start",
+      "caveats": "Runs offline by default with a keyword classifier; Jev is used only when TYPESAFE_API_KEY is set, so the hosted demo may not be exercising Jev. Classification quality was not remeasured.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-24",
+      "creator_display": "Anish Gupta",
+      "creator_url": "https://github.com/anishfn",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jevrev",
+      "title": "JevRev",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to shortlist and score an LLM's candidate plans in a loop, so only the options worth continuing get more time and tokens.",
+      "actual_actions_or_outcome": "Node CLI puts Jev beside a coding LLM: the LLM proposes plans, Jev scores them, and correctness checks pick the evidence winner. Ships a worked CSV-parser case and a run viewer.",
+      "jev_role": "noul and score judgments via the official JS SDK (systemOne) that filter plans and check progress",
+      "other_components": [
+        "Node.js 20",
+        "any coding LLM",
+        "run viewer"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/Alex314618-create/JevRev",
+          "type": "repo",
+          "what_verified": "src/judge.ts imports TypeSafeClient from @typesafe-ai/sdk, defaults to https://api.typesafe.ai, and calls systemOne with noul/score questions; tests/judge.test.ts covers the request path; README runs the included case; 304 stars, 64 commits on 2026-09-24",
+          "author": "Alex314618-create",
+          "date": "2026-09-24"
+        }
+      ],
+      "repo_url": "https://github.com/Alex314618-create/JevRev",
+      "demo_url": null,
+      "install_url": "https://github.com/Alex314618-create/JevRev#readme",
+      "caveats": "Young repo from a one-repo account; the star count was not audited. The worked case outcome was not reproduced. Needs a TypeSafe API key plus an LLM.",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-24",
+      "creator_display": "@Alex314618-create",
+      "creator_url": "https://github.com/Alex314618-create",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-guard",
+      "title": "jev-guard",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to triage the risk of crypto deposits and withdrawals, while hard-coded rules decide what gets frozen or sent to a human.",
+      "actual_actions_or_outcome": "Spring Boot gateway builds 24h features, applies a hard-rule veto layer, then asks Jev for a risk level. Uncertain or failed calls degrade to manual review. Includes a simulator and an eval runner against a rules-only baseline.",
+      "jev_role": "TypeSafeJevClient posts rendered transfer state to api.typesafe.ai/v1/systemone; code owns the final action",
+      "other_components": [
+        "Java",
+        "Spring Boot",
+        "Caffeine",
+        "event simulator"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/klauswg/jev-guard",
+          "type": "repo",
+          "what_verified": "src/main/java/com/jevguard/client/TypeSafeJevClient.java posts via RestClient; eval/EvalRunner.java uses https://api.typesafe.ai/v1/systemone and requires TYPESAFE_API_KEY unless --allow-mock; README documents the rules-first architecture; 35 stars, 6 commits on 2026-09-24",
+          "author": "klauswg",
+          "date": "2026-09-24"
+        }
+      ],
+      "repo_url": "https://github.com/klauswg/jev-guard",
+      "demo_url": null,
+      "install_url": "https://github.com/klauswg/jev-guard#readme",
+      "caveats": "Demo and research project on simulated transfers, not financial or compliance advice and not a production AML control. Eval numbers were not remeasured. Mock client exists; the TypeSafe client is the live path.",
+      "readiness": "installable-from-source",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-24",
+      "creator_display": "@klauswg",
+      "creator_url": "https://github.com/klauswg",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jevshield",
+      "title": "JevShield",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to pick which agent role handles a request and to approve or block tool calls with side effects before they run.",
+      "actual_actions_or_outcome": "Python library adds typed intent classification, route-before-tool-exposure, and guard authorization with audit logs to any agent framework. LangChain integration included.",
+      "jev_role": "Choice and noul decisions through a client that targets api.typesafe.ai/v1/systemone (or OpenRouter's System One route)",
+      "other_components": [
+        "Python",
+        "httpx",
+        "LangChain adapter",
+        "OpenRouter"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/lgy1027/jevshield",
+          "type": "repo",
+          "what_verified": "jevshield/client.py defines a TypeSafe provider at https://api.typesafe.ai/v1/systemone with JEV_API_KEY/TYPESAFE_API_KEY and an OpenRouter System One provider, called via httpx; README quick start and security posture; 87 commits on 2026-09-24",
+          "author": "lgy1027",
+          "date": "2026-09-24"
+        }
+      ],
+      "repo_url": "https://github.com/lgy1027/jevshield",
+      "demo_url": null,
+      "install_url": "https://github.com/lgy1027/jevshield#quick-start",
+      "caveats": "Jev is one of two System One providers (TypeSafe or OpenRouter). Guard decisions were not tested; treat as a control layer to evaluate, not a security guarantee. Some code comments are in Chinese.",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-24",
+      "creator_display": "@lgy1027",
+      "creator_url": "https://github.com/lgy1027",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-browser-chenycl",
+      "title": "jev-browser",
+      "category": "agent-skill",
+      "highlight": false,
+      "short_description": "Uses Jev to choose the next click, field, or link on a web page, so a coding agent can drive a browser without a vision model.",
+      "actual_actions_or_outcome": "Agent skill and CLI run a code-owned browser loop on Chrome, Safari, or ego; Jev picks among page candidates each step. README shows recorded Wikipedia, form, and pricing-page runs with per-run cost.",
+      "jev_role": "Client posts page state and candidate questions to api.typesafe.ai/v1/systemone each step",
+      "other_components": [
+        "Node.js 22",
+        "Chrome/Safari/ego backends",
+        "MCP server"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/ChenYCL/jev-browser-skill",
+          "type": "repo",
+          "what_verified": "skills/jev-browser/lib/typesafe.mjs defaults to https://api.typesafe.ai, posts to /v1/systemone, and requires TYPESAFE_API_KEY; tests/unit/typesafe.test.mjs covers retries and caching; README demo section; 19 commits on 2026-09-24",
+          "author": "ChenYCL",
+          "date": "2026-09-24"
+        }
+      ],
+      "repo_url": "https://github.com/ChenYCL/jev-browser-skill",
+      "demo_url": null,
+      "install_url": "https://github.com/ChenYCL/jev-browser-skill#readme",
+      "caveats": "Demo costs and timings are the author's; not reproduced. An experimental fully local backend also exists; the TypeSafe client is the default live path. Different project from the cataloged jev-browser-use and jkudish/jev-browser.",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": [
+        "claude-code",
+        "codex",
+        "mcp"
+      ],
+      "last_checked": "2026-09-24",
+      "creator_display": "@ChenYCL",
+      "creator_url": "https://github.com/ChenYCL",
+      "credit_kind": "by"
     }
   ]
 }
