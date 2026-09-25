@@ -5,21 +5,21 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-99_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-107_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (40)
+- [Action-taking projects](#action-taking-projects) (43)
 - [Model and skill routing](#model-and-skill-routing) (6)
-- [Email and inbox routing](#email-and-inbox-routing) (1)
-- [MCP and agent bridges](#mcp-and-agent-bridges) (4)
+- [Email and inbox routing](#email-and-inbox-routing) (2)
+- [MCP and agent bridges](#mcp-and-agent-bridges) (5)
 - [Official cookbooks and patterns](#official-cookbooks-and-patterns) (4)
 - [Official SDKs and adapter](#official-sdks-and-adapter) (3)
 - [Official docs, skill, and launch demos](#official-docs-skill-and-launch-demos) (4)
-- [Platform integrations](#platform-integrations) (5)
-- [Community clients](#community-clients) (5)
-- [Installable agent skills](#installable-agent-skills) (7)
+- [Platform integrations](#platform-integrations) (6)
+- [Community clients](#community-clients) (6)
+- [Installable agent skills](#installable-agent-skills) (8)
 - [Other awesome-Jev lists](#other-awesome-jev-lists) (12)
 - [Related, not TypeSafe Jev](#related-not-typesafe-jev) (8)
 - [Quick start](#quick-start)
@@ -72,6 +72,9 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [JevRev](https://github.com/Alex314618-create/JevRev) — Uses Jev to shortlist and score an LLM's candidate plans in a loop, so only the options worth continuing get more time and tokens. By [@Alex314618-create](https://github.com/Alex314618-create). `code-inspected` <!-- catalog:jevrev -->
 - [jev-guard](https://github.com/klauswg/jev-guard) — Uses Jev to triage the risk of crypto deposits and withdrawals, while hard-coded rules decide what gets frozen or sent to a human. By [@klauswg](https://github.com/klauswg). `code-inspected` <!-- catalog:jev-guard -->
 - [JevShield](https://github.com/lgy1027/jevshield) — Uses Jev to pick which agent role handles a request and to approve or block tool calls with side effects before they run. By [@lgy1027](https://github.com/lgy1027). `code-inspected` <!-- catalog:jevshield -->
+- [oxlint-plugin-jev](https://github.com/wobsoriano/oxlint-plugin-jev) — Uses Jev to check plain-English lint rules against code snippets and report matching violations in Oxlint. By [Robert Soriano](https://github.com/wobsoriano). `code-inspected` <!-- catalog:oxlint-plugin-jev -->
+- [Jev Playwright](https://github.com/arthurfiorette/jev-playwright) — Uses Jev to select existing Playwright tests relevant to a code change before browser execution. By [Arthur Fiorette](https://github.com/arthurfiorette). `code-inspected` <!-- catalog:jev-playwright -->
+- [Jev Chat](https://github.com/w3cj/jev-chat) — Uses Jev to choose MCP tools and arguments for a chat-shaped command bar while code builds replies from tool data. By [@w3cj](https://github.com/w3cj). `code-inspected` <!-- catalog:jev-chat -->
 
 ## Model and skill routing
 
@@ -85,6 +88,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 ## Email and inbox routing
 
 - [Jev email intent workflow](https://github.com/GiesN/typesafe-jev-workflow) — LangGraph demo that classifies mocked emails as invoice or general with Jev. By [@GiesN](https://github.com/GiesN). `code-inspected` <!-- catalog:email-jev-langgraph -->
+- [himalaya-jev-mail-classify](https://github.com/initrd/himalaya-jev-mail-classify) — Uses Jev to choose filing, priority, and attention labels for Gmail threads read through Himalaya. By [Ashish Vijayaram](https://github.com/initrd). `code-inspected` <!-- catalog:himalaya-jev-mail-classify -->
 
 ## MCP and agent bridges
 
@@ -92,6 +96,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [typesafe-mcp](https://github.com/itsmostafa/typesafe-mcp) — Community MCP that exposes TypeSafe System One to Claude or Codex. By [@itsmostafa](https://github.com/itsmostafa). `demo-inspected` <!-- catalog:typesafe-mcp -->
 - [y0usaf/typesafe-mcp](https://github.com/y0usaf/typesafe-mcp) — One MCP evaluate(state, questions) tool that POSTs to the TypeSafe API. By [Sami Ansari](https://github.com/y0usaf). Announced by [@realy0usaf](https://x.com/realy0usaf). `code-inspected` <!-- catalog:y0usaf-typesafe-mcp -->
 - [Jev Review (MCP)](https://github.com/NiazMorshed2007/jev-review) — Local MCP server that gives a coding agent structured Jev quality scores across correctness, complexity, tests and security while it works. By [Niaz Morshed](https://github.com/NiazMorshed2007). `code-inspected` <!-- catalog:jev-review-mcp -->
+- [Flick](https://github.com/bgivenb/flick-computer-use) — Uses Jev to choose browser and macOS actions from observed controls inside a local MCP computer-use loop. By [Given Borthwick](https://github.com/bgivenb). `code-inspected` <!-- catalog:flick-computer-use -->
 
 ## Official cookbooks and patterns
 
@@ -120,6 +125,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [Jev for Apple Foundation Models](https://github.com/peterfriese/jev-foundation-models) — Uses Jev to evaluate typed Swift structs and enums inside Apple's Foundation Models framework. By [Peter Friese](https://github.com/peterfriese). `code-inspected` <!-- catalog:jev-foundation-models -->
 - [Jev Labeler](https://github.com/yamadashy/jev-labeler-action) — Uses Jev to decide which existing GitHub labels apply to an issue or pull request. By [Kazuki Yamada](https://github.com/yamadashy). `code-inspected` <!-- catalog:jev-labeler -->
 - [Yao Agents decision tool](https://github.com/YaoApp/yao) — Uses Jev as the decision provider behind Yao Agents' decision_decide tool, so agents get typed choices, scores, and probabilities. Maintained by [YaoApp](https://github.com/YaoApp). `code-inspected` <!-- catalog:yao-agents-decision -->
+- [jev-sap-commerce](https://github.com/Emenowicz/jev-sap-commerce) — Uses Jev to moderate product reviews and suggest product categories and attribute values in SAP Commerce. By [Dawid Michałowicz](https://github.com/Emenowicz). `code-inspected` <!-- catalog:jev-sap-commerce -->
 
 ## Community clients
 
@@ -128,6 +134,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [typesafe-sdk-go](https://github.com/Tangerg/typesafe-sdk-go) — Dependency-free Go client for the TypeSafe System One API. By [@Tangerg](https://github.com/Tangerg). `code-inspected` <!-- catalog:typesafe-sdk-go-tangerg -->
 - [JevSwiftSDK](https://github.com/NSStudent/JevSwiftSDK) — Dependency-free Swift package for the System One HTTP API. By [@NSStudent](https://github.com/NSStudent). `code-inspected` <!-- catalog:jev-swift-sdk -->
 - [typesafe-sdk (Ruby)](https://github.com/joshmn/typesafe-sdk) — Ruby gem client for the TypeSafe System One API. By [@joshmn](https://github.com/joshmn). `code-inspected` <!-- catalog:typesafe-sdk-ruby -->
+- [ruby_decision_model](https://github.com/obie/ruby_decision_model) — Uses Jev to answer typed questions from Ruby through either the native TypeSafe API or OpenRouter. By [Obie Fernandez](https://github.com/obie). `code-inspected` <!-- catalog:ruby-decision-model -->
 
 ## Installable agent skills
 
@@ -138,6 +145,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [Jev Browser Use](https://github.com/wy-coliney/jev-browser-use) — Uses Jev to choose browser navigation, clicks and scrolling while the coding agent keeps text input and final verification. By [@wy-coliney](https://github.com/wy-coliney). `code-inspected` <!-- catalog:jev-browser-use -->
 - [Skillbox](https://github.com/kitze/skillbox) — Self-hosted agent skill library that uses Jev to recommend which stored skills fit the current request. By [@kitze](https://github.com/kitze). `code-inspected` <!-- catalog:skillbox -->
 - [jev-browser](https://github.com/ChenYCL/jev-browser-skill) — Uses Jev to choose the next click, field, or link on a web page, so a coding agent can drive a browser without a vision model. By [@ChenYCL](https://github.com/ChenYCL). `code-inspected` <!-- catalog:jev-browser-chenycl -->
+- [JevHarness](https://github.com/TianyuCodings/JevHarness) — Uses Jev to execute task-specific decision workflows written by a coding agent, with optional trace-based improvement before freezing them. By [@TianyuCodings](https://github.com/TianyuCodings). `code-inspected` <!-- catalog:jevharness -->
 
 ## Other awesome-Jev lists
 

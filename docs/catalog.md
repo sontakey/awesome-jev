@@ -529,6 +529,45 @@ Uses Jev to pick which agent role handles a request and to approve or block tool
 - Install / start: https://github.com/lgy1027/jevshield#quick-start
 - Caveat: Jev is one of two System One providers (TypeSafe or OpenRouter). Guard decisions were not tested; treat as a control layer to evaluate, not a security guarantee. Some code comments are in Chinese.
 
+### [oxlint-plugin-jev](https://github.com/wobsoriano/oxlint-plugin-jev)
+<!-- catalog:oxlint-plugin-jev -->
+
+By [Robert Soriano](https://github.com/wobsoriano).
+
+Uses Jev to check plain-English lint rules against code snippets and report matching violations in Oxlint.
+
+- Action / outcome: Collects functions, calls, JSX elements, or whole files and reports diagnostics when yes-probabilities cross configured cutoffs; optional Choice questions locate file-level findings.
+- Jev's role: Batched Noul rule checks and optional Choice-based source locations
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/wobsoriano/oxlint-plugin-jev#install
+- Caveat: Experimental, created 2026-09-19; 63 stars and 2 forks at inspection. Sends matched source to TypeSafe. API failures skip checks by default; CI requires ci=fail to avoid a quiet pass. Editor use can make paid requests on each edit. Not run here. Sources: https://raw.githubusercontent.com/wobsoriano/oxlint-plugin-jev/main/README.md and https://raw.githubusercontent.com/wobsoriano/oxlint-plugin-jev/main/src/worker.ts
+
+### [Jev Playwright](https://github.com/arthurfiorette/jev-playwright)
+<!-- catalog:jev-playwright -->
+
+By [Arthur Fiorette](https://github.com/arthurfiorette).
+
+Uses Jev to select existing Playwright tests relevant to a code change before browser execution.
+
+- Action / outcome: A reporter compares git changes with discovered tests, always retains changed specs, and runs tests whose relevance probabilities clear a threshold; selection failures fall back to all tests.
+- Jev's role: One Noul relevance judgment per candidate test, batched over change context
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/arthurfiorette/jev-playwright#get-started
+- Caveat: Created 2026-09-24; 4 stars and 0 forks at inspection. A relevance filter, not a coverage guarantee: a successful run can execute zero tests. Sends diffs and test source by default without secret redaction. Keep full-suite checks where completeness matters. README requires Node 24.16+ and Playwright 1.62+; not run here. Sources: https://raw.githubusercontent.com/arthurfiorette/jev-playwright/main/README.md and https://raw.githubusercontent.com/arthurfiorette/jev-playwright/main/src/selection.ts
+
+### [Jev Chat](https://github.com/w3cj/jev-chat)
+<!-- catalog:jev-chat -->
+
+By [@w3cj](https://github.com/w3cj).
+
+Uses Jev to choose MCP tools and arguments for a chat-shaped command bar while code builds replies from tool data.
+
+- Action / outcome: A local web app routes requests to tools such as weather, search, tasks, and Home Assistant and displays the decision trace beside each reply.
+- Jev's role: Choice-based tool and argument selection with Noul gates
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/w3cj/jev-chat#run-it
+- Caveat: Author-labeled demo and proof of concept, created 2026-09-18; 96 stars and 21 forks at inspection. Local development server has no login. Tool integrations can change external state when configured. Code-built replies do not guarantee correct routing or correct upstream data. Not run here. Source: https://raw.githubusercontent.com/w3cj/jev-chat/main/README.md
+
 ## Model and skill routing
 
 ### [jev-router](https://github.com/gargpratyush/jev-router)
@@ -624,6 +663,19 @@ LangGraph demo that classifies mocked emails as invoice or general with Jev.
 - Install / start: https://github.com/GiesN/typesafe-jev-workflow
 - Caveat: Smoke demo on 10 emails. Closest public analog to inbox triage; not a Hermes skill.
 
+### [himalaya-jev-mail-classify](https://github.com/initrd/himalaya-jev-mail-classify)
+<!-- catalog:himalaya-jev-mail-classify -->
+
+By [Ashish Vijayaram](https://github.com/initrd).
+
+Uses Jev to choose filing, priority, and attention labels for Gmail threads read through Himalaya.
+
+- Action / outcome: Classifies the newest selected message per thread, previews label sets by default, and modifies Gmail thread labels only with --apply.
+- Jev's role: Filing and priority Choices plus independent Noul gates using the Python SDK with an OpenRouter base URL
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/initrd/himalaya-jev-mail-classify#install
+- Caveat: Created 2026-09-23; 1 star and 0 forks at inspection. Requires Gmail access and sends message fields to a model provider; dry-run still makes inference calls. Code classifies one selected message, not the entire conversation. The configured OpenRouter route and claimed costs were not tested. No accounts or mail were accessed in this review. Sources: https://raw.githubusercontent.com/initrd/himalaya-jev-mail-classify/main/README.md and https://raw.githubusercontent.com/initrd/himalaya-jev-mail-classify/main/config.example.toml
+
 ## MCP and agent bridges
 
 ### [Jev MCP (jkudish)](https://github.com/jkudish/jev-mcp)
@@ -677,6 +729,19 @@ Local MCP server that gives a coding agent structured Jev quality scores across 
 - Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
 - Install / start: https://github.com/NiazMorshed2007/jev-review#quick-start
 - Caveat: A different project from the similarly named jev-review by devagrawal09 already in this catalog. Distributed from GitHub only, not npm. Score quality was not benchmarked here.
+
+### [Flick](https://github.com/bgivenb/flick-computer-use)
+<!-- catalog:flick-computer-use -->
+
+By [Given Borthwick](https://github.com/bgivenb).
+
+Uses Jev to choose browser and macOS actions from observed controls inside a local MCP computer-use loop.
+
+- Action / outcome: Accepts goals, exact input values, and completion conditions, then observes DOM or accessibility state, selects bounded actions, executes them, and returns a trace.
+- Jev's role: Parallel Choice questions select an operation and its observed targets or supplied values
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
+- Install / start: https://github.com/bgivenb/flick-computer-use#manual-setup
+- Caveat: Early developer release, created 2026-09-24; 15 stars and 0 forks at inspection. Native macOS control is experimental. Sends goals, values, and selected interface text to TypeSafe; Jev does not see screenshots. Traces may contain input values. Benchmarks are author-run synthetic tasks, not reproduced here. Source: https://raw.githubusercontent.com/bgivenb/flick-computer-use/main/README.md
 
 ## Official cookbooks and patterns
 
@@ -901,6 +966,19 @@ Uses Jev as the decision provider behind Yao Agents' decision_decide tool, so ag
 - Install / start: https://github.com/YaoApp/yao#readme
 - Caveat: Jev is one provider inside a large, older agent platform (repo dates to 2021); the star count reflects Yao as a whole, not the Jev integration. Needs a TypeSafe API key configured in Yao settings. The decision tool was not run.
 
+### [jev-sap-commerce](https://github.com/Emenowicz/jev-sap-commerce)
+<!-- catalog:jev-sap-commerce -->
+
+By [Dawid Michałowicz](https://github.com/Emenowicz).
+
+Uses Jev to moderate product reviews and suggest product categories and attribute values in SAP Commerce.
+
+- Action / outcome: Provides dry-run comparisons and audit records; live review moderation follows configured thresholds, while category and attribute suggestions require a merchandiser to apply them.
+- Jev's role: Review Nouls and Choices over category branches and allowed attribute values
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
+- Install / start: https://github.com/Emenowicz/jev-sap-commerce#readme
+- Caveat: Independent of SAP and TypeSafe, created 2026-09-24; 5 stars and 0 forks at inspection. Requires SAP Commerce; reported test and accuracy results are the author's, including synthetic-data evaluations. No SAP runtime or inference was exercised here. Sources: https://raw.githubusercontent.com/Emenowicz/jev-sap-commerce/main/README.md and https://raw.githubusercontent.com/Emenowicz/jev-sap-commerce/main/jevintegration/project.properties
+
 ## Community clients
 
 ### [ruby_llm-typesafe](https://github.com/kieranklaassen/ruby_llm-typesafe)
@@ -967,6 +1045,19 @@ Ruby gem client for the TypeSafe System One API.
 - Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
 - Install / start: https://github.com/joshmn/typesafe-sdk#installation
 - Caveat: Unofficial. Distinct from ruby_llm-typesafe, which is a RubyLLM provider rather than a direct client.
+
+### [ruby_decision_model](https://github.com/obie/ruby_decision_model)
+<!-- catalog:ruby-decision-model -->
+
+By [Obie Fernandez](https://github.com/obie).
+
+Uses Jev to answer typed questions from Ruby through either the native TypeSafe API or OpenRouter.
+
+- Action / outcome: A standard-library Ruby client sends state and questions and returns typed answers, usage, and request IDs, with configurable retries and response validation.
+- Jev's role: Choice, Noul, and Score through a provider-selectable decision client
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/obie/ruby_decision_model#quick-start
+- Caveat: Unofficial early client, created 2026-09-18; 51 stars and 3 forks at inspection. README labels the API 0.1.0 and subject to change. Distinct from the existing direct Ruby SDK and RubyLLM provider: this exposes one decision interface across native TypeSafe and OpenRouter. No runtime or package-publication test performed. Sources: https://raw.githubusercontent.com/obie/ruby_decision_model/main/README.md and https://raw.githubusercontent.com/obie/ruby_decision_model/main/lib/ruby_decision_model/providers/typesafe.rb
 
 ## Installable agent skills
 
@@ -1059,6 +1150,19 @@ Uses Jev to choose the next click, field, or link on a web page, so a coding age
 - Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
 - Install / start: https://github.com/ChenYCL/jev-browser-skill#readme
 - Caveat: Demo costs and timings are the author's; not reproduced. An experimental fully local backend also exists; the TypeSafe client is the default live path. Different project from the cataloged jev-browser-use and jkudish/jev-browser.
+
+### [JevHarness](https://github.com/TianyuCodings/JevHarness)
+<!-- catalog:jevharness -->
+
+By [@TianyuCodings](https://github.com/TianyuCodings).
+
+Uses Jev to execute task-specific decision workflows written by a coding agent, with optional trace-based improvement before freezing them.
+
+- Action / outcome: Runs explicit feature code, typed questions, and action policy without requiring the authoring LLM for each decision; ships a recorded Pokemon example and an optional reflection loop.
+- Jev's role: Choice, Score, and Noul nodes in a code-owned decision graph
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/TianyuCodings/JevHarness#install-in-claude-code
+- Caveat: Created 2026-09-21; 243 stars and 13 forks at inspection. Win-rate and latency figures are author-recorded; Eval was used for selection, not independent held-out testing. Functional Python nodes require a supported macOS sandbox. Mock and cached modes do not establish live behavior. Not run here. Source: https://raw.githubusercontent.com/TianyuCodings/JevHarness/main/README.md
 
 ## Other awesome-Jev lists
 

@@ -3492,6 +3492,254 @@
       "creator_display": "@ChenYCL",
       "creator_url": "https://github.com/ChenYCL",
       "credit_kind": "by"
+    },
+    {
+      "id": "oxlint-plugin-jev",
+      "title": "oxlint-plugin-jev",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to check plain-English lint rules against code snippets and report matching violations in Oxlint.",
+      "actual_actions_or_outcome": "Collects functions, calls, JSX elements, or whole files and reports diagnostics when yes-probabilities cross configured cutoffs; optional Choice questions locate file-level findings.",
+      "jev_role": "Batched Noul rule checks and optional Choice-based source locations",
+      "other_components": ["Oxlint", "TypeSafe JavaScript SDK", "worker thread"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/wobsoriano/oxlint-plugin-jev/main/src/worker.ts",
+          "type": "code",
+          "what_verified": "README configuration, src/index.ts diagnostics and default api.typesafe.ai host, and worker.ts TypeSafeClient.systemOne call inspected.",
+          "author": "wobsoriano",
+          "date": "2026-09-25"
+        }
+      ],
+      "repo_url": "https://github.com/wobsoriano/oxlint-plugin-jev",
+      "demo_url": null,
+      "install_url": "https://github.com/wobsoriano/oxlint-plugin-jev#install",
+      "caveats": "Experimental, created 2026-09-19; 63 stars and 2 forks at inspection. Sends matched source to TypeSafe. API failures skip checks by default; CI requires ci=fail to avoid a quiet pass. Editor use can make paid requests on each edit. Not run here. Sources: https://raw.githubusercontent.com/wobsoriano/oxlint-plugin-jev/main/README.md and https://raw.githubusercontent.com/wobsoriano/oxlint-plugin-jev/main/src/worker.ts",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-25",
+      "creator_display": "Robert Soriano",
+      "creator_url": "https://github.com/wobsoriano",
+      "credit_kind": "by"
+    },
+    {
+      "id": "ruby-decision-model",
+      "title": "ruby_decision_model",
+      "category": "community-sdk",
+      "highlight": false,
+      "short_description": "Uses Jev to answer typed questions from Ruby through either the native TypeSafe API or OpenRouter.",
+      "actual_actions_or_outcome": "A standard-library Ruby client sends state and questions and returns typed answers, usage, and request IDs, with configurable retries and response validation.",
+      "jev_role": "Choice, Noul, and Score through a provider-selectable decision client",
+      "other_components": ["Ruby", "Net::HTTP", "optional OpenRouter"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/obie/ruby_decision_model/main/lib/ruby_decision_model/client.rb",
+          "type": "code",
+          "what_verified": "README quickstart, client.rb ask and Net::HTTP POST, and providers/typesafe.rb api.typesafe.ai/v1/systemone configuration inspected; commit gate checked separately.",
+          "author": "obie",
+          "date": "2026-09-25"
+        }
+      ],
+      "repo_url": "https://github.com/obie/ruby_decision_model",
+      "demo_url": null,
+      "install_url": "https://github.com/obie/ruby_decision_model#quick-start",
+      "caveats": "Unofficial early client, created 2026-09-18; 51 stars and 3 forks at inspection. README labels the API 0.1.0 and subject to change. Distinct from the existing direct Ruby SDK and RubyLLM provider: this exposes one decision interface across native TypeSafe and OpenRouter. No runtime or package-publication test performed. Sources: https://raw.githubusercontent.com/obie/ruby_decision_model/main/README.md and https://raw.githubusercontent.com/obie/ruby_decision_model/main/lib/ruby_decision_model/providers/typesafe.rb",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-25",
+      "creator_display": "Obie Fernandez",
+      "creator_url": "https://github.com/obie",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-playwright",
+      "title": "Jev Playwright",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to select existing Playwright tests relevant to a code change before browser execution.",
+      "actual_actions_or_outcome": "A reporter compares git changes with discovered tests, always retains changed specs, and runs tests whose relevance probabilities clear a threshold; selection failures fall back to all tests.",
+      "jev_role": "One Noul relevance judgment per candidate test, batched over change context",
+      "other_components": ["Playwright reporter", "Git", "TypeSafe JavaScript SDK"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arthurfiorette/jev-playwright/main/src/batch.ts",
+          "type": "code",
+          "what_verified": "README setup, selection.ts forced-spec and fallback policy, and batch.ts client.systemOne call with per-test Noul validation inspected.",
+          "author": "arthurfiorette",
+          "date": "2026-09-25"
+        }
+      ],
+      "repo_url": "https://github.com/arthurfiorette/jev-playwright",
+      "demo_url": null,
+      "install_url": "https://github.com/arthurfiorette/jev-playwright#get-started",
+      "caveats": "Created 2026-09-24; 4 stars and 0 forks at inspection. A relevance filter, not a coverage guarantee: a successful run can execute zero tests. Sends diffs and test source by default without secret redaction. Keep full-suite checks where completeness matters. README requires Node 24.16+ and Playwright 1.62+; not run here. Sources: https://raw.githubusercontent.com/arthurfiorette/jev-playwright/main/README.md and https://raw.githubusercontent.com/arthurfiorette/jev-playwright/main/src/selection.ts",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-25",
+      "creator_display": "Arthur Fiorette",
+      "creator_url": "https://github.com/arthurfiorette",
+      "credit_kind": "by"
+    },
+    {
+      "id": "himalaya-jev-mail-classify",
+      "title": "himalaya-jev-mail-classify",
+      "category": "email-routing",
+      "highlight": false,
+      "short_description": "Uses Jev to choose filing, priority, and attention labels for Gmail threads read through Himalaya.",
+      "actual_actions_or_outcome": "Classifies the newest selected message per thread, previews label sets by default, and modifies Gmail thread labels only with --apply.",
+      "jev_role": "Filing and priority Choices plus independent Noul gates using the Python SDK with an OpenRouter base URL",
+      "other_components": ["Himalaya Gmail backend", "TypeSafe Python SDK", "OpenRouter"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/initrd/himalaya-jev-mail-classify/main/mail_classify.py",
+          "type": "code",
+          "what_verified": "README, build_questions, TypeSafeClient.system_one call, thread_targets selection, and --apply write gate inspected; config.example.toml points at OpenRouter.",
+          "author": "initrd",
+          "date": "2026-09-25"
+        }
+      ],
+      "repo_url": "https://github.com/initrd/himalaya-jev-mail-classify",
+      "demo_url": null,
+      "install_url": "https://github.com/initrd/himalaya-jev-mail-classify#install",
+      "caveats": "Created 2026-09-23; 1 star and 0 forks at inspection. Requires Gmail access and sends message fields to a model provider; dry-run still makes inference calls. Code classifies one selected message, not the entire conversation. The configured OpenRouter route and claimed costs were not tested. No accounts or mail were accessed in this review. Sources: https://raw.githubusercontent.com/initrd/himalaya-jev-mail-classify/main/README.md and https://raw.githubusercontent.com/initrd/himalaya-jev-mail-classify/main/config.example.toml",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-25",
+      "creator_display": "Ashish Vijayaram",
+      "creator_url": "https://github.com/initrd",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jevharness",
+      "title": "JevHarness",
+      "category": "agent-skill",
+      "highlight": false,
+      "short_description": "Uses Jev to execute task-specific decision workflows written by a coding agent, with optional trace-based improvement before freezing them.",
+      "actual_actions_or_outcome": "Runs explicit feature code, typed questions, and action policy without requiring the authoring LLM for each decision; ships a recorded Pokemon example and an optional reflection loop.",
+      "jev_role": "Choice, Score, and Noul nodes in a code-owned decision graph",
+      "other_components": ["Python runtime", "authoring agent", "optional GEPA", "optional Vercel AI Gateway"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/TianyuCodings/JevHarness/main/auto_jev/providers.py",
+          "type": "code",
+          "what_verified": "README author/freeze/execute workflow and JevClient HTTP POST to api.typesafe.ai/v1/systemone, explicit mock path, and recorded-response cache inspected.",
+          "author": "TianyuCodings",
+          "date": "2026-09-25"
+        }
+      ],
+      "repo_url": "https://github.com/TianyuCodings/JevHarness",
+      "demo_url": null,
+      "install_url": "https://github.com/TianyuCodings/JevHarness#install-in-claude-code",
+      "caveats": "Created 2026-09-21; 243 stars and 13 forks at inspection. Win-rate and latency figures are author-recorded; Eval was used for selection, not independent held-out testing. Functional Python nodes require a supported macOS sandbox. Mock and cached modes do not establish live behavior. Not run here. Source: https://raw.githubusercontent.com/TianyuCodings/JevHarness/main/README.md",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": ["claude-code", "codex"],
+      "last_checked": "2026-09-25",
+      "creator_display": "@TianyuCodings",
+      "creator_url": "https://github.com/TianyuCodings",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-chat",
+      "title": "Jev Chat",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to choose MCP tools and arguments for a chat-shaped command bar while code builds replies from tool data.",
+      "actual_actions_or_outcome": "A local web app routes requests to tools such as weather, search, tasks, and Home Assistant and displays the decision trace beside each reply.",
+      "jev_role": "Choice-based tool and argument selection with Noul gates",
+      "other_components": ["MCP servers", "Hono", "SQLite", "TypeSafe JavaScript SDK"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/w3cj/jev-chat/main/apps/server/src/jev/client.ts",
+          "type": "code",
+          "what_verified": "README workflow and local setup plus TypeSafeClient construction and askJev systemOne request/answer tracing inspected.",
+          "author": "w3cj",
+          "date": "2026-09-25"
+        }
+      ],
+      "repo_url": "https://github.com/w3cj/jev-chat",
+      "demo_url": null,
+      "install_url": "https://github.com/w3cj/jev-chat#run-it",
+      "caveats": "Author-labeled demo and proof of concept, created 2026-09-18; 96 stars and 21 forks at inspection. Local development server has no login. Tool integrations can change external state when configured. Code-built replies do not guarantee correct routing or correct upstream data. Not run here. Source: https://raw.githubusercontent.com/w3cj/jev-chat/main/README.md",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-25",
+      "creator_display": "@w3cj",
+      "creator_url": "https://github.com/w3cj",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-sap-commerce",
+      "title": "jev-sap-commerce",
+      "category": "platform-integration",
+      "highlight": false,
+      "short_description": "Uses Jev to moderate product reviews and suggest product categories and attribute values in SAP Commerce.",
+      "actual_actions_or_outcome": "Provides dry-run comparisons and audit records; live review moderation follows configured thresholds, while category and attribute suggestions require a merchandiser to apply them.",
+      "jev_role": "Review Nouls and Choices over category branches and allowed attribute values",
+      "other_components": ["SAP Commerce", "Java HttpClient", "Backoffice"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/Emenowicz/jev-sap-commerce/main/jevintegration/src/org/jevintegration/JevClient.java",
+          "type": "code",
+          "what_verified": "README three workflows, Java HttpClient state/questions POST, and project.properties TypeSafe endpoint and thresholds inspected.",
+          "author": "Emenowicz",
+          "date": "2026-09-25"
+        }
+      ],
+      "repo_url": "https://github.com/Emenowicz/jev-sap-commerce",
+      "demo_url": null,
+      "install_url": "https://github.com/Emenowicz/jev-sap-commerce#readme",
+      "caveats": "Independent of SAP and TypeSafe, created 2026-09-24; 5 stars and 0 forks at inspection. Requires SAP Commerce; reported test and accuracy results are the author's, including synthetic-data evaluations. No SAP runtime or inference was exercised here. Sources: https://raw.githubusercontent.com/Emenowicz/jev-sap-commerce/main/README.md and https://raw.githubusercontent.com/Emenowicz/jev-sap-commerce/main/jevintegration/project.properties",
+      "readiness": "installable-from-source",
+      "skill_frameworks": ["claude-code"],
+      "last_checked": "2026-09-25",
+      "creator_display": "Dawid Michałowicz",
+      "creator_url": "https://github.com/Emenowicz",
+      "credit_kind": "by"
+    },
+    {
+      "id": "flick-computer-use",
+      "title": "Flick",
+      "category": "mcp",
+      "highlight": false,
+      "short_description": "Uses Jev to choose browser and macOS actions from observed controls inside a local MCP computer-use loop.",
+      "actual_actions_or_outcome": "Accepts goals, exact input values, and completion conditions, then observes DOM or accessibility state, selects bounded actions, executes them, and returns a trace.",
+      "jev_role": "Parallel Choice questions select an operation and its observed targets or supplied values",
+      "other_components": ["MCP", "Playwright", "Swift accessibility driver", "local Apple Vision OCR"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/bgivenb/flick-computer-use/main/src/providers/typesafe.ts",
+          "type": "code",
+          "what_verified": "README architecture and TypeSafeDecider decisionContract, direct System One POST, response validation, and bounded invalid-field retries inspected.",
+          "author": "bgivenb",
+          "date": "2026-09-25"
+        }
+      ],
+      "repo_url": "https://github.com/bgivenb/flick-computer-use",
+      "demo_url": null,
+      "install_url": "https://github.com/bgivenb/flick-computer-use#manual-setup",
+      "caveats": "Early developer release, created 2026-09-24; 15 stars and 0 forks at inspection. Native macOS control is experimental. Sends goals, values, and selected interface text to TypeSafe; Jev does not see screenshots. Traces may contain input values. Benchmarks are author-run synthetic tasks, not reproduced here. Source: https://raw.githubusercontent.com/bgivenb/flick-computer-use/main/README.md",
+      "readiness": "installable-from-source",
+      "skill_frameworks": ["mcp"],
+      "last_checked": "2026-09-25",
+      "creator_display": "Given Borthwick",
+      "creator_url": "https://github.com/bgivenb",
+      "credit_kind": "by"
     }
   ]
 }
