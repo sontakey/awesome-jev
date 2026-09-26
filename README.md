@@ -5,12 +5,12 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-107_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-112_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (43)
+- [Action-taking projects](#action-taking-projects) (47)
 - [Model and skill routing](#model-and-skill-routing) (6)
 - [Email and inbox routing](#email-and-inbox-routing) (2)
 - [MCP and agent bridges](#mcp-and-agent-bridges) (5)
@@ -19,7 +19,7 @@ Jev does not chat, write code, or see images. It returns Choice, Score, or Noul 
 - [Official docs, skill, and launch demos](#official-docs-skill-and-launch-demos) (4)
 - [Platform integrations](#platform-integrations) (6)
 - [Community clients](#community-clients) (6)
-- [Installable agent skills](#installable-agent-skills) (8)
+- [Installable agent skills](#installable-agent-skills) (9)
 - [Other awesome-Jev lists](#other-awesome-jev-lists) (12)
 - [Related, not TypeSafe Jev](#related-not-typesafe-jev) (8)
 - [Quick start](#quick-start)
@@ -75,6 +75,10 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [oxlint-plugin-jev](https://github.com/wobsoriano/oxlint-plugin-jev) — Uses Jev to check plain-English lint rules against code snippets and report matching violations in Oxlint. By [Robert Soriano](https://github.com/wobsoriano). `code-inspected` <!-- catalog:oxlint-plugin-jev -->
 - [Jev Playwright](https://github.com/arthurfiorette/jev-playwright) — Uses Jev to select existing Playwright tests relevant to a code change before browser execution. By [Arthur Fiorette](https://github.com/arthurfiorette). `code-inspected` <!-- catalog:jev-playwright -->
 - [Jev Chat](https://github.com/w3cj/jev-chat) — Uses Jev to choose MCP tools and arguments for a chat-shaped command bar while code builds replies from tool data. By [@w3cj](https://github.com/w3cj). `code-inspected` <!-- catalog:jev-chat -->
+- [Reticle Jev driver](https://github.com/reticlehq/reticle) — Uses Jev to choose DOM actions while Reticle records application journeys for later replay. Maintained by [Reticle](https://github.com/reticlehq). `code-inspected` <!-- catalog:reticle-jev-driver -->
+- [Supercov](https://github.com/supercorp-ai/supercov) — Uses Jev to flag code-quality and security risks, alongside locally measured test coverage. Maintained by [Supercorp](https://github.com/supercorp-ai). `code-inspected` <!-- catalog:supercov -->
+- [Jev Plays Pokemon Red](https://github.com/christianmat/jev-pokemon) — Uses Jev to choose Pokemon Red navigation, menu, and battle actions from emulator memory. By [Christian Mathiesen](https://github.com/christianmat). `code-inspected` <!-- catalog:jev-pokemon -->
+- [jev-sim-use](https://github.com/Ryu0118/jev-sim-use) — Uses Jev to choose the next device action from visible labels in iOS Simulator or Android screens. By [@Ryu0118](https://github.com/Ryu0118). `code-inspected` <!-- catalog:jev-sim-use -->
 
 ## Model and skill routing
 
@@ -146,6 +150,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [Skillbox](https://github.com/kitze/skillbox) — Self-hosted agent skill library that uses Jev to recommend which stored skills fit the current request. By [@kitze](https://github.com/kitze). `code-inspected` <!-- catalog:skillbox -->
 - [jev-browser](https://github.com/ChenYCL/jev-browser-skill) — Uses Jev to choose the next click, field, or link on a web page, so a coding agent can drive a browser without a vision model. By [@ChenYCL](https://github.com/ChenYCL). `code-inspected` <!-- catalog:jev-browser-chenycl -->
 - [JevHarness](https://github.com/TianyuCodings/JevHarness) — Uses Jev to execute task-specific decision workflows written by a coding agent, with optional trace-based improvement before freezing them. By [@TianyuCodings](https://github.com/TianyuCodings). `code-inspected` <!-- catalog:jevharness -->
+- [jevmem](https://github.com/Avinash-jetwani/jevmem) — Uses Jev to decide which coding-session facts to remember and which existing memories they replace. By [Avinash Jetwani](https://github.com/Avinash-jetwani). `code-inspected` <!-- catalog:jevmem -->
 
 ## Other awesome-Jev lists
 

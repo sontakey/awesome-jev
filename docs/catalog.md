@@ -568,6 +568,58 @@ Uses Jev to choose MCP tools and arguments for a chat-shaped command bar while c
 - Install / start: https://github.com/w3cj/jev-chat#run-it
 - Caveat: Author-labeled demo and proof of concept, created 2026-09-18; 96 stars and 21 forks at inspection. Local development server has no login. Tool integrations can change external state when configured. Code-built replies do not guarantee correct routing or correct upstream data. Not run here. Source: https://raw.githubusercontent.com/w3cj/jev-chat/main/README.md
 
+### [Reticle Jev driver](https://github.com/reticlehq/reticle)
+<!-- catalog:reticle-jev-driver -->
+
+Maintained by [Reticle](https://github.com/reticlehq).
+
+Uses Jev to choose DOM actions while Reticle records application journeys for later replay.
+
+- Action / outcome: The optional Jev exploration driver selects page controls and observations, then saves recorded flows. Existing flows replay deterministically.
+- Jev's role: Choice over enumerated controls and observation tools, Noul completion checks, and follow-up consequence selection
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/reticlehq/reticle#readme
+- Caveat: The shipped Jev exploration driver is distinct from verification routing, which the README still lists as planned. Jev mode sends textual app state to the configured model service; local-only claims do not apply to those requests. Server is FSL source-available, not Apache-licensed like the SDK. Not run here. Inspected source: https://github.com/reticlehq/reticle/blob/e94b9fdfa2aa6f82180b137d9a52c75a5ac5a82f/server/src/features/harness/jev-driver.ts
+
+### [Supercov](https://github.com/supercorp-ai/supercov)
+<!-- catalog:supercov -->
+
+Maintained by [Supercorp](https://github.com/supercorp-ai).
+
+Uses Jev to flag code-quality and security risks, alongside locally measured test coverage.
+
+- Action / outcome: CLI returns per-file quality and security findings and coverage gaps for a coding agent to act on; the agent writes the tests or fixes.
+- Jev's role: Batched file judgments through the System One endpoint, with scores and thresholds applied in Rust
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/supercorp-ai/supercov#readme
+- Caveat: New project, created August 2026. Quality and security assessment sends source to TypeSafe; local coverage collection does not require Jev. Findings are model judgments, not a security guarantee. Published cost and effectiveness claims were not reproduced. Inspected source: https://github.com/supercorp-ai/supercov/blob/962f308a55e764f5c4d52fc25eb422b17682ab2e/crates/supercov-cli/src/quality.rs
+
+### [Jev Plays Pokemon Red](https://github.com/christianmat/jev-pokemon)
+<!-- catalog:jev-pokemon -->
+
+By [Christian Mathiesen](https://github.com/christianmat).
+
+Uses Jev to choose Pokemon Red navigation, menu, and battle actions from emulator memory.
+
+- Action / outcome: A Node Game Boy harness reads RAM, offers legal choices, presses buttons, and logs decisions for a local viewer. Pathfinding and loop protection remain in code.
+- Jev's role: Choice over game actions through Vercel AI Gateway evaluation
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/christianmat/jev-pokemon#readme
+- Caveat: New project, created September 2026. Defaults to a mock backend; live Jev requires JEV_MODE=gateway and a gateway key. Needs a legally obtained compatible ROM. No gameplay, completion, latency, or cost claims were reproduced. Not native vision. Inspected source: https://github.com/christianmat/jev-pokemon/blob/ec7cfc096fac10f64f7d5939bca1d887fa844727/src/jev/gateway.ts
+
+### [jev-sim-use](https://github.com/Ryu0118/jev-sim-use)
+<!-- catalog:jev-sim-use -->
+
+By [@Ryu0118](https://github.com/Ryu0118).
+
+Uses Jev to choose the next device action from visible labels in iOS Simulator or Android screens.
+
+- Action / outcome: Runs sim-use commands toward a goal and leaves a resumable session when uncertain; users can provide notes and named text values.
+- Jev's role: Speculative Choice questions for operation and target plus Noul completion and irreversibility checks
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/Ryu0118/jev-sim-use#readme
+- Caveat: New project with 8 stars at inspection. Requires macOS and sim-use; physical iPhones are unsupported. Visible screen labels and values are sent to Jev. Confidence and risk gates are not a safety guarantee. No device run or latency test performed. Inspected source: https://github.com/Ryu0118/jev-sim-use/blob/9353dbcd6b13fd7956c578bfdde7149b5fa43b13/Sources/JevSimUseKit/Agent/JevStepPlanner.swift
+
 ## Model and skill routing
 
 ### [jev-router](https://github.com/gargpratyush/jev-router)
@@ -1163,6 +1215,19 @@ Uses Jev to execute task-specific decision workflows written by a coding agent, 
 - Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
 - Install / start: https://github.com/TianyuCodings/JevHarness#install-in-claude-code
 - Caveat: Created 2026-09-21; 243 stars and 13 forks at inspection. Win-rate and latency figures are author-recorded; Eval was used for selection, not independent held-out testing. Functional Python nodes require a supported macOS sandbox. Mock and cached modes do not establish live behavior. Not run here. Source: https://raw.githubusercontent.com/TianyuCodings/JevHarness/main/README.md
+
+### [jevmem](https://github.com/Avinash-jetwani/jevmem)
+<!-- catalog:jevmem -->
+
+By [Avinash Jetwani](https://github.com/Avinash-jetwani).
+
+Uses Jev to decide which coding-session facts to remember and which existing memories they replace.
+
+- Action / outcome: Writes project memory lines, marks superseded facts, and recalls relevant lines through hooks or MCP. Code applies thresholds to typed judgments.
+- Jev's role: Choice, Noul, and Score questions for save/skip, memory kind, importance, and contradictions
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/Avinash-jetwani/jevmem#readme
+- Caveat: New project, created September 2026. Sends scrubbed conversation context and memory lines to TypeSafe; scrubbing is incomplete. The poisoning filter is not a guarantee. Author-written benchmarks, recall quality, and long-run drift were not independently verified. Inspected source: https://github.com/Avinash-jetwani/jevmem/blob/0ea6def37519177325ef45a68ebbe05be4a7a76e/src/jev.ts
 
 ## Other awesome-Jev lists
 

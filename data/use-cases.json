@@ -3740,6 +3740,228 @@
       "creator_display": "Given Borthwick",
       "creator_url": "https://github.com/bgivenb",
       "credit_kind": "by"
+    },
+    {
+      "id": "reticle-jev-driver",
+      "title": "Reticle Jev driver",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to choose DOM actions while Reticle records application journeys for later replay.",
+      "actual_actions_or_outcome": "The optional Jev exploration driver selects page controls and observations, then saves recorded flows. Existing flows replay deterministically.",
+      "jev_role": "Choice over enumerated controls and observation tools, Noul completion checks, and follow-up consequence selection",
+      "other_components": [
+        "Reticle SDK and MCP server",
+        "instrumented development app"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/reticlehq/reticle",
+          "type": "repo",
+          "what_verified": "README, pinned integration code, and public creator metadata; 887 stars on 2026-09-26",
+          "author": "reticlehq",
+          "date": "2026-09-26"
+        },
+        {
+          "url": "https://github.com/reticlehq/reticle/blob/e94b9fdfa2aa6f82180b137d9a52c75a5ac5a82f/server/src/features/harness/jev-driver.ts",
+          "type": "repo",
+          "what_verified": "Inspected TypeSafe client call and request construction at commit e94b9fdfa2aa6f82180b137d9a52c75a5ac5a82f",
+          "author": "reticlehq",
+          "date": "2026-09-26"
+        }
+      ],
+      "repo_url": "https://github.com/reticlehq/reticle",
+      "demo_url": null,
+      "install_url": "https://github.com/reticlehq/reticle#readme",
+      "caveats": "The shipped Jev exploration driver is distinct from verification routing, which the README still lists as planned. Jev mode sends textual app state to the configured model service; local-only claims do not apply to those requests. Server is FSL source-available, not Apache-licensed like the SDK. Not run here. Inspected source: https://github.com/reticlehq/reticle/blob/e94b9fdfa2aa6f82180b137d9a52c75a5ac5a82f/server/src/features/harness/jev-driver.ts",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [
+        "mcp"
+      ],
+      "last_checked": "2026-09-26",
+      "creator_display": "Reticle",
+      "creator_url": "https://github.com/reticlehq",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "supercov",
+      "title": "Supercov",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to flag code-quality and security risks, alongside locally measured test coverage.",
+      "actual_actions_or_outcome": "CLI returns per-file quality and security findings and coverage gaps for a coding agent to act on; the agent writes the tests or fixes.",
+      "jev_role": "Batched file judgments through the System One endpoint, with scores and thresholds applied in Rust",
+      "other_components": [
+        "Rust CLI",
+        "existing test runner"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/supercorp-ai/supercov",
+          "type": "repo",
+          "what_verified": "README, pinned integration code, and public creator metadata; 122 stars on 2026-09-26",
+          "author": "supercorp-ai",
+          "date": "2026-09-26"
+        },
+        {
+          "url": "https://github.com/supercorp-ai/supercov/blob/962f308a55e764f5c4d52fc25eb422b17682ab2e/crates/supercov-cli/src/quality.rs",
+          "type": "repo",
+          "what_verified": "Inspected TypeSafe client call and request construction at commit 962f308a55e764f5c4d52fc25eb422b17682ab2e",
+          "author": "supercorp-ai",
+          "date": "2026-09-26"
+        }
+      ],
+      "repo_url": "https://github.com/supercorp-ai/supercov",
+      "demo_url": null,
+      "install_url": "https://github.com/supercorp-ai/supercov#readme",
+      "caveats": "New project, created August 2026. Quality and security assessment sends source to TypeSafe; local coverage collection does not require Jev. Findings are model judgments, not a security guarantee. Published cost and effectiveness claims were not reproduced. Inspected source: https://github.com/supercorp-ai/supercov/blob/962f308a55e764f5c4d52fc25eb422b17682ab2e/crates/supercov-cli/src/quality.rs",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [
+        "claude-code",
+        "codex",
+        "gemini-cli"
+      ],
+      "last_checked": "2026-09-26",
+      "creator_display": "Supercorp",
+      "creator_url": "https://github.com/supercorp-ai",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "jevmem",
+      "title": "jevmem",
+      "category": "agent-skill",
+      "highlight": false,
+      "short_description": "Uses Jev to decide which coding-session facts to remember and which existing memories they replace.",
+      "actual_actions_or_outcome": "Writes project memory lines, marks superseded facts, and recalls relevant lines through hooks or MCP. Code applies thresholds to typed judgments.",
+      "jev_role": "Choice, Noul, and Score questions for save/skip, memory kind, importance, and contradictions",
+      "other_components": [
+        "Claude Code hooks",
+        "MCP",
+        "optional text-writing LLM"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/Avinash-jetwani/jevmem",
+          "type": "repo",
+          "what_verified": "README, pinned integration code, and public creator metadata; 78 stars on 2026-09-26",
+          "author": "Avinash-jetwani",
+          "date": "2026-09-26"
+        },
+        {
+          "url": "https://github.com/Avinash-jetwani/jevmem/blob/0ea6def37519177325ef45a68ebbe05be4a7a76e/src/jev.ts",
+          "type": "repo",
+          "what_verified": "Inspected TypeSafe client call and request construction at commit 0ea6def37519177325ef45a68ebbe05be4a7a76e",
+          "author": "Avinash-jetwani",
+          "date": "2026-09-26"
+        }
+      ],
+      "repo_url": "https://github.com/Avinash-jetwani/jevmem",
+      "demo_url": null,
+      "install_url": "https://github.com/Avinash-jetwani/jevmem#readme",
+      "caveats": "New project, created September 2026. Sends scrubbed conversation context and memory lines to TypeSafe; scrubbing is incomplete. The poisoning filter is not a guarantee. Author-written benchmarks, recall quality, and long-run drift were not independently verified. Inspected source: https://github.com/Avinash-jetwani/jevmem/blob/0ea6def37519177325ef45a68ebbe05be4a7a76e/src/jev.ts",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [
+        "claude-code",
+        "cursor",
+        "codex",
+        "mcp"
+      ],
+      "last_checked": "2026-09-26",
+      "creator_display": "Avinash Jetwani",
+      "creator_url": "https://github.com/Avinash-jetwani",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-pokemon",
+      "title": "Jev Plays Pokemon Red",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to choose Pokemon Red navigation, menu, and battle actions from emulator memory.",
+      "actual_actions_or_outcome": "A Node Game Boy harness reads RAM, offers legal choices, presses buttons, and logs decisions for a local viewer. Pathfinding and loop protection remain in code.",
+      "jev_role": "Choice over game actions through Vercel AI Gateway evaluation",
+      "other_components": [
+        "Node Game Boy emulator",
+        "Vercel AI Gateway",
+        "user-supplied ROM"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/christianmat/jev-pokemon",
+          "type": "repo",
+          "what_verified": "README, pinned integration code, and public creator metadata; 60 stars on 2026-09-26",
+          "author": "christianmat",
+          "date": "2026-09-26"
+        },
+        {
+          "url": "https://github.com/christianmat/jev-pokemon/blob/ec7cfc096fac10f64f7d5939bca1d887fa844727/src/jev/gateway.ts",
+          "type": "repo",
+          "what_verified": "Inspected TypeSafe client call and request construction at commit ec7cfc096fac10f64f7d5939bca1d887fa844727",
+          "author": "christianmat",
+          "date": "2026-09-26"
+        }
+      ],
+      "repo_url": "https://github.com/christianmat/jev-pokemon",
+      "demo_url": null,
+      "install_url": "https://github.com/christianmat/jev-pokemon#readme",
+      "caveats": "New project, created September 2026. Defaults to a mock backend; live Jev requires JEV_MODE=gateway and a gateway key. Needs a legally obtained compatible ROM. No gameplay, completion, latency, or cost claims were reproduced. Not native vision. Inspected source: https://github.com/christianmat/jev-pokemon/blob/ec7cfc096fac10f64f7d5939bca1d887fa844727/src/jev/gateway.ts",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-26",
+      "creator_display": "Christian Mathiesen",
+      "creator_url": "https://github.com/christianmat",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-sim-use",
+      "title": "jev-sim-use",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to choose the next device action from visible labels in iOS Simulator or Android screens.",
+      "actual_actions_or_outcome": "Runs sim-use commands toward a goal and leaves a resumable session when uncertain; users can provide notes and named text values.",
+      "jev_role": "Speculative Choice questions for operation and target plus Noul completion and irreversibility checks",
+      "other_components": [
+        "sim-use",
+        "swift-jev",
+        "macOS 15+"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/Ryu0118/jev-sim-use",
+          "type": "repo",
+          "what_verified": "README, pinned integration code, and public creator metadata; 8 stars on 2026-09-26",
+          "author": "Ryu0118",
+          "date": "2026-09-26"
+        },
+        {
+          "url": "https://github.com/Ryu0118/jev-sim-use/blob/9353dbcd6b13fd7956c578bfdde7149b5fa43b13/Sources/JevSimUseKit/Agent/JevStepPlanner.swift",
+          "type": "repo",
+          "what_verified": "Inspected TypeSafe client call and request construction at commit 9353dbcd6b13fd7956c578bfdde7149b5fa43b13",
+          "author": "Ryu0118",
+          "date": "2026-09-26"
+        }
+      ],
+      "repo_url": "https://github.com/Ryu0118/jev-sim-use",
+      "demo_url": null,
+      "install_url": "https://github.com/Ryu0118/jev-sim-use#readme",
+      "caveats": "New project with 8 stars at inspection. Requires macOS and sim-use; physical iPhones are unsupported. Visible screen labels and values are sent to Jev. Confidence and risk gates are not a safety guarantee. No device run or latency test performed. Inspected source: https://github.com/Ryu0118/jev-sim-use/blob/9353dbcd6b13fd7956c578bfdde7149b5fa43b13/Sources/JevSimUseKit/Agent/JevStepPlanner.swift",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [
+        "claude-code",
+        "codex"
+      ],
+      "last_checked": "2026-09-26",
+      "creator_display": "@Ryu0118",
+      "creator_url": "https://github.com/Ryu0118",
+      "credit_kind": "by"
     }
   ]
 }
