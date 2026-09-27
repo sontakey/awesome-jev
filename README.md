@@ -5,20 +5,20 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-112_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-117_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (47)
+- [Action-taking projects](#action-taking-projects) (50)
 - [Model and skill routing](#model-and-skill-routing) (6)
 - [Email and inbox routing](#email-and-inbox-routing) (2)
-- [MCP and agent bridges](#mcp-and-agent-bridges) (5)
+- [MCP and agent bridges](#mcp-and-agent-bridges) (6)
 - [Official cookbooks and patterns](#official-cookbooks-and-patterns) (4)
 - [Official SDKs and adapter](#official-sdks-and-adapter) (3)
 - [Official docs, skill, and launch demos](#official-docs-skill-and-launch-demos) (4)
 - [Platform integrations](#platform-integrations) (6)
-- [Community clients](#community-clients) (6)
+- [Community clients](#community-clients) (7)
 - [Installable agent skills](#installable-agent-skills) (9)
 - [Other awesome-Jev lists](#other-awesome-jev-lists) (12)
 - [Related, not TypeSafe Jev](#related-not-typesafe-jev) (8)
@@ -79,6 +79,9 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [Supercov](https://github.com/supercorp-ai/supercov) — Uses Jev to flag code-quality and security risks, alongside locally measured test coverage. Maintained by [Supercorp](https://github.com/supercorp-ai). `code-inspected` <!-- catalog:supercov -->
 - [Jev Plays Pokemon Red](https://github.com/christianmat/jev-pokemon) — Uses Jev to choose Pokemon Red navigation, menu, and battle actions from emulator memory. By [Christian Mathiesen](https://github.com/christianmat). `code-inspected` <!-- catalog:jev-pokemon -->
 - [jev-sim-use](https://github.com/Ryu0118/jev-sim-use) — Uses Jev to choose the next device action from visible labels in iOS Simulator or Android screens. By [@Ryu0118](https://github.com/Ryu0118). `code-inspected` <!-- catalog:jev-sim-use -->
+- [jevgrep](https://github.com/dzhng/jevgrep) — Uses Jev to find relevant files and source excerpts from a plain-English question about a codebase. By [David Zhang](https://github.com/dzhng). `code-inspected` <!-- catalog:jevgrep -->
+- [sys1grep](https://github.com/uehaj/jev-semgrep) — Uses Jev to find text lines by meaning, with local regex filters and AND, OR, and NOT conditions. By [UEHARA Junji](https://github.com/uehaj). `code-inspected` <!-- catalog:sys1grep -->
+- [RAG-Fusion Jev experiments](https://github.com/Raudaschl/rag-fusion) — Uses Jev to judge document relevance, weight query rewrites, and decide when a search needs query expansion. By [Adrian Raudaschl](https://github.com/Raudaschl). `code-inspected` <!-- catalog:rag-fusion-jev -->
 
 ## Model and skill routing
 
@@ -101,6 +104,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [y0usaf/typesafe-mcp](https://github.com/y0usaf/typesafe-mcp) — One MCP evaluate(state, questions) tool that POSTs to the TypeSafe API. By [Sami Ansari](https://github.com/y0usaf). Announced by [@realy0usaf](https://x.com/realy0usaf). `code-inspected` <!-- catalog:y0usaf-typesafe-mcp -->
 - [Jev Review (MCP)](https://github.com/NiazMorshed2007/jev-review) — Local MCP server that gives a coding agent structured Jev quality scores across correctness, complexity, tests and security while it works. By [Niaz Morshed](https://github.com/NiazMorshed2007). `code-inspected` <!-- catalog:jev-review-mcp -->
 - [Flick](https://github.com/bgivenb/flick-computer-use) — Uses Jev to choose browser and macOS actions from observed controls inside a local MCP computer-use loop. By [Given Borthwick](https://github.com/bgivenb). `code-inspected` <!-- catalog:flick-computer-use -->
+- [Jev WebMCP Chrome extension](https://github.com/sdras/jev-webmcp-extension) — Uses Jev to select WebMCP tools and fill their arguments from what a user types in a Chrome side panel. By [Sarah Drasner](https://github.com/sdras). `code-inspected` <!-- catalog:jev-webmcp-extension -->
 
 ## Official cookbooks and patterns
 
@@ -139,6 +143,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [JevSwiftSDK](https://github.com/NSStudent/JevSwiftSDK) — Dependency-free Swift package for the System One HTTP API. By [@NSStudent](https://github.com/NSStudent). `code-inspected` <!-- catalog:jev-swift-sdk -->
 - [typesafe-sdk (Ruby)](https://github.com/joshmn/typesafe-sdk) — Ruby gem client for the TypeSafe System One API. By [@joshmn](https://github.com/joshmn). `code-inspected` <!-- catalog:typesafe-sdk-ruby -->
 - [ruby_decision_model](https://github.com/obie/ruby_decision_model) — Uses Jev to answer typed questions from Ruby through either the native TypeSafe API or OpenRouter. By [Obie Fernandez](https://github.com/obie). `code-inspected` <!-- catalog:ruby-decision-model -->
+- [vibecheck](https://github.com/jlowin/vibecheck) — Uses Jev to turn Python check, classify, label, and score calls into plain values with optional probabilities. By [Jeremiah Lowin](https://github.com/jlowin). `code-inspected` <!-- catalog:vibecheck -->
 
 ## Installable agent skills
 

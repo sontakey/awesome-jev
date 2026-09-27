@@ -620,6 +620,45 @@ Uses Jev to choose the next device action from visible labels in iOS Simulator o
 - Install / start: https://github.com/Ryu0118/jev-sim-use#readme
 - Caveat: New project with 8 stars at inspection. Requires macOS and sim-use; physical iPhones are unsupported. Visible screen labels and values are sent to Jev. Confidence and risk gates are not a safety guarantee. No device run or latency test performed. Inspected source: https://github.com/Ryu0118/jev-sim-use/blob/9353dbcd6b13fd7956c578bfdde7149b5fa43b13/Sources/JevSimUseKit/Agent/JevStepPlanner.swift
 
+### [jevgrep](https://github.com/dzhng/jevgrep)
+<!-- catalog:jevgrep -->
+
+By [David Zhang](https://github.com/dzhng).
+
+Uses Jev to find relevant files and source excerpts from a plain-English question about a codebase.
+
+- Action / outcome: A local CLI searches repository folders, files, and declarations, then prints source excerpts and reading leads for a coding agent.
+- Jev's role: Batched boolean relevance judgments through the AI SDK TypeSafe provider
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/dzhng/jevgrep#readme
+- Caveat: New project, created September 2026. Sends eligible source content to the selected provider; ignore and credential filters are not a privacy guarantee. Reported coding-agent savings exclude Jev costs and include a solve-rate tradeoff; not reproduced here. No installation or inference performed. Inspected source: https://github.com/dzhng/jevgrep/blob/762028fa076d2d823235d74e5687bea5d070e4c5/packages/core/src/evaluator.ts
+
+### [sys1grep](https://github.com/uehaj/jev-semgrep)
+<!-- catalog:sys1grep -->
+
+By [UEHARA Junji](https://github.com/uehaj).
+
+Uses Jev to find text lines by meaning, with local regex filters and AND, OR, and NOT conditions.
+
+- Action / outcome: A Node CLI batches text into semantic matching requests and prints matching lines with optional line numbers and probabilities.
+- Jev's role: Noul matching probabilities with thresholds and boolean composition in code
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/uehaj/jev-semgrep#readme
+- Caveat: New project, created September 2026. Semantic searches send text to the configured endpoint and incur per-query API costs. Multilingual accuracy, latency, and threshold claims were not reproduced. Optional summarization uses a separate model, not Jev. Inspected source: https://github.com/uehaj/jev-semgrep/blob/31a8000220c8610b175d61b552f7ed91404500d4/sys1grep.mjs
+
+### [RAG-Fusion Jev experiments](https://github.com/Raudaschl/rag-fusion)
+<!-- catalog:rag-fusion-jev -->
+
+By [Adrian Raudaschl](https://github.com/Raudaschl).
+
+Uses Jev to judge document relevance, weight query rewrites, and decide when a search needs query expansion.
+
+- Action / outcome: An evaluation harness combines hybrid retrieval with Jev reranking, intent-weighted fusion, query routing, and an evidence gate that can return no documents.
+- Jev's role: Noul relevance and intent judgments plus Choice over query types
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/Raudaschl/rag-fusion#readme
+- Caveat: Jev is in the optional evaluation pipeline, not the basic main.py demo. Benchmark improvements, cost, and latency are author-reported and were not reproduced. The README notes a historical rewrite-parser bug and noisy answer-quality results; the tested router did not identify which queries benefit from fusion. No dataset downloads or inference performed. Inspected source: https://github.com/Raudaschl/rag-fusion/blob/a9742c4aae95b097c1f715cf2350b569c9407872/eval/jev.py
+
 ## Model and skill routing
 
 ### [jev-router](https://github.com/gargpratyush/jev-router)
@@ -794,6 +833,19 @@ Uses Jev to choose browser and macOS actions from observed controls inside a loc
 - Origin: community · Evidence: `code-inspected` · Readiness: installable-from-source
 - Install / start: https://github.com/bgivenb/flick-computer-use#manual-setup
 - Caveat: Early developer release, created 2026-09-24; 15 stars and 0 forks at inspection. Native macOS control is experimental. Sends goals, values, and selected interface text to TypeSafe; Jev does not see screenshots. Traces may contain input values. Benchmarks are author-run synthetic tasks, not reproduced here. Source: https://raw.githubusercontent.com/bgivenb/flick-computer-use/main/README.md
+
+### [Jev WebMCP Chrome extension](https://github.com/sdras/jev-webmcp-extension)
+<!-- catalog:jev-webmcp-extension -->
+
+By [Sarah Drasner](https://github.com/sdras).
+
+Uses Jev to select WebMCP tools and fill their arguments from what a user types in a Chrome side panel.
+
+- Action / outcome: Discovers page-provided tool schemas, predicts calls while typing, and executes selected tools with confidence and confirmation gates.
+- Jev's role: Choice and Noul questions for tool routing, schema-derived arguments, and manifest screening
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/sdras/jev-webmcp-extension#readme
+- Caveat: New project, created September 2026. Requires Chrome with WebMCP enabled and a tool-exposing page. Stores the API key in extension-local storage. Page schemas are untrusted; model screening and confidence gates are not safety guarantees. Array arguments currently populate only the first element. No browser execution or inference performed. Inspected source: https://github.com/sdras/jev-webmcp-extension/blob/1ec3afb6cebf116d811a3c8a073414edaf5cb67c/src/jev.js
 
 ## Official cookbooks and patterns
 
@@ -1110,6 +1162,19 @@ Uses Jev to answer typed questions from Ruby through either the native TypeSafe 
 - Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
 - Install / start: https://github.com/obie/ruby_decision_model#quick-start
 - Caveat: Unofficial early client, created 2026-09-18; 51 stars and 3 forks at inspection. README labels the API 0.1.0 and subject to change. Distinct from the existing direct Ruby SDK and RubyLLM provider: this exposes one decision interface across native TypeSafe and OpenRouter. No runtime or package-publication test performed. Sources: https://raw.githubusercontent.com/obie/ruby_decision_model/main/README.md and https://raw.githubusercontent.com/obie/ruby_decision_model/main/lib/ruby_decision_model/providers/typesafe.rb
+
+### [vibecheck](https://github.com/jlowin/vibecheck)
+<!-- catalog:vibecheck -->
+
+By [Jeremiah Lowin](https://github.com/jlowin).
+
+Uses Jev to turn Python check, classify, label, and score calls into plain values with optional probabilities.
+
+- Action / outcome: A Python decision library provides sync and async calls, batching, filtering, grouping, and schema-shaped results over the official TypeSafe SDK.
+- Jev's role: Noul, Choice, and Score translated to ordinary Python values
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/jlowin/vibecheck#readme
+- Caveat: New project with 32 stars at inspection. Published as vibecheck-py but imported as vibecheck. Default checks apply a probability threshold; three-way checks can return None and require explicit handling. Speed and batching-cost claims were not reproduced. No package installation or inference performed. Inspected source: https://github.com/jlowin/vibecheck/blob/1011988a5c7b71b891d3a022fdbd5745c2a36edb/src/vibecheck/backends.py
 
 ## Installable agent skills
 

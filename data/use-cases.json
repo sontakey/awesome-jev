@@ -3962,6 +3962,216 @@
       "creator_display": "@Ryu0118",
       "creator_url": "https://github.com/Ryu0118",
       "credit_kind": "by"
+    },
+    {
+      "id": "jevgrep",
+      "title": "jevgrep",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to find relevant files and source excerpts from a plain-English question about a codebase.",
+      "actual_actions_or_outcome": "A local CLI searches repository folders, files, and declarations, then prints source excerpts and reading leads for a coding agent.",
+      "jev_role": "Batched boolean relevance judgments through the AI SDK TypeSafe provider",
+      "other_components": [
+        "Node.js 22+",
+        "AI SDK",
+        "TypeSafe, Vercel AI Gateway, or OpenRouter"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/dzhng/jevgrep",
+          "type": "repo",
+          "what_verified": "README search workflow and public creator metadata; 366 stars, 23 forks, created 2026-09-26, latest inspected commit 2026-09-26, 2 open issues/PRs",
+          "author": "dzhng",
+          "date": "2026-09-27"
+        },
+        {
+          "url": "https://github.com/dzhng/jevgrep/blob/762028fa076d2d823235d74e5687bea5d070e4c5/packages/core/src/evaluator.ts",
+          "type": "repo",
+          "what_verified": "createTypeSafeAi provider construction, evaluation calls, and boolean probability validation; providers.ts includes the direct TypeSafe endpoint",
+          "author": "dzhng",
+          "date": "2026-09-27"
+        }
+      ],
+      "repo_url": "https://github.com/dzhng/jevgrep",
+      "demo_url": null,
+      "install_url": "https://github.com/dzhng/jevgrep#readme",
+      "caveats": "New project, created September 2026. Sends eligible source content to the selected provider; ignore and credential filters are not a privacy guarantee. Reported coding-agent savings exclude Jev costs and include a solve-rate tradeoff; not reproduced here. No installation or inference performed. Inspected source: https://github.com/dzhng/jevgrep/blob/762028fa076d2d823235d74e5687bea5d070e4c5/packages/core/src/evaluator.ts",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-27",
+      "creator_display": "David Zhang",
+      "creator_url": "https://github.com/dzhng",
+      "credit_kind": "by"
+    },
+    {
+      "id": "sys1grep",
+      "title": "sys1grep",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to find text lines by meaning, with local regex filters and AND, OR, and NOT conditions.",
+      "actual_actions_or_outcome": "A Node CLI batches text into semantic matching requests and prints matching lines with optional line numbers and probabilities.",
+      "jev_role": "Noul matching probabilities with thresholds and boolean composition in code",
+      "other_components": [
+        "Node.js",
+        "fetch",
+        "local files or stdin"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/uehaj/jev-semgrep",
+          "type": "repo",
+          "what_verified": "README examples and public creator metadata; 144 stars, 9 forks, created 2026-09-19, latest inspected commit 2026-09-27, 18 open issues/PRs",
+          "author": "uehaj",
+          "date": "2026-09-27"
+        },
+        {
+          "url": "https://github.com/uehaj/jev-semgrep/blob/31a8000220c8610b175d61b552f7ed91404500d4/sys1grep.mjs",
+          "type": "repo",
+          "what_verified": "Direct POST to /v1/systemone with state and questions, Noul answer validation, and bounded concurrent requests",
+          "author": "uehaj",
+          "date": "2026-09-27"
+        }
+      ],
+      "repo_url": "https://github.com/uehaj/jev-semgrep",
+      "demo_url": null,
+      "install_url": "https://github.com/uehaj/jev-semgrep#readme",
+      "caveats": "New project, created September 2026. Semantic searches send text to the configured endpoint and incur per-query API costs. Multilingual accuracy, latency, and threshold claims were not reproduced. Optional summarization uses a separate model, not Jev. Inspected source: https://github.com/uehaj/jev-semgrep/blob/31a8000220c8610b175d61b552f7ed91404500d4/sys1grep.mjs",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-27",
+      "creator_display": "UEHARA Junji",
+      "creator_url": "https://github.com/uehaj",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jev-webmcp-extension",
+      "title": "Jev WebMCP Chrome extension",
+      "category": "mcp",
+      "highlight": false,
+      "short_description": "Uses Jev to select WebMCP tools and fill their arguments from what a user types in a Chrome side panel.",
+      "actual_actions_or_outcome": "Discovers page-provided tool schemas, predicts calls while typing, and executes selected tools with confidence and confirmation gates.",
+      "jev_role": "Choice and Noul questions for tool routing, schema-derived arguments, and manifest screening",
+      "other_components": [
+        "Chrome WebMCP",
+        "JavaScript extension",
+        "page-provided tool schemas"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/sdras/jev-webmcp-extension",
+          "type": "repo",
+          "what_verified": "README setup, schema mapping, and public creator metadata; 117 stars, 7 forks, created 2026-09-19, latest inspected commit 2026-09-20, no open issues/PRs",
+          "author": "sdras",
+          "date": "2026-09-27"
+        },
+        {
+          "url": "https://github.com/sdras/jev-webmcp-extension/blob/1ec3afb6cebf116d811a3c8a073414edaf5cb67c/src/jev.js",
+          "type": "repo",
+          "what_verified": "Direct /v1/systemone client; also read src/core/policy.js confirmation and read-only auto-execution logic",
+          "author": "sdras",
+          "date": "2026-09-27"
+        }
+      ],
+      "repo_url": "https://github.com/sdras/jev-webmcp-extension",
+      "demo_url": null,
+      "install_url": "https://github.com/sdras/jev-webmcp-extension#readme",
+      "caveats": "New project, created September 2026. Requires Chrome with WebMCP enabled and a tool-exposing page. Stores the API key in extension-local storage. Page schemas are untrusted; model screening and confidence gates are not safety guarantees. Array arguments currently populate only the first element. No browser execution or inference performed. Inspected source: https://github.com/sdras/jev-webmcp-extension/blob/1ec3afb6cebf116d811a3c8a073414edaf5cb67c/src/jev.js",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-27",
+      "creator_display": "Sarah Drasner",
+      "creator_url": "https://github.com/sdras",
+      "credit_kind": "by"
+    },
+    {
+      "id": "rag-fusion-jev",
+      "title": "RAG-Fusion Jev experiments",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to judge document relevance, weight query rewrites, and decide when a search needs query expansion.",
+      "actual_actions_or_outcome": "An evaluation harness combines hybrid retrieval with Jev reranking, intent-weighted fusion, query routing, and an evidence gate that can return no documents.",
+      "jev_role": "Noul relevance and intent judgments plus Choice over query types",
+      "other_components": [
+        "Python",
+        "typesafe-sdk",
+        "BM25 and ChromaDB",
+        "separate rewrite and answer models"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/Raudaschl/rag-fusion",
+          "type": "repo",
+          "what_verified": "README Jev experiment descriptions and public creator metadata; 958 stars, 114 forks, created 2023-09-25, latest inspected commit 2026-09-27, 1 open issue/PR",
+          "author": "Raudaschl",
+          "date": "2026-09-27"
+        },
+        {
+          "url": "https://github.com/Raudaschl/rag-fusion/blob/a9742c4aae95b097c1f715cf2350b569c9407872/eval/jev.py",
+          "type": "repo",
+          "what_verified": "TypeSafeClient.system_one calls for Noul and Choice; also read eval/jev_arms.py weighting, routing, and evidence gating",
+          "author": "Raudaschl",
+          "date": "2026-09-27"
+        }
+      ],
+      "repo_url": "https://github.com/Raudaschl/rag-fusion",
+      "demo_url": null,
+      "install_url": "https://github.com/Raudaschl/rag-fusion#readme",
+      "caveats": "Jev is in the optional evaluation pipeline, not the basic main.py demo. Benchmark improvements, cost, and latency are author-reported and were not reproduced. The README notes a historical rewrite-parser bug and noisy answer-quality results; the tested router did not identify which queries benefit from fusion. No dataset downloads or inference performed. Inspected source: https://github.com/Raudaschl/rag-fusion/blob/a9742c4aae95b097c1f715cf2350b569c9407872/eval/jev.py",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-27",
+      "creator_display": "Adrian Raudaschl",
+      "creator_url": "https://github.com/Raudaschl",
+      "credit_kind": "by"
+    },
+    {
+      "id": "vibecheck",
+      "title": "vibecheck",
+      "category": "community-sdk",
+      "highlight": false,
+      "short_description": "Uses Jev to turn Python check, classify, label, and score calls into plain values with optional probabilities.",
+      "actual_actions_or_outcome": "A Python decision library provides sync and async calls, batching, filtering, grouping, and schema-shaped results over the official TypeSafe SDK.",
+      "jev_role": "Noul, Choice, and Score translated to ordinary Python values",
+      "other_components": [
+        "Python",
+        "typesafe-sdk"
+      ],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/jlowin/vibecheck",
+          "type": "repo",
+          "what_verified": "README installation and runnable examples, multiple commits, and public creator metadata; 32 stars, 1 fork, created 2026-09-24, latest inspected commit 2026-09-24, no open issues/PRs",
+          "author": "jlowin",
+          "date": "2026-09-27"
+        },
+        {
+          "url": "https://github.com/jlowin/vibecheck/blob/1011988a5c7b71b891d3a022fdbd5745c2a36edb/src/vibecheck/backends.py",
+          "type": "repo",
+          "what_verified": "Official SDK imports, sync and async system_one calls, and Noul/Choice/Score translation; also read examples/check/basic.py",
+          "author": "jlowin",
+          "date": "2026-09-27"
+        }
+      ],
+      "repo_url": "https://github.com/jlowin/vibecheck",
+      "demo_url": null,
+      "install_url": "https://github.com/jlowin/vibecheck#readme",
+      "caveats": "New project with 32 stars at inspection. Published as vibecheck-py but imported as vibecheck. Default checks apply a probability threshold; three-way checks can return None and require explicit handling. Speed and batching-cost claims were not reproduced. No package installation or inference performed. Inspected source: https://github.com/jlowin/vibecheck/blob/1011988a5c7b71b891d3a022fdbd5745c2a36edb/src/vibecheck/backends.py",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-27",
+      "creator_display": "Jeremiah Lowin",
+      "creator_url": "https://github.com/jlowin",
+      "credit_kind": "by"
     }
   ]
 }
