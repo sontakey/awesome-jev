@@ -5,12 +5,12 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-117_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-120_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (50)
+- [Action-taking projects](#action-taking-projects) (53)
 - [Model and skill routing](#model-and-skill-routing) (6)
 - [Email and inbox routing](#email-and-inbox-routing) (2)
 - [MCP and agent bridges](#mcp-and-agent-bridges) (6)
@@ -82,6 +82,9 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [jevgrep](https://github.com/dzhng/jevgrep) — Uses Jev to find relevant files and source excerpts from a plain-English question about a codebase. By [David Zhang](https://github.com/dzhng). `code-inspected` <!-- catalog:jevgrep -->
 - [sys1grep](https://github.com/uehaj/jev-semgrep) — Uses Jev to find text lines by meaning, with local regex filters and AND, OR, and NOT conditions. By [UEHARA Junji](https://github.com/uehaj). `code-inspected` <!-- catalog:sys1grep -->
 - [RAG-Fusion Jev experiments](https://github.com/Raudaschl/rag-fusion) — Uses Jev to judge document relevance, weight query rewrites, and decide when a search needs query expansion. By [Adrian Raudaschl](https://github.com/Raudaschl). `code-inspected` <!-- catalog:rag-fusion-jev -->
+- [Jev plays Tetris](https://github.com/pinebit/jev-tetris) — Uses Jev to choose a Tetris piece placement from legal candidates and board statistics, then animates the move. By [Andrei Smirnov](https://github.com/pinebit). `code-inspected` <!-- catalog:pinebit-jev-tetris -->
+- [genigrep](https://github.com/Cloudgeni-ai/genigrep) — Uses Jev to rank code-search candidates and check passages, then returns verbatim source with file paths and line numbers. Maintained by [Cloudgeni](https://github.com/Cloudgeni-ai). `code-inspected` <!-- catalog:genigrep -->
+- [jev-navigator](https://github.com/ajbmachon/jev-navigator) — Uses Jev to find code matching a description by judging source slices and choosing which nearby code to inspect next. By [Andre Machon](https://github.com/ajbmachon). `code-inspected` <!-- catalog:jev-navigator -->
 
 ## Model and skill routing
 

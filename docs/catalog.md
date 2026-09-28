@@ -659,6 +659,45 @@ Uses Jev to judge document relevance, weight query rewrites, and decide when a s
 - Install / start: https://github.com/Raudaschl/rag-fusion#readme
 - Caveat: Jev is in the optional evaluation pipeline, not the basic main.py demo. Benchmark improvements, cost, and latency are author-reported and were not reproduced. The README notes a historical rewrite-parser bug and noisy answer-quality results; the tested router did not identify which queries benefit from fusion. No dataset downloads or inference performed. Inspected source: https://github.com/Raudaschl/rag-fusion/blob/a9742c4aae95b097c1f715cf2350b569c9407872/eval/jev.py
 
+### [Jev plays Tetris](https://github.com/pinebit/jev-tetris)
+<!-- catalog:pinebit-jev-tetris -->
+
+By [Andrei Smirnov](https://github.com/pinebit).
+
+Uses Jev to choose a Tetris piece placement from legal candidates and board statistics, then animates the move.
+
+- Action / outcome: A local web app enumerates reachable placements, sends one Choice question per piece, and displays the selected move, probabilities, confidence, and estimated cost.
+- Jev's role: Choice over code-enumerated placements using line clears, holes, height, and surface roughness
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/pinebit/jev-tetris#run-it
+- Caveat: Same-day, single-commit demo with 0 stars; not run here. The key stays on the server, but its decision route has no authentication and the server does not bind explicitly to loopback, so do not expose it publicly. Cost display uses a hard-coded token price. Inspected source: https://github.com/pinebit/jev-tetris/blob/f4d084b00b072a4b6958aaaf093acbf86f07bee0/server.js
+
+### [genigrep](https://github.com/Cloudgeni-ai/genigrep)
+<!-- catalog:genigrep -->
+
+Maintained by [Cloudgeni](https://github.com/Cloudgeni-ai).
+
+Uses Jev to rank code-search candidates and check passages, then returns verbatim source with file paths and line numbers.
+
+- Action / outcome: A CLI, library, and MCP tool combine ripgrep candidate discovery with file, passage, and follow-up relevance judgments, packing the results into an output budget without generating an answer.
+- Jev's role: Batched Noul judgments for file relevance, passage coverage, follow-up leads, and evidence sufficiency
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/Cloudgeni-ai/genigrep#quick-start
+- Caveat: New project with 2 stars; packages and benchmarks were not run. Sends selected source passages to TypeSafe and does not scan ordinary source-file contents for secrets. The evidence rating cannot detect what search missed. Network failures propagate, but unusable per-item probabilities can fall back to lexical scores. Reported savings come from a small author-run OpenGeni evaluation, not this standalone CLI. Inspected source: https://github.com/Cloudgeni-ai/genigrep/blob/0c6feaeec60e9311bcf6e8e4aa7aab36239345e5/src/engine/code-search/judge.ts
+
+### [jev-navigator](https://github.com/ajbmachon/jev-navigator)
+<!-- catalog:jev-navigator -->
+
+By [Andre Machon](https://github.com/ajbmachon).
+
+Uses Jev to find code matching a description by judging source slices and choosing which nearby code to inspect next.
+
+- Action / outcome: A Python library combines a scoped code index with bounded semantic searches, retaining probabilities, source locations, search history, and uninspected candidates.
+- Jev's role: Noul checks and Choice over code-built candidates, with optional Score judgments through the official Python SDK
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/ajbmachon/jev-navigator#install
+- Caveat: Same-day library with 0 stars; not installed or run here. Live searches send code to TypeSafe; masking is not a confidentiality guarantee. The index is deliberately scoped, call bindings may be uncertain, and an exhausted search does not prove the target is absent. SDK compatibility and offline test claims were not independently exercised. Inspected source: https://github.com/ajbmachon/jev-navigator/blob/035874eadb7c21a927eabbbe8d380fcc7f10dcc7/src/jev_navigator/adapters/typesafe.py
+
 ## Model and skill routing
 
 ### [jev-router](https://github.com/gargpratyush/jev-router)

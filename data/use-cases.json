@@ -4172,6 +4172,127 @@
       "creator_display": "Jeremiah Lowin",
       "creator_url": "https://github.com/jlowin",
       "credit_kind": "by"
+    },
+    {
+      "id": "pinebit-jev-tetris",
+      "title": "Jev plays Tetris",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to choose a Tetris piece placement from legal candidates and board statistics, then animates the move.",
+      "actual_actions_or_outcome": "A local web app enumerates reachable placements, sends one Choice question per piece, and displays the selected move, probabilities, confidence, and estimated cost.",
+      "jev_role": "Choice over code-enumerated placements using line clears, holes, height, and surface roughness",
+      "other_components": ["Node.js 20+", "TypeSafe JavaScript SDK", "browser canvas"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/pinebit/jev-tetris",
+          "type": "repo",
+          "what_verified": "README run instructions and public creator metadata; 0 stars, 0 forks, created and last pushed 2026-09-28, one commit, no open issues or PRs",
+          "author": "pinebit",
+          "date": "2026-09-28"
+        },
+        {
+          "url": "https://github.com/pinebit/jev-tetris/blob/f4d084b00b072a4b6958aaaf093acbf86f07bee0/server.js",
+          "type": "repo",
+          "what_verified": "Official SDK import, placement Choice construction, client.systemOne call, and probability response returned to the browser",
+          "author": "pinebit",
+          "date": "2026-09-28"
+        }
+      ],
+      "repo_url": "https://github.com/pinebit/jev-tetris",
+      "demo_url": null,
+      "install_url": "https://github.com/pinebit/jev-tetris#run-it",
+      "caveats": "Same-day, single-commit demo with 0 stars; not run here. The key stays on the server, but its decision route has no authentication and the server does not bind explicitly to loopback, so do not expose it publicly. Cost display uses a hard-coded token price. Inspected source: https://github.com/pinebit/jev-tetris/blob/f4d084b00b072a4b6958aaaf093acbf86f07bee0/server.js",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-28",
+      "creator_display": "Andrei Smirnov",
+      "creator_url": "https://github.com/pinebit",
+      "credit_kind": "by"
+    },
+    {
+      "id": "genigrep",
+      "title": "genigrep",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to rank code-search candidates and check passages, then returns verbatim source with file paths and line numbers.",
+      "actual_actions_or_outcome": "A CLI, library, and MCP tool combine ripgrep candidate discovery with file, passage, and follow-up relevance judgments, packing the results into an output budget without generating an answer.",
+      "jev_role": "Batched Noul judgments for file relevance, passage coverage, follow-up leads, and evidence sufficiency",
+      "other_components": ["Node.js or Bun", "ripgrep", "optional MCP host"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/Cloudgeni-ai/genigrep",
+          "type": "repo",
+          "what_verified": "README CLI, MCP, privacy, and evaluation limits; public organization metadata; 2 stars, 0 forks, created 2026-09-27, last pushed 2026-09-28, multiple commits, no open issues or PRs",
+          "author": "Cloudgeni-ai",
+          "date": "2026-09-28"
+        },
+        {
+          "url": "https://github.com/Cloudgeni-ai/genigrep/blob/0c6feaeec60e9311bcf6e8e4aa7aab36239345e5/src/engine/client.ts",
+          "type": "repo",
+          "what_verified": "Client posts state and typed questions to api.typesafe.ai/v1/systemone with bounded batching and retries",
+          "author": "Cloudgeni-ai",
+          "date": "2026-09-28"
+        },
+        {
+          "url": "https://github.com/Cloudgeni-ai/genigrep/blob/0c6feaeec60e9311bcf6e8e4aa7aab36239345e5/src/engine/code-search/judge.ts",
+          "type": "repo",
+          "what_verified": "Noul question construction and client calls for file, passage, lead, and sufficiency checks; lexical fallback for unusable per-item probabilities",
+          "author": "Cloudgeni-ai",
+          "date": "2026-09-28"
+        }
+      ],
+      "repo_url": "https://github.com/Cloudgeni-ai/genigrep",
+      "demo_url": null,
+      "install_url": "https://github.com/Cloudgeni-ai/genigrep#quick-start",
+      "caveats": "New project with 2 stars; packages and benchmarks were not run. Sends selected source passages to TypeSafe and does not scan ordinary source-file contents for secrets. The evidence rating cannot detect what search missed. Network failures propagate, but unusable per-item probabilities can fall back to lexical scores. Reported savings come from a small author-run OpenGeni evaluation, not this standalone CLI. Inspected source: https://github.com/Cloudgeni-ai/genigrep/blob/0c6feaeec60e9311bcf6e8e4aa7aab36239345e5/src/engine/code-search/judge.ts",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": ["mcp", "agent-skillmd"],
+      "last_checked": "2026-09-28",
+      "creator_display": "Cloudgeni",
+      "creator_url": "https://github.com/Cloudgeni-ai",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "jev-navigator",
+      "title": "jev-navigator",
+      "category": "action-taking",
+      "highlight": false,
+      "short_description": "Uses Jev to find code matching a description by judging source slices and choosing which nearby code to inspect next.",
+      "actual_actions_or_outcome": "A Python library combines a scoped code index with bounded semantic searches, retaining probabilities, source locations, search history, and uninspected candidates.",
+      "jev_role": "Noul checks and Choice over code-built candidates, with optional Score judgments through the official Python SDK",
+      "other_components": ["Python 3.11+", "typesafe-sdk", "ast-grep", "ripgrep", "Git"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/ajbmachon/jev-navigator",
+          "type": "repo",
+          "what_verified": "README installation, layered search API, budgets, and privacy limits; public creator metadata; 0 stars, 0 forks, created and last pushed 2026-09-28, multiple commits, one open PR",
+          "author": "ajbmachon",
+          "date": "2026-09-28"
+        },
+        {
+          "url": "https://github.com/ajbmachon/jev-navigator/blob/035874eadb7c21a927eabbbe8d380fcc7f10dcc7/src/jev_navigator/adapters/typesafe.py",
+          "type": "repo",
+          "what_verified": "TypeSafeClient import, system_one call, and raw-response capture in TypeSafeJevClient",
+          "author": "ajbmachon",
+          "date": "2026-09-28"
+        }
+      ],
+      "repo_url": "https://github.com/ajbmachon/jev-navigator",
+      "demo_url": null,
+      "install_url": "https://github.com/ajbmachon/jev-navigator#install",
+      "caveats": "Same-day library with 0 stars; not installed or run here. Live searches send code to TypeSafe; masking is not a confidentiality guarantee. The index is deliberately scoped, call bindings may be uncertain, and an exhausted search does not prove the target is absent. SDK compatibility and offline test claims were not independently exercised. Inspected source: https://github.com/ajbmachon/jev-navigator/blob/035874eadb7c21a927eabbbe8d380fcc7f10dcc7/src/jev_navigator/adapters/typesafe.py",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-28",
+      "creator_display": "Andre Machon",
+      "creator_url": "https://github.com/ajbmachon",
+      "credit_kind": "by"
     }
   ]
 }
