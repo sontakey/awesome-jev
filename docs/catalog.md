@@ -698,6 +698,45 @@ Uses Jev to find code matching a description by judging source slices and choosi
 - Install / start: https://github.com/ajbmachon/jev-navigator#install
 - Caveat: Same-day library with 0 stars; not installed or run here. Live searches send code to TypeSafe; masking is not a confidentiality guarantee. The index is deliberately scoped, call bindings may be uncertain, and an exhausted search does not prove the target is absent. SDK compatibility and offline test claims were not independently exercised. Inspected source: https://github.com/ajbmachon/jev-navigator/blob/035874eadb7c21a927eabbbe8d380fcc7f10dcc7/src/jev_navigator/adapters/typesafe.py
 
+### [Jev at the piano](https://github.com/LamplighterPaul/jev-piano)
+<!-- catalog:jev-piano -->
+
+By [@LamplighterPaul](https://github.com/LamplighterPaul).
+
+Uses Jev to choose chords, tempo, and melodic patterns from a mood description while code plays the piano.
+
+- Action / outcome: A browser piano assembles typed musical decisions into phrases, with replay, MIDI export, and shareable recordings documented in the README.
+- Jev's role: Choice over musical options, Score for tempo and expression, and Noul for phrase endings and brief checks
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/LamplighterPaul/jev-piano#run-it
+- Caveat: Experimental project with 5 stars, created 2026-09-18; not run or listened to here. Jev judges text and fixed musical options, not audio. Without a key the server returns random mock decisions. Cost, latency, and musical-quality claims were not remeasured. The README credits a collaboration with @BaselAshraf81. Inspected source: https://github.com/LamplighterPaul/jev-piano/blob/59b2899bde219ff34a2879ff730d3d71527377cb/server/jev.ts
+
+### [Semantic Find userscript](https://github.com/dingdinglz/semantic-find-userscript)
+<!-- catalog:semantic-find-userscript -->
+
+By [@dingdinglz](https://github.com/dingdinglz).
+
+Uses Jev to find passages and navigation labels on the current webpage that match a natural-language search.
+
+- Action / outcome: A Tampermonkey panel ranks matching page locations and navigates back to their original text without generating an answer or summary.
+- Jev's role: Independent Noul judgments over candidate passages with shared document context
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/dingdinglz/semantic-find-userscript
+- Caveat: Same-day trial project with 1 star; not installed or run here. The author reports mock GM/API tests, not completed real-browser acceptance or measured search quality. Sends the selected page text and query to TypeSafe. The user's key lives in userscript storage, which is not an encrypted vault. Does not extract images, PDFs, iframe content, or Shadow DOM text. Inspected source: https://github.com/dingdinglz/semantic-find-userscript/blob/57b533e7dd5ef5ff7a78b5a29ec64d061fffe772/src/userscript/typesafe/client.ts
+
+### [JevGate](https://github.com/Tech-Byte-Frontier/jevgate)
+<!-- catalog:jevgate -->
+
+Maintained by [Tech Byte Frontier](https://github.com/Tech-Byte-Frontier).
+
+Uses Jev to judge small units of source code and turn the answers into code-review findings and a pass-or-fail gate.
+
+- Action / outcome: A Rust CLI parses local code, submits bounded evidence for review, and reports findings with locations; the README documents CI, agent hooks, and an HTML report.
+- Jev's role: Typed judgments on source evidence, combined by deterministic review rules and thresholds
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/Tech-Byte-Frontier/jevgate#quick-start
+- Caveat: New project with 9 stars, created 2026-09-18; binaries, review accuracy, and cost claims were not tested here. Sends selected source units to the configured provider; secret scanning is explicitly out of scope. Gate thresholds reflect the author's evaluations, not a guarantee of correctness or security. The README says the Vercel route has not been tried with a real key. Inspected source: https://github.com/Tech-Byte-Frontier/jevgate/blob/ba18ced9fc62b92c0751eb0817aea732d7221f86/src/transport/mod.rs
+
 ## Model and skill routing
 
 ### [jev-router](https://github.com/gargpratyush/jev-router)
@@ -777,6 +816,19 @@ Uses Jev to pick the tool before each agent step, then measures how many steps t
 - Jev's role: Choice of one tool out of 100 before every model step, from the conversation state
 - Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
 - Caveat: All 100 tools are mocked, so the comparison measures step counts on synthetic tasks rather than real outcomes. The committed eval results were not reproduced here.
+
+### [Pi Skill Picker](https://github.com/championswimmer/pi-skill-picker-jev)
+<!-- catalog:pi-skill-picker-jev -->
+
+By [Arnav Gupta](https://github.com/championswimmer).
+
+Uses Jev to rank available Pi skills for the current task and show the agent only the selected skills.
+
+- Action / outcome: A Pi extension filters the discovered skill catalog on prompts and tool updates, with configurable thresholds, selection limits, and project allowlists.
+- Jev's role: Batched Score judgments over skill names and descriptions against task and recent conversation context
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/championswimmer/pi-skill-picker-jev#install
+- Caveat: New extension with 0 stars, created 2026-09-28; not installed or run here. Requires Pi 0.87.1+ per README. Sends request, recent conversation/tool text, and skill metadata to OpenRouter by default, not full skill files. Failure does not expose the entire catalog as a fallback. Reported prompt-token savings were not remeasured. Inspected source: https://github.com/championswimmer/pi-skill-picker-jev/blob/6a496180df57ec764de1d780eb04c677f6bcc7ba/src/picker.ts
 
 ## Email and inbox routing
 

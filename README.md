@@ -5,13 +5,13 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-120_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-124_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (53)
-- [Model and skill routing](#model-and-skill-routing) (6)
+- [Action-taking projects](#action-taking-projects) (56)
+- [Model and skill routing](#model-and-skill-routing) (7)
 - [Email and inbox routing](#email-and-inbox-routing) (2)
 - [MCP and agent bridges](#mcp-and-agent-bridges) (6)
 - [Official cookbooks and patterns](#official-cookbooks-and-patterns) (4)
@@ -85,6 +85,9 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [Jev plays Tetris](https://github.com/pinebit/jev-tetris) — Uses Jev to choose a Tetris piece placement from legal candidates and board statistics, then animates the move. By [Andrei Smirnov](https://github.com/pinebit). `code-inspected` <!-- catalog:pinebit-jev-tetris -->
 - [genigrep](https://github.com/Cloudgeni-ai/genigrep) — Uses Jev to rank code-search candidates and check passages, then returns verbatim source with file paths and line numbers. Maintained by [Cloudgeni](https://github.com/Cloudgeni-ai). `code-inspected` <!-- catalog:genigrep -->
 - [jev-navigator](https://github.com/ajbmachon/jev-navigator) — Uses Jev to find code matching a description by judging source slices and choosing which nearby code to inspect next. By [Andre Machon](https://github.com/ajbmachon). `code-inspected` <!-- catalog:jev-navigator -->
+- [Jev at the piano](https://github.com/LamplighterPaul/jev-piano) — Uses Jev to choose chords, tempo, and melodic patterns from a mood description while code plays the piano. By [@LamplighterPaul](https://github.com/LamplighterPaul). `code-inspected` <!-- catalog:jev-piano -->
+- [Semantic Find userscript](https://github.com/dingdinglz/semantic-find-userscript) — Uses Jev to find passages and navigation labels on the current webpage that match a natural-language search. By [@dingdinglz](https://github.com/dingdinglz). `code-inspected` <!-- catalog:semantic-find-userscript -->
+- [JevGate](https://github.com/Tech-Byte-Frontier/jevgate) — Uses Jev to judge small units of source code and turn the answers into code-review findings and a pass-or-fail gate. Maintained by [Tech Byte Frontier](https://github.com/Tech-Byte-Frontier). `code-inspected` <!-- catalog:jevgate -->
 
 ## Model and skill routing
 
@@ -94,6 +97,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [Official skill-suggestion cookbook](https://docs.typesafe.ai/cookbooks/skill_suggestion) — Two Jev requests rank 182 Hermes skills and may suggest none. Maintained by [TypeSafe AI](https://github.com/typesafe-ai). `documented-example` <!-- catalog:cookbook-skill-suggestion -->
 - [Jev Agent Skill Router](https://github.com/GodsBoy/jev-agent-skill-router) — Routes over a skill catalogue with Jev Choice and Noul gates; it does not load the skills. By [Dewaldt Huysamen](https://github.com/GodsBoy). `code-inspected` <!-- catalog:jev-agent-skill-router -->
 - [jev-eval-agent](https://github.com/vinilana/jev-eval-agent) — Uses Jev to pick the tool before each agent step, then measures how many steps that takes versus letting the LLM choose from all 100 tools. By [Vinicius Lana](https://github.com/vinilana). `code-inspected` <!-- catalog:jev-eval-agent -->
+- [Pi Skill Picker](https://github.com/championswimmer/pi-skill-picker-jev) — Uses Jev to rank available Pi skills for the current task and show the agent only the selected skills. By [Arnav Gupta](https://github.com/championswimmer). `code-inspected` <!-- catalog:pi-skill-picker-jev -->
 
 ## Email and inbox routing
 

@@ -4293,6 +4293,182 @@
       "creator_display": "Andre Machon",
       "creator_url": "https://github.com/ajbmachon",
       "credit_kind": "by"
+    },
+    {
+      "id": "jev-piano",
+      "title": "Jev at the piano",
+      "category": "action-taking",
+      "short_description": "Uses Jev to choose chords, tempo, and melodic patterns from a mood description while code plays the piano.",
+      "actual_actions_or_outcome": "A browser piano assembles typed musical decisions into phrases, with replay, MIDI export, and shareable recordings documented in the README.",
+      "jev_role": "Choice over musical options, Score for tempo and expression, and Noul for phrase endings and brief checks",
+      "other_components": ["Node.js", "React", "browser audio", "fixed music-theory catalogs"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/LamplighterPaul/jev-piano/blob/main/README.md",
+          "type": "repo",
+          "what_verified": "Run commands, musical workflow, and collaboration credit; public metadata: 5 stars, 2 forks, created 2026-09-18, pushed 2026-09-29, multiple commits, no open issues or PRs; public profile gives a first name only",
+          "author": "LamplighterPaul",
+          "date": "2026-09-29"
+        },
+        {
+          "url": "https://github.com/LamplighterPaul/jev-piano/blob/59b2899bde219ff34a2879ff730d3d71527377cb/server/jev.ts",
+          "type": "repo",
+          "what_verified": "POST of state and typed questions to api.typesafe.ai/v1/systemone; random offline mock when no key is configured",
+          "author": "LamplighterPaul",
+          "date": "2026-09-29"
+        },
+        {
+          "url": "https://github.com/LamplighterPaul/jev-piano/blob/59b2899bde219ff34a2879ff730d3d71527377cb/shared/harness.ts",
+          "type": "repo",
+          "what_verified": "Musical question construction and sampling from returned distributions to assemble a piece and its harmony",
+          "author": "LamplighterPaul",
+          "date": "2026-09-29"
+        }
+      ],
+      "repo_url": "https://github.com/LamplighterPaul/jev-piano",
+      "demo_url": null,
+      "install_url": "https://github.com/LamplighterPaul/jev-piano#run-it",
+      "caveats": "Experimental project with 5 stars, created 2026-09-18; not run or listened to here. Jev judges text and fixed musical options, not audio. Without a key the server returns random mock decisions. Cost, latency, and musical-quality claims were not remeasured. The README credits a collaboration with @BaselAshraf81. Inspected source: https://github.com/LamplighterPaul/jev-piano/blob/59b2899bde219ff34a2879ff730d3d71527377cb/server/jev.ts",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-29",
+      "creator_display": "@LamplighterPaul",
+      "creator_url": "https://github.com/LamplighterPaul",
+      "credit_kind": "by"
+    },
+    {
+      "id": "semantic-find-userscript",
+      "title": "Semantic Find userscript",
+      "category": "action-taking",
+      "short_description": "Uses Jev to find passages and navigation labels on the current webpage that match a natural-language search.",
+      "actual_actions_or_outcome": "A Tampermonkey panel ranks matching page locations and navigates back to their original text without generating an answer or summary.",
+      "jev_role": "Independent Noul judgments over candidate passages with shared document context",
+      "other_components": ["Tampermonkey 5.4+", "desktop Chrome or Edge", "DOM text extraction"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/dingdinglz/semantic-find-userscript/blob/main/README.md",
+          "type": "repo",
+          "what_verified": "Chinese README installation, search workflow, privacy limits, and mock-only acceptance status; public metadata: 1 star, 0 forks, created and pushed 2026-09-29, multiple commits, no open issues or PRs; profile name is a handle",
+          "author": "dingdinglz",
+          "date": "2026-09-29"
+        },
+        {
+          "url": "https://github.com/dingdinglz/semantic-find-userscript/blob/57b533e7dd5ef5ff7a78b5a29ec64d061fffe772/src/userscript/typesafe/client.ts",
+          "type": "repo",
+          "what_verified": "Batched systemone calls, response parsing, credential freshness checks, and bounded retries",
+          "author": "dingdinglz",
+          "date": "2026-09-29"
+        },
+        {
+          "url": "https://github.com/dingdinglz/semantic-find-userscript/blob/57b533e7dd5ef5ff7a78b5a29ec64d061fffe772/src/userscript/transport/gm-request.ts",
+          "type": "repo",
+          "what_verified": "GM transport restricts requests to api.typesafe.ai and sends POST requests to /v1/systemone",
+          "author": "dingdinglz",
+          "date": "2026-09-29"
+        },
+        {
+          "url": "https://github.com/dingdinglz/semantic-find-userscript/blob/57b533e7dd5ef5ff7a78b5a29ec64d061fffe772/src/userscript/typesafe/prompts.ts",
+          "type": "repo",
+          "what_verified": "Per-candidate Noul questions with document context and jev-1.13.0 model selection",
+          "author": "dingdinglz",
+          "date": "2026-09-29"
+        }
+      ],
+      "repo_url": "https://github.com/dingdinglz/semantic-find-userscript",
+      "demo_url": null,
+      "install_url": "https://github.com/dingdinglz/semantic-find-userscript",
+      "caveats": "Same-day trial project with 1 star; not installed or run here. The author reports mock GM/API tests, not completed real-browser acceptance or measured search quality. Sends the selected page text and query to TypeSafe. The user's key lives in userscript storage, which is not an encrypted vault. Does not extract images, PDFs, iframe content, or Shadow DOM text. Inspected source: https://github.com/dingdinglz/semantic-find-userscript/blob/57b533e7dd5ef5ff7a78b5a29ec64d061fffe772/src/userscript/typesafe/client.ts",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-29",
+      "creator_display": "@dingdinglz",
+      "creator_url": "https://github.com/dingdinglz",
+      "credit_kind": "by"
+    },
+    {
+      "id": "pi-skill-picker-jev",
+      "title": "Pi Skill Picker",
+      "category": "model-routing",
+      "short_description": "Uses Jev to rank available Pi skills for the current task and show the agent only the selected skills.",
+      "actual_actions_or_outcome": "A Pi extension filters the discovered skill catalog on prompts and tool updates, with configurable thresholds, selection limits, and project allowlists.",
+      "jev_role": "Batched Score judgments over skill names and descriptions against task and recent conversation context",
+      "other_components": ["Pi coding agent", "OpenRouter", "optional compatible decision server"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/championswimmer/pi-skill-picker-jev/blob/main/README.md",
+          "type": "repo",
+          "what_verified": "Installation, skill-filtering workflow, and privacy behavior; creator profile names Arnav Gupta; public metadata: 0 stars, 0 forks, created 2026-09-28, pushed 2026-09-29, multiple commits, no open issues or PRs",
+          "author": "championswimmer",
+          "date": "2026-09-29"
+        },
+        {
+          "url": "https://github.com/championswimmer/pi-skill-picker-jev/blob/6a496180df57ec764de1d780eb04c677f6bcc7ba/src/picker.ts",
+          "type": "repo",
+          "what_verified": "POST of Score questions to OpenRouter alpha/decisions using typesafe/jev-1.13 by default, or a configured /v1/systemone endpoint; scores determine selected skills",
+          "author": "championswimmer",
+          "date": "2026-09-29"
+        }
+      ],
+      "repo_url": "https://github.com/championswimmer/pi-skill-picker-jev",
+      "demo_url": null,
+      "install_url": "https://github.com/championswimmer/pi-skill-picker-jev#install",
+      "caveats": "New extension with 0 stars, created 2026-09-28; not installed or run here. Requires Pi 0.87.1+ per README. Sends request, recent conversation/tool text, and skill metadata to OpenRouter by default, not full skill files. Failure does not expose the entire catalog as a fallback. Reported prompt-token savings were not remeasured. Inspected source: https://github.com/championswimmer/pi-skill-picker-jev/blob/6a496180df57ec764de1d780eb04c677f6bcc7ba/src/picker.ts",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": ["pi"],
+      "last_checked": "2026-09-29",
+      "creator_display": "Arnav Gupta",
+      "creator_url": "https://github.com/championswimmer",
+      "credit_kind": "by"
+    },
+    {
+      "id": "jevgate",
+      "title": "JevGate",
+      "category": "action-taking",
+      "short_description": "Uses Jev to judge small units of source code and turn the answers into code-review findings and a pass-or-fail gate.",
+      "actual_actions_or_outcome": "A Rust CLI parses local code, submits bounded evidence for review, and reports findings with locations; the README documents CI, agent hooks, and an HTML report.",
+      "jev_role": "Typed judgments on source evidence, combined by deterministic review rules and thresholds",
+      "other_components": ["Rust", "local source parsers", "answer cache", "optional CI or coding-agent hooks"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/Tech-Byte-Frontier/jevgate/blob/main/README.md",
+          "type": "repo",
+          "what_verified": "Install and review commands, upload policy, and author-reported calibration; public organization metadata: 9 stars, 2 forks, created 2026-09-18, pushed 2026-09-29, multiple commits, 2 open issues/PRs combined",
+          "author": "Tech-Byte-Frontier",
+          "date": "2026-09-29"
+        },
+        {
+          "url": "https://github.com/Tech-Byte-Frontier/jevgate/blob/ba18ced9fc62b92c0751eb0817aea732d7221f86/src/provider.rs",
+          "type": "repo",
+          "what_verified": "TypeSafe default API root and systemone endpoint construction; optional OpenRouter and Vercel providers",
+          "author": "Tech-Byte-Frontier",
+          "date": "2026-09-29"
+        },
+        {
+          "url": "https://github.com/Tech-Byte-Frontier/jevgate/blob/ba18ced9fc62b92c0751eb0817aea732d7221f86/src/transport/mod.rs",
+          "type": "repo",
+          "what_verified": "Evaluator sends serialized review requests by authenticated POST to endpoint.systemone and handles provider errors",
+          "author": "Tech-Byte-Frontier",
+          "date": "2026-09-29"
+        }
+      ],
+      "repo_url": "https://github.com/Tech-Byte-Frontier/jevgate",
+      "demo_url": null,
+      "install_url": "https://github.com/Tech-Byte-Frontier/jevgate#quick-start",
+      "caveats": "New project with 9 stars, created 2026-09-18; binaries, review accuracy, and cost claims were not tested here. Sends selected source units to the configured provider; secret scanning is explicitly out of scope. Gate thresholds reflect the author's evaluations, not a guarantee of correctness or security. The README says the Vercel route has not been tried with a real key. Inspected source: https://github.com/Tech-Byte-Frontier/jevgate/blob/ba18ced9fc62b92c0751eb0817aea732d7221f86/src/transport/mod.rs",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": ["mcp"],
+      "last_checked": "2026-09-29",
+      "creator_display": "Tech Byte Frontier",
+      "creator_url": "https://github.com/Tech-Byte-Frontier",
+      "credit_kind": "maintained-by"
     }
   ]
 }
