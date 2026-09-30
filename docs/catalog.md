@@ -737,6 +737,32 @@ Uses Jev to judge small units of source code and turn the answers into code-revi
 - Install / start: https://github.com/Tech-Byte-Frontier/jevgate#quick-start
 - Caveat: New project with 9 stars, created 2026-09-18; binaries, review accuracy, and cost claims were not tested here. Sends selected source units to the configured provider; secret scanning is explicitly out of scope. Gate thresholds reflect the author's evaluations, not a guarantee of correctness or security. The README says the Vercel route has not been tried with a real key. Inspected source: https://github.com/Tech-Byte-Frontier/jevgate/blob/ba18ced9fc62b92c0751eb0817aea732d7221f86/src/transport/mod.rs
 
+### [10 Levels of Jev](https://github.com/disler/ten-levels-of-jev)
+<!-- catalog:ten-levels-of-jev -->
+
+By [@disler](https://github.com/disler).
+
+Uses Jev to demonstrate typed decisions, task routing, and coding-agent hooks in an interactive lab and terminal runner.
+
+- Action / outcome: A Vue lab and terminal examples show decision patterns; Pi integrations expose judgments as hooks and tools, including a pre-command risk gate.
+- Jev's role: Noul, Choice, and Score judgments composed with deterministic thresholds and agent workflows
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/disler/ten-levels-of-jev#install
+- Caveat: New educational project, created 2026-09-27 with one commit; only the client and representative command gate were code-inspected, not every example. No runtime, benchmark, or claimed offline test results were reproduced. Live use requires provider credentials; mock mode is not model evidence. Semantic command gates are not a security boundary. The project is a demo, not advice, including any trading examples bundled in its skill templates. Inspected source: https://github.com/disler/ten-levels-of-jev/blob/main/apps/ten-levels/src/levels/level06/bash-gate.ts
+
+### [Jev Playwright checklist runner](https://github.com/cooper667/jev-playwright)
+<!-- catalog:cooper-jev-playwright -->
+
+By [Craig Cooper](https://github.com/cooper667).
+
+Uses Jev to select browser elements and judge plain-English QA checklists from Playwright accessibility trees.
+
+- Action / outcome: Runs clicks, typing, navigation, and text checks, then writes verdicts and evidence; visual checks are handed back to the caller with screenshots.
+- Jev's role: Choice for step kinds and element targets, plus Noul for page-claim verification
+- Origin: community · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/cooper667/jev-playwright#install
+- Caveat: New plugin with 3 stars, created 2026-09-24; not installed or run here. Requires an existing Playwright project, a running app, and Cloudflare credentials. Sends accessibility-tree and checklist text to Cloudflare. Jev does not inspect pixels; a model pass is not a deterministic test assertion. Author timing and cost comparisons were not reproduced. Inspected source: https://github.com/cooper667/jev-playwright/blob/main/skills/jev-playwright/runner/engine/runner.ts
+
 ## Model and skill routing
 
 ### [jev-router](https://github.com/gargpratyush/jev-router)
@@ -1174,6 +1200,19 @@ Uses Jev to moderate product reviews and suggest product categories and attribut
 - Install / start: https://github.com/Emenowicz/jev-sap-commerce#readme
 - Caveat: Independent of SAP and TypeSafe, created 2026-09-24; 5 stars and 0 forks at inspection. Requires SAP Commerce; reported test and accuracy results are the author's, including synthetic-data evaluations. No SAP runtime or inference was exercised here. Sources: https://raw.githubusercontent.com/Emenowicz/jev-sap-commerce/main/README.md and https://raw.githubusercontent.com/Emenowicz/jev-sap-commerce/main/jevintegration/project.properties
 
+### [TypeSafe AI n8n node](https://github.com/typesafe-ai/n8n-nodes-typesafe-ai)
+<!-- catalog:typesafe-n8n-node -->
+
+Maintained by [TypeSafe](https://github.com/typesafe-ai).
+
+Uses Jev to evaluate workflow items or route them to n8n outputs using typed answers and confidence thresholds.
+
+- Action / outcome: Adds answers to input items or sends each item to a configured branch, with optional fallback and uncertain outputs.
+- Jev's role: Choice, Noul, and Score questions over each workflow item's text or JSON state
+- Origin: official · Evidence: `code-inspected` · Readiness: installable-per-readme
+- Install / start: https://github.com/typesafe-ai/n8n-nodes-typesafe-ai#installation
+- Caveat: New official integration with 2 stars, created 2026-09-23; not installed or run here. README reports n8n 2.40 compatibility. Makes one API request per item. Continue-on-error can place failed items on a normal output, so downstream steps must check error fields. Inspected source: https://github.com/typesafe-ai/n8n-nodes-typesafe-ai/blob/main/nodes/TypeSafeAi/TypeSafeAi.node.ts
+
 ## Community clients
 
 ### [ruby_llm-typesafe](https://github.com/kieranklaassen/ruby_llm-typesafe)
@@ -1266,6 +1305,19 @@ Uses Jev to turn Python check, classify, label, and score calls into plain value
 - Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
 - Install / start: https://github.com/jlowin/vibecheck#readme
 - Caveat: New project with 32 stars at inspection. Published as vibecheck-py but imported as vibecheck. Default checks apply a probability threshold; three-way checks can return None and require explicit handling. Speed and batching-cost claims were not reproduced. No package installation or inference performed. Inspected source: https://github.com/jlowin/vibecheck/blob/1011988a5c7b71b891d3a022fdbd5745c2a36edb/src/vibecheck/backends.py
+
+### [TypeSafe Java client and CLI](https://github.com/dfa1/typesafe-java)
+<!-- catalog:dfa1-typesafe-java -->
+
+By [Davide Angelocola](https://github.com/dfa1).
+
+Uses Jev to return typed answers in Java applications or turn command-line probability thresholds into pass-or-fail checks.
+
+- Action / outcome: Java 21 client offers synchronous and asynchronous evaluation, typed record mapping, and a CLI that gates on answer thresholds.
+- Jev's role: Typed Noul, Choice, and Score evaluation through the TypeSafe HTTP API
+- Origin: community · Evidence: `code-inspected` · Readiness: runnable-from-readme
+- Install / start: https://github.com/dfa1/typesafe-java#quickstart
+- Caveat: New unofficial client with 0 stars, created 2026-09-19; build, published artifacts, and API compatibility were not tested here. README includes library and CLI examples and the repository has multiple commits, rather than an empty SDK scaffold. Credentials and a live TypeSafe service are needed for actual evaluation. Inspected source: https://github.com/dfa1/typesafe-java/blob/main/core/src/main/java/io/github/dfa1/typesafe/core/DefaultTypeSafeClient.java
 
 ## Installable agent skills
 

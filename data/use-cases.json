@@ -4469,6 +4469,168 @@
       "creator_display": "Tech Byte Frontier",
       "creator_url": "https://github.com/Tech-Byte-Frontier",
       "credit_kind": "maintained-by"
+    },
+    {
+      "id": "typesafe-n8n-node",
+      "title": "TypeSafe AI n8n node",
+      "category": "platform-integration",
+      "short_description": "Uses Jev to evaluate workflow items or route them to n8n outputs using typed answers and confidence thresholds.",
+      "actual_actions_or_outcome": "Adds answers to input items or sends each item to a configured branch, with optional fallback and uncertain outputs.",
+      "jev_role": "Choice, Noul, and Score questions over each workflow item's text or JSON state",
+      "other_components": ["n8n", "TypeSafe HTTP API"],
+      "origin": "official",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/typesafe-ai/n8n-nodes-typesafe-ai/blob/main/README.md",
+          "type": "repo",
+          "what_verified": "Installation, Evaluate and Route operations, error behavior, and support-ticket example. Official TypeSafe organization; 2 stars, 0 forks, created 2026-09-23, pushed 2026-09-29, at least 2 commits, 1 open PR and no other open issues.",
+          "author": "typesafe-ai",
+          "date": "2026-09-30"
+        },
+        {
+          "url": "https://github.com/typesafe-ai/n8n-nodes-typesafe-ai/blob/main/nodes/TypeSafeAi/api.ts",
+          "type": "repo",
+          "what_verified": "Authenticated POST to api.typesafe.ai/v1/systemone; TypeSafeAi.node.ts builds questions and routes returned answers.",
+          "author": "typesafe-ai",
+          "date": "2026-09-30"
+        }
+      ],
+      "repo_url": "https://github.com/typesafe-ai/n8n-nodes-typesafe-ai",
+      "demo_url": null,
+      "install_url": "https://github.com/typesafe-ai/n8n-nodes-typesafe-ai#installation",
+      "caveats": "New official integration with 2 stars, created 2026-09-23; not installed or run here. README reports n8n 2.40 compatibility. Makes one API request per item. Continue-on-error can place failed items on a normal output, so downstream steps must check error fields. Inspected source: https://github.com/typesafe-ai/n8n-nodes-typesafe-ai/blob/main/nodes/TypeSafeAi/TypeSafeAi.node.ts",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-30",
+      "creator_display": "TypeSafe",
+      "creator_url": "https://github.com/typesafe-ai",
+      "credit_kind": "maintained-by"
+    },
+    {
+      "id": "ten-levels-of-jev",
+      "title": "10 Levels of Jev",
+      "category": "action-taking",
+      "short_description": "Uses Jev to demonstrate typed decisions, task routing, and coding-agent hooks in an interactive lab and terminal runner.",
+      "actual_actions_or_outcome": "A Vue lab and terminal examples show decision patterns; Pi integrations expose judgments as hooks and tools, including a pre-command risk gate.",
+      "jev_role": "Noul, Choice, and Score judgments composed with deterministic thresholds and agent workflows",
+      "other_components": ["Node.js", "Vue", "Pi coding agent", "optional OpenRouter", "explicit offline mock"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/disler/ten-levels-of-jev/blob/main/README.md",
+          "type": "repo",
+          "what_verified": "Installation and ten-level lab structure. Profile display name is IndyDevDan, credited by login under the public-name policy. 117 stars, 30 forks, created and pushed 2026-09-27, 1 commit, 4 open issues/PRs combined including 1 PR.",
+          "author": "disler",
+          "date": "2026-09-30"
+        },
+        {
+          "url": "https://github.com/disler/ten-levels-of-jev/blob/main/apps/ten-levels/src/core/client.ts",
+          "type": "repo",
+          "what_verified": "Live POST client for TypeSafe /v1/systemone and OpenRouter alpha/decisions, explicit mock selection, bounded retries, and response checks.",
+          "author": "disler",
+          "date": "2026-09-30"
+        },
+        {
+          "url": "https://github.com/disler/ten-levels-of-jev/blob/main/apps/ten-levels/src/levels/level06/bash-gate.ts",
+          "type": "repo",
+          "what_verified": "Choice and Noul questions classify a proposed command; code combines confidence and probability thresholds into a block decision.",
+          "author": "disler",
+          "date": "2026-09-30"
+        }
+      ],
+      "repo_url": "https://github.com/disler/ten-levels-of-jev",
+      "demo_url": null,
+      "install_url": "https://github.com/disler/ten-levels-of-jev#install",
+      "caveats": "New educational project, created 2026-09-27 with one commit; only the client and representative command gate were code-inspected, not every example. No runtime, benchmark, or claimed offline test results were reproduced. Live use requires provider credentials; mock mode is not model evidence. Semantic command gates are not a security boundary. The project is a demo, not advice, including any trading examples bundled in its skill templates. Inspected source: https://github.com/disler/ten-levels-of-jev/blob/main/apps/ten-levels/src/levels/level06/bash-gate.ts",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": ["pi", "claude-code"],
+      "last_checked": "2026-09-30",
+      "creator_display": "@disler",
+      "creator_url": "https://github.com/disler",
+      "credit_kind": "by"
+    },
+    {
+      "id": "cooper-jev-playwright",
+      "title": "Jev Playwright checklist runner",
+      "category": "action-taking",
+      "short_description": "Uses Jev to select browser elements and judge plain-English QA checklists from Playwright accessibility trees.",
+      "actual_actions_or_outcome": "Runs clicks, typing, navigation, and text checks, then writes verdicts and evidence; visual checks are handed back to the caller with screenshots.",
+      "jev_role": "Choice for step kinds and element targets, plus Noul for page-claim verification",
+      "other_components": ["Playwright", "Cloudflare Workers AI", "Claude Code or Codex"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/cooper667/jev-playwright/blob/main/README.md",
+          "type": "repo",
+          "what_verified": "Plugin installation, checklist workflow, Cloudflare requirements, and visual-check limitations. Public profile names Craig Cooper; 3 stars, 1 fork, created 2026-09-24, pushed 2026-09-30, at least 2 commits, no open issues or PRs.",
+          "author": "cooper667",
+          "date": "2026-09-30"
+        },
+        {
+          "url": "https://github.com/cooper667/jev-playwright/blob/main/skills/jev-playwright/runner/engine/jev.ts",
+          "type": "repo",
+          "what_verified": "POSTs state and questions to Cloudflare Workers AI using model typesafe/jev and checks the response envelope.",
+          "author": "cooper667",
+          "date": "2026-09-30"
+        },
+        {
+          "url": "https://github.com/cooper667/jev-playwright/blob/main/skills/jev-playwright/runner/engine/runner.ts",
+          "type": "repo",
+          "what_verified": "Jev target selection drives Playwright operations; Noul checks page claims; visual checks produce screenshots for caller judgment.",
+          "author": "cooper667",
+          "date": "2026-09-30"
+        }
+      ],
+      "repo_url": "https://github.com/cooper667/jev-playwright",
+      "demo_url": null,
+      "install_url": "https://github.com/cooper667/jev-playwright#install",
+      "caveats": "New plugin with 3 stars, created 2026-09-24; not installed or run here. Requires an existing Playwright project, a running app, and Cloudflare credentials. Sends accessibility-tree and checklist text to Cloudflare. Jev does not inspect pixels; a model pass is not a deterministic test assertion. Author timing and cost comparisons were not reproduced. Inspected source: https://github.com/cooper667/jev-playwright/blob/main/skills/jev-playwright/runner/engine/runner.ts",
+      "readiness": "installable-per-readme",
+      "skill_frameworks": ["claude-code", "codex"],
+      "last_checked": "2026-09-30",
+      "creator_display": "Craig Cooper",
+      "creator_url": "https://github.com/cooper667",
+      "credit_kind": "by"
+    },
+    {
+      "id": "dfa1-typesafe-java",
+      "title": "TypeSafe Java client and CLI",
+      "category": "community-sdk",
+      "short_description": "Uses Jev to return typed answers in Java applications or turn command-line probability thresholds into pass-or-fail checks.",
+      "actual_actions_or_outcome": "Java 21 client offers synchronous and asynchronous evaluation, typed record mapping, and a CLI that gates on answer thresholds.",
+      "jev_role": "Typed Noul, Choice, and Score evaluation through the TypeSafe HTTP API",
+      "other_components": ["Java 21", "Maven", "Jackson", "JDK HTTP client or OkHttp"],
+      "origin": "community",
+      "evidence_level": "code-inspected",
+      "sources": [
+        {
+          "url": "https://github.com/dfa1/typesafe-java/blob/main/README.md",
+          "type": "repo",
+          "what_verified": "Java library example, Maven dependencies, CLI build/run commands, and module layout. Profile names Davide Angelocola; 0 stars, 1 fork, created 2026-09-19, pushed 2026-09-30, at least 2 commits, 1 open issue and no open PRs.",
+          "author": "dfa1",
+          "date": "2026-09-30"
+        },
+        {
+          "url": "https://github.com/dfa1/typesafe-java/blob/main/core/src/main/java/io/github/dfa1/typesafe/core/DefaultTypeSafeClient.java",
+          "type": "repo",
+          "what_verified": "Serializes typed evaluation requests and POSTs to api.typesafe.ai/v1/systemone, with asynchronous transport, retry handling, and typed response decoding.",
+          "author": "dfa1",
+          "date": "2026-09-30"
+        }
+      ],
+      "repo_url": "https://github.com/dfa1/typesafe-java",
+      "demo_url": null,
+      "install_url": "https://github.com/dfa1/typesafe-java#quickstart",
+      "caveats": "New unofficial client with 0 stars, created 2026-09-19; build, published artifacts, and API compatibility were not tested here. README includes library and CLI examples and the repository has multiple commits, rather than an empty SDK scaffold. Credentials and a live TypeSafe service are needed for actual evaluation. Inspected source: https://github.com/dfa1/typesafe-java/blob/main/core/src/main/java/io/github/dfa1/typesafe/core/DefaultTypeSafeClient.java",
+      "readiness": "runnable-from-readme",
+      "skill_frameworks": [],
+      "last_checked": "2026-09-30",
+      "creator_display": "Davide Angelocola",
+      "creator_url": "https://github.com/dfa1",
+      "credit_kind": "by"
     }
   ]
 }

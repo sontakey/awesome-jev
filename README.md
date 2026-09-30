@@ -5,20 +5,20 @@
 Jev does not chat, write code, or see images. It returns Choice, Score, or Noul answers with probabilities. Your code decides what happens next.
 
 [![CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey.svg)](LICENSE)
-[![catalog](https://img.shields.io/badge/catalog-124_entries-111.svg)](data/use-cases.json)
+[![catalog](https://img.shields.io/badge/catalog-128_entries-111.svg)](data/use-cases.json)
 [![updated](https://img.shields.io/badge/updated-2026.09.19-0a0.svg)](docs/research-method.md)
 
 ## Contents
 
-- [Action-taking projects](#action-taking-projects) (56)
+- [Action-taking projects](#action-taking-projects) (58)
 - [Model and skill routing](#model-and-skill-routing) (7)
 - [Email and inbox routing](#email-and-inbox-routing) (2)
 - [MCP and agent bridges](#mcp-and-agent-bridges) (6)
 - [Official cookbooks and patterns](#official-cookbooks-and-patterns) (4)
 - [Official SDKs and adapter](#official-sdks-and-adapter) (3)
 - [Official docs, skill, and launch demos](#official-docs-skill-and-launch-demos) (4)
-- [Platform integrations](#platform-integrations) (6)
-- [Community clients](#community-clients) (7)
+- [Platform integrations](#platform-integrations) (7)
+- [Community clients](#community-clients) (8)
 - [Installable agent skills](#installable-agent-skills) (9)
 - [Other awesome-Jev lists](#other-awesome-jev-lists) (12)
 - [Related, not TypeSafe Jev](#related-not-typesafe-jev) (8)
@@ -88,6 +88,8 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [Jev at the piano](https://github.com/LamplighterPaul/jev-piano) — Uses Jev to choose chords, tempo, and melodic patterns from a mood description while code plays the piano. By [@LamplighterPaul](https://github.com/LamplighterPaul). `code-inspected` <!-- catalog:jev-piano -->
 - [Semantic Find userscript](https://github.com/dingdinglz/semantic-find-userscript) — Uses Jev to find passages and navigation labels on the current webpage that match a natural-language search. By [@dingdinglz](https://github.com/dingdinglz). `code-inspected` <!-- catalog:semantic-find-userscript -->
 - [JevGate](https://github.com/Tech-Byte-Frontier/jevgate) — Uses Jev to judge small units of source code and turn the answers into code-review findings and a pass-or-fail gate. Maintained by [Tech Byte Frontier](https://github.com/Tech-Byte-Frontier). `code-inspected` <!-- catalog:jevgate -->
+- [10 Levels of Jev](https://github.com/disler/ten-levels-of-jev) — Uses Jev to demonstrate typed decisions, task routing, and coding-agent hooks in an interactive lab and terminal runner. By [@disler](https://github.com/disler). `code-inspected` <!-- catalog:ten-levels-of-jev -->
+- [Jev Playwright checklist runner](https://github.com/cooper667/jev-playwright) — Uses Jev to select browser elements and judge plain-English QA checklists from Playwright accessibility trees. By [Craig Cooper](https://github.com/cooper667). `code-inspected` <!-- catalog:cooper-jev-playwright -->
 
 ## Model and skill routing
 
@@ -141,6 +143,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [Jev Labeler](https://github.com/yamadashy/jev-labeler-action) — Uses Jev to decide which existing GitHub labels apply to an issue or pull request. By [Kazuki Yamada](https://github.com/yamadashy). `code-inspected` <!-- catalog:jev-labeler -->
 - [Yao Agents decision tool](https://github.com/YaoApp/yao) — Uses Jev as the decision provider behind Yao Agents' decision_decide tool, so agents get typed choices, scores, and probabilities. Maintained by [YaoApp](https://github.com/YaoApp). `code-inspected` <!-- catalog:yao-agents-decision -->
 - [jev-sap-commerce](https://github.com/Emenowicz/jev-sap-commerce) — Uses Jev to moderate product reviews and suggest product categories and attribute values in SAP Commerce. By [Dawid Michałowicz](https://github.com/Emenowicz). `code-inspected` <!-- catalog:jev-sap-commerce -->
+- [TypeSafe AI n8n node](https://github.com/typesafe-ai/n8n-nodes-typesafe-ai) — Uses Jev to evaluate workflow items or route them to n8n outputs using typed answers and confidence thresholds. Maintained by [TypeSafe](https://github.com/typesafe-ai). `code-inspected` <!-- catalog:typesafe-n8n-node -->
 
 ## Community clients
 
@@ -151,6 +154,7 @@ Related open reproductions sit in [Related, not TypeSafe Jev](#related-not-types
 - [typesafe-sdk (Ruby)](https://github.com/joshmn/typesafe-sdk) — Ruby gem client for the TypeSafe System One API. By [@joshmn](https://github.com/joshmn). `code-inspected` <!-- catalog:typesafe-sdk-ruby -->
 - [ruby_decision_model](https://github.com/obie/ruby_decision_model) — Uses Jev to answer typed questions from Ruby through either the native TypeSafe API or OpenRouter. By [Obie Fernandez](https://github.com/obie). `code-inspected` <!-- catalog:ruby-decision-model -->
 - [vibecheck](https://github.com/jlowin/vibecheck) — Uses Jev to turn Python check, classify, label, and score calls into plain values with optional probabilities. By [Jeremiah Lowin](https://github.com/jlowin). `code-inspected` <!-- catalog:vibecheck -->
+- [TypeSafe Java client and CLI](https://github.com/dfa1/typesafe-java) — Uses Jev to return typed answers in Java applications or turn command-line probability thresholds into pass-or-fail checks. By [Davide Angelocola](https://github.com/dfa1). `code-inspected` <!-- catalog:dfa1-typesafe-java -->
 
 ## Installable agent skills
 
